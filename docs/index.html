@@ -1,11 +1,1105 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Meex Open API</title>
-</head>
-<body>
-	<h1>Hello Meex</h1>
-	<p>Welcome to Open API!</p>
-</body>
-</html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Meex Open API</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="35a84dd4-aacb-44ce-9bba-be054cadf609" class="page sans"><header><h1 class="page-title"></h1></header><div class="page-body"><h1 id="1667e2f8-970c-4efe-a1dd-378da4ca87df" class="">Meex Open API</h1><h3 id="f1ec59b6-0d92-45d0-bda2-d0e22ae16ae5" class="">API基本信息</h3><p id="960b890c-6db7-4eb4-bd91-1b9f92bd6259" class="">本篇列出REST接口的baseurl <code>https://openapi.xxx.com</code></p><p id="54103bb0-303e-4be2-9f70-080f2a9bb9ac" class="">所有接口都会返回一个JSON object或者array.</p><p id="0f69cbf4-f1e2-4017-b2ae-4724b18b6154" class="">响应中如有数组，数组元素以时间倒序排列，越早的数据越提前.</p><p id="e86dfa3f-9d18-40bd-80ec-3bde15d0c033" class="">所有时间、时间戳均为UNIX时间，单位为毫秒.</p><h3 id="a36db76b-351c-48f0-9b45-d27655045d30" class="">HTTP返回代码</h3><p id="6a6f0f53-87ec-47c1-9bf0-7a004609b6e4" class="">HTTP <code>4XX</code> 错误码用于指示错误的请求内容、行为、格式.</p><p id="974a8b98-3b87-4c57-830f-4d762b2cded5" class="">HTTP <code>429</code> 错误码表示警告访问频次超限，即将被封IP.</p><p id="34f5f2d0-45f8-45ff-a613-da88e97b5ef8" class="">HTTP <code>418</code> 表示收到429后继续访问，于是被封了.</p><p id="d5915690-6713-441d-b90a-dc6899e4d97b" class="">HTTP <code>5XX</code> 返回错误码是内部系统错误；这说明这个问题是在服务器这边。</p><p id="c51e5f19-2bfa-4371-9885-69cee1e52b04" class="">在对待这个错误时，千万 不要把它当成一个失败的任务，因为执行状态 未知，</p><p id="bfb13096-4cef-4ff3-9360-f5f21ee50bf5" class="">有可能是成功也有可能是失败.</p><p id="a11ceb49-4d3a-4da1-8a61-17405d71df4b" class="">HTTP <code>504</code> 表示API服务端已经向业务核心提交了请求但未能获取响应，</p><p id="b1102dc8-8e36-4460-85de-55473bba5899" class="">特别需要注意的是<code>504</code>代码不代表请求失败，而是未知。</p><p id="dcdf4de8-67be-4125-9d91-6b27f655fd5a" class="">很可能已经得到了执行，也有可能执行失败，需要做进一步确认.</p><p id="49cbf32f-1542-4b4b-b5ec-64a316a4042c" class="">任何接口都可能返回ERROR(错误); 错误的返回payload如下:</p><pre id="b9c6237c-6b62-4091-81c9-d3ac07dcbcd4" class="code code-wrap"><code>{
+    &quot;retCode&quot;:1121,
+    &quot;retMsg&quot;:&quot;Invalid symbol.&quot;
+    &quot;data&quot;:{}
+}
+</code></pre><h3 id="160d46ef-9ad5-430b-be6f-4bdd476fa30c" class="">访问限制</h3><p id="a8f50e28-9087-41ae-8602-ed5aefc64fb8" class="">在每个接口下面会有限频的说明.</p><p id="8a8eecb4-26e8-4c82-9957-6bd7d39e74f1" class="">违反频率限制都会收到HTTP 429，这是一个警告.</p><p id="709ec83e-63bb-484f-b455-e6d9e17e0eaf" class="">当收到429告警时，调用者应当降低访问频率或者停止访问.</p><p id="e0381c8c-936e-4520-a317-684e47d0231a" class=""><strong>所有接口访问 300次/秒</strong></p><h3 id="2496ba5b-afcf-43ed-b308-1fc451702812" class="">接口通用信息</h3><p id="ff2bea5e-f7f9-499f-bce8-72974cb51176" class="">所有请求基于Https协议，请求头信息中<code>Content-Type</code></p><p id="15b0d187-3336-426c-b870-c31945ff6a03" class="">需要统一设置为: <code>&#x27;application/json&#x27;</code></p><p id="f2405632-4687-480f-b36e-ae932b597c60" class=""><code>GET</code>方法的接口, 参数必须在<code>query string</code>中发送.</p><p id="ffeab63a-91af-4995-91e1-8c01174c5ef4" class=""><code>POST</code>方法的接口, 参数必须在<code>request body</code>中发送</p><p id="05e82b98-9176-45fc-b1dd-408379632a12" class="">对参数的顺序不做要求。</p><h3 id="6e704111-98da-4f69-880d-0f913951e1d7" class="">接口鉴权类型</h3><ul id="23651ee2-6723-44ef-b114-f11b61da844d" class="bulleted-list"><li style="list-style-type:disc">每个接口都有自己的鉴权类型，鉴权类型决定了访问时应当进行何种鉴权</li></ul><ul id="9a2d109a-8568-4ab6-941b-1055e3a40a77" class="bulleted-list"><li style="list-style-type:disc">如果需要 API-key，应当在HTTP头中以<code>X-CH-APIKEY</code>字段传递</li></ul><ul id="b93cbe47-7db9-4bf6-b21a-b062c7cdd8fd" class="bulleted-list"><li style="list-style-type:disc">API-key 与 API-secret 是大小写敏感的</li></ul><ul id="1294196c-d45d-464f-be5b-e6c757ab9963" class="bulleted-list"><li style="list-style-type:disc">可以在网页用户中心修改API-key 所具有的权限，</li></ul><ul id="9c013e0c-ed12-4613-a38d-c271178818c7" class="bulleted-list"><li style="list-style-type:disc">例如读取账户信息、发送交易指令、发送提现指令</li></ul><table id="722d739e-2fb4-4b18-b136-6587868c0371" class="simple-table"><tbody><tr id="09034c8e-d097-4724-9379-a05cf5c2c672"><td id="QduT" class=""><strong>鉴权类型</strong></td><td id="F\[w" class=""><strong>描述</strong></td></tr><tr id="7d4332e2-1cf9-4278-b98b-1fbe84e4bacc"><td id="QduT" class="">NONE</td><td id="F\[w" class="">不需要鉴权的接口</td></tr><tr id="ee97edf8-1f43-47f1-8516-cc520de06178"><td id="QduT" class="">TRADE</td><td id="F\[w" class="">需要有效的API-KEY和签名</td></tr><tr id="18ce7674-bc1f-45b0-894d-10be51b37e90"><td id="QduT" class="">USER_DATA</td><td id="F\[w" class="">需要有效的API-KEY和签名</td></tr><tr id="7de9485e-d233-4663-9ecf-684bf8977fe6"><td id="QduT" class="">USER_STREAM</td><td id="F\[w" class="">需要有效的API-KEY</td></tr><tr id="0d8321a5-349c-4651-a2c6-262ef1a5d5b2"><td id="QduT" class="">MARKET_DATA</td><td id="F\[w" class="">需要有效的API-KEY</td></tr></tbody></table><h3 id="8e035201-b99e-4668-943b-413eec3ca5ff" class="">需要签名的接口 (TRADE 与 USER_DATA)</h3><ul id="81ed1d15-1be9-456a-8816-2c3831e09bbc" class="bulleted-list"><li style="list-style-type:disc">调用<code>TRADE</code>或者<code>USER_DATA</code>接口时，应当在HTTP头中以<code>X-CH-SIGN</code>字段传递签名参数.</li></ul><ul id="fad43cc6-419c-42c2-92fb-034f52cdd942" class="bulleted-list"><li style="list-style-type:disc">签名使用<code>HMAC SHA256</code>算法. API-KEY所对应的API-Secret作为 <code>HMAC SHA256</code> 的密钥.</li></ul><ul id="c0a02eab-fd17-4457-a658-aedf8fb7573d" class="bulleted-list"><li style="list-style-type:disc"><code>X-CH-SIGN</code>的请求头是以timestamp + method + requestPath + body字符串(+表示字符串连接)作为操作对象</li></ul><ul id="641d44d6-a6c8-469d-ad1f-7fcf73d61e57" class="bulleted-list"><li style="list-style-type:disc">其中timestamp的值与<code>X-CH-TS</code>请求头相同, method是请求方法，字母全部大写：GET/POST.</li></ul><ul id="9f6ae6c4-3235-4d16-878c-89e99f5d55d5" class="bulleted-list"><li style="list-style-type:disc">requestPath是请求接口路径 例如:/sapi/v1/order?orderId=211222334&amp;symbol=BTCUSDT</li></ul><ul id="ff467fb7-cc7b-45e0-b63b-064961189710" class="bulleted-list"><li style="list-style-type:disc"><code>body</code>是请求主体的字符串(post only) 如果是<code>GET</code>请求则<code>body</code>可省略</li></ul><ul id="2fa46918-3200-4700-8477-44f8d258f8f9" class="bulleted-list"><li style="list-style-type:disc">签名大小写不敏感。</li></ul><ul id="35c2d8b0-a27c-4bdb-be57-89e73abf5eda" class="bulleted-list"><li style="list-style-type:disc"></li></ul><h3 id="e796d3fd-9721-442a-999b-01532c43e990" class="">时间同步安全</h3><ul id="125b7559-981c-43e1-bf40-b4778752f5d1" class="bulleted-list"><li style="list-style-type:disc">签名接口均需要在HTTP头中以<code>X-CH-TS</code>字段传递时间戳, 其值应当是请求发送时刻的unix时间戳（毫秒） e.g. 1528394129373</li></ul><ul id="db3ad950-022b-420b-8b5b-9acb2c9af28d" class="bulleted-list"><li style="list-style-type:disc">服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间窗口值可以通过发送可选参数<code>recvWindow</code>来自定义。</li></ul><ul id="d02aa279-3c18-42a8-91a2-f132dc59d8a6" class="bulleted-list"><li style="list-style-type:disc">另外，如果服务器计算得出客户端时间戳在服务器时间的‘未来’一秒以上，也会拒绝请求。</li></ul><ul id="a7cea0ac-228e-4b1b-907e-38b0b35bb9f8" class="bulleted-list"><li style="list-style-type:disc">逻辑伪代码：</li></ul><pre id="95f4e3ed-8f28-4ebc-ae46-7966c833bf36" class="code code-wrap"><code>if (timestamp &lt; (serverTime + 1000) &amp;&amp; (serverTime - timestamp) &lt;= recvWindow) {
+  // process request
+} else {
+  // reject request
+}
+</code></pre><p id="a800d9b3-267b-46cb-9676-de69413cce42" class=""><strong>关于交易时效性</strong> 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到交易所服务器的时延会有抖动. 这是我们设置<code>recvWindow</code>的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置<code>recvWindow</code>以达到你的要求。 不推荐使用5秒以上的<code>recvWindow</code></p><h3 id="27dfc459-cdb8-41c5-b9fe-45f516a02aa3" class="">签名</h3><p id="fd1825e3-55bf-4465-9460-555b3ac4bb7b" class="">可参考文档：https://github.com/exchange2021/openApi-java-demo/blob/master/src/main/java/com/utils/Signature.java</p><p id="40d549be-86ec-4c7d-a250-1fad3c49a722" class="">样例</p><pre id="9c81cb19-6cfe-4a1b-ad57-e2dd9a5031bb" class="code code-wrap"><code>/**
+ * 生成sign
+ **/
+private String toSign(String timestamp, String method, String requestPath,
+                             String queryString, String body, String secretKey)
+                             throws Exception {
+    // 签名串
+    String preHash = preHash(timestamp, method
+    , requestPath, queryString, body);
+    byte[] secretKeyBytes = secretKey.getBytes(&quot;UTF-8&quot;);
+    SecretKeySpec secretKeySpec =
+    new SecretKeySpec(secretKeyBytes, &quot;HmacSHA256&quot;);
+    Mac mac = (Mac) MAC.clone();
+    mac.init(secretKeySpec);
+    return Hex.encodeHexString(mac.doFinal(preHash.getBytes(&quot;UTF-8&quot;)));
+}
+
+/**
+ * 签名串
+ **/
+private String preHash(String timestamp, String method, String requestPath,
+String queryString, String body) {
+
+    StringBuilder preHash = new StringBuilder();
+    preHash.append(timestamp);
+    preHash.append(method.toUpperCase());
+    preHash.append(requestPath);
+    if (org.apache.commons.lang3.StringUtils.isNotEmpty(queryString)) {
+        preHash.append(&quot;?&quot;).append(queryString);
+    }
+    if (org.apache.commons.lang3.StringUtils.isNotEmpty(body)) {
+        preHash.append(body);
+    }
+    return preHash.toString();
+}
+
+/**
+ * queryString
+ **/
+private String queryString(ServerHttpRequest request) {
+    String url = request.getURI().toString();
+    String queryString = &quot;&quot;;
+    if (url.contains(&quot;?&quot;)) {
+        queryString = url.substring(url.lastIndexOf(&quot;?&quot;) + 1);
+    }
+    return queryString;
+}
+
+</code></pre><h1 id="f44e6a06-a564-45d3-bb10-ebecfed0f8da" class=""><strong>ENUM</strong></h1><h3 id="558dc8a2-4177-4198-847a-5c2a568df554" class=""><strong>术语解释:</strong></h3><ul id="588f3dbb-3a5c-4399-9073-3312106aef05" class="bulleted-list"><li style="list-style-type:disc"><code>base</code> 指一个交易对的交易对象，即写在靠前部分的资产名</li></ul><ul id="bee07750-9827-49ed-8084-9cbaee329e63" class="bulleted-list"><li style="list-style-type:disc"><code>quote</code> 指一个交易对的定价资产，即写在靠后部分资产名</li></ul><h3 id="49866c0c-ed4d-4e1b-b7c3-b992ab6f03c8" class=""><strong>订单状态:</strong></h3><ul id="108dd038-f11c-4cc9-aa5c-6c267e86d323" class="bulleted-list"><li style="list-style-type:disc"><code>NEW</code> 新建订单</li></ul><ul id="e446712a-7267-4183-bdd0-68fde8a15c79" class="bulleted-list"><li style="list-style-type:disc"><code>PART_FILLED</code></li></ul><ul id="64a7439a-299d-4112-aaf6-a1a4a65e777f" class="bulleted-list"><li style="list-style-type:disc"><code>FILLED</code> 全部成交</li></ul><ul id="34d05b5e-6884-4a73-adcc-c3202aa3dda0" class="bulleted-list"><li style="list-style-type:disc"><code>CANCELED</code> 已撤销</li></ul><ul id="f1454657-9b10-4d16-a5db-3e22ba509895" class="bulleted-list"><li style="list-style-type:disc"><code>PENDING_CANCEL</code> 正在撤销中</li></ul><ul id="dcc82579-ab5d-43aa-9444-9adb025a0308" class="bulleted-list"><li style="list-style-type:disc"><code>REJECTED</code> 订单被拒绝</li></ul><h3 id="62cd0a00-8164-4ed3-a95d-8e740d99c6b7" class=""><strong>订单种类:</strong></h3><ul id="79f8ec28-6589-405f-aa74-249c10ed042f" class="bulleted-list"><li style="list-style-type:disc"><code>LIMIT</code> 限价单</li></ul><ul id="398f81b3-340b-4a8b-9007-3b50d9144538" class="bulleted-list"><li style="list-style-type:disc"><code>MARKET</code> 市价单</li></ul><h3 id="437f9d23-dcb2-4b4c-9b76-f1014b5d36a2" class=""><strong>订单方向:</strong></h3><ul id="2f6713d7-e890-40e3-9447-f4758de54e01" class="bulleted-list"><li style="list-style-type:disc"><code>BUY</code> 买单</li></ul><ul id="63f668ba-224e-45b0-a237-18a55dc3f9b4" class="bulleted-list"><li style="list-style-type:disc"><code>SELL</code> 卖单</li></ul><h3 id="7ef79943-ccbd-4db0-8ce3-d03baa0f79c8" class=""><strong>K线间隔:</strong></h3><p id="18e8f2bd-d55b-4724-9e0c-224e8e3dec6c" class="">min -&gt; 分钟; h -&gt; 小时; day -&gt; 天; week -&gt; 周; month -&gt; 月</p><ul id="d960247c-9829-445d-872b-d336108205d1" class="bulleted-list"><li style="list-style-type:disc"><code>1min</code></li></ul><ul id="2fb6d5e1-9613-4e8b-9c69-183cef2bbad8" class="bulleted-list"><li style="list-style-type:disc"><code>5min</code></li></ul><ul id="e9d34962-8a2f-4557-87d4-f2779a65bdca" class="bulleted-list"><li style="list-style-type:disc"><code>15min</code></li></ul><ul id="7cd141ea-627f-4597-bc87-6a3057fa0be6" class="bulleted-list"><li style="list-style-type:disc"><code>30min</code></li></ul><ul id="110f1a11-42bd-456d-a534-06710c8506d7" class="bulleted-list"><li style="list-style-type:disc"><code>60min</code></li></ul><ul id="9289f3a3-7aef-41bd-ad6e-516c3b9c96c7" class="bulleted-list"><li style="list-style-type:disc"><code>1h</code></li></ul><ul id="30f5e9c5-23a9-4055-8d2c-8a4f7d3440d3" class="bulleted-list"><li style="list-style-type:disc"><code>4h</code></li></ul><ul id="b125621b-a650-4ead-b43f-0fd6a3795de7" class="bulleted-list"><li style="list-style-type:disc"><code>1day</code></li></ul><ul id="2222da0d-8ce3-4f4b-ac0b-60507fba52af" class="bulleted-list"><li style="list-style-type:disc"><code>1week</code></li></ul><ul id="5d3f9896-11e7-450a-b60a-b822915daa0f" class="bulleted-list"><li style="list-style-type:disc"><code>1month</code></li></ul><h1 id="a474c0fe-b53c-4ef0-9956-5392e6d3a9b6" class="">接口</h1><h3 id="9c1684b6-4540-40c9-acaa-663c284433f3" class="">一、公共接口</h3><p id="23c77924-cc66-4d10-837f-dc4de3415e13" class="">测试环境域名：https://openapi.test.meexs.dev</p><h3 id="18e37d93-7c72-4cb6-8289-a90673d39949" class=""><strong>1、测试连接</strong></h3><p id="c8737f6c-98c3-4e21-9ad5-e7eeebe748e8" class="">请求地址：/sapi/v1/ping</p><p id="b9bad18a-b019-4a1b-88fb-634a6229d409" class="">请求方式：GET</p><p id="7a15fb20-eb38-4e95-bbbf-c8c607f1883d" class="">请求参数：空</p><p id="32402964-67fc-482d-9121-0142a5227765" class="">返回参数：空</p><pre id="5f22c8c4-23e9-4f2c-9100-929618ce19c4" class="code code-wrap"><code>{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;
+    &quot;data&quot;:{}
+}
+</code></pre><h3 id="aff5e2b1-02c0-4c79-b537-ade1e5b17fba" class=""><strong>2、获取服务器时间</strong></h3><p id="dd3a0323-9ce3-43d6-b252-4f6fb94ea333" class="">请求地址：/sapi/v1/time</p><p id="3960b251-229a-4089-be84-8a375c2dc2ba" class="">请求方式：GET</p><p id="9de84506-2030-4c2b-9001-351cf87c932d" class="">请求参数：空</p><p id="6021308d-804c-4c51-8158-cc67b5aba25d" class="">返回参数：</p><p id="84748c10-1bfe-4eed-94a6-2c6819ad0e4a" class="">样例：</p><pre id="1ff99786-fe2e-457c-bcc8-b8eb11381725" class="code code-wrap"><code>返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;
+    &quot;data&quot;:{
+        &quot;timezone&quot;:&quot;China Standard Time&quot;,
+        &quot;serverTime&quot;:1682008735645
+    }
+}
+</code></pre><h3 id="e4b54040-4144-4cf7-a7b9-3f3431db3bd6" class=""><strong>3、获取币对信息</strong></h3><p id="23610951-5678-4b09-ae43-e5fb2e48cf77" class="">请求地址：/sapi/v1/symbols</p><p id="73d57ede-6f77-4e5d-8418-e5c1c454b6e4" class="">请求方式：GET</p><p id="c2f8beb3-a487-47f5-8678-791bd90d041f" class="">请求参数：空</p><p id="d2b9855c-fc5f-4d92-a1a5-97c2c6ba16df" class="">返回参数：</p><table id="cd507fc3-6a99-45e5-96e4-6eada36fce46" class="simple-table"><tbody><tr id="a271413c-ae48-4ead-aa7e-6b29e530dea6"><td id="Mg[I" class=""><strong>名称</strong></td><td id="||rf" class=""><strong>类型</strong></td><td id="&lt;:KY" class=""><strong>例子</strong></td><td id="}Oq@" class=""><strong>描述</strong></td></tr><tr id="6e50aac7-0d62-49aa-91ef-08f3ca393b24"><td id="Mg[I" class="">symbol</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">BTCUSDT</td><td id="}Oq@" class="">币对名称</td></tr><tr id="a92693d0-d7f6-4251-a3e3-232f755c4709"><td id="Mg[I" class="">baseAsset</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">BTC</td><td id="}Oq@" class="">base货币</td></tr><tr id="6c6b02af-df51-4cb4-a5e4-a5c92a00e341"><td id="Mg[I" class="">quoteAsset</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">USDT</td><td id="}Oq@" class="">计价货币</td></tr><tr id="12add6df-61a8-4cd0-baae-c565766c899b"><td id="Mg[I" class="">pricePrecision</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">2</td><td id="}Oq@" class="">价格精度</td></tr><tr id="4f47a1a6-d5f0-499e-b4f8-d2dc1623bfb9"><td id="Mg[I" class="">quantityPrecision</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">6</td><td id="}Oq@" class="">数量精度</td></tr><tr id="a09b68e4-d971-4746-9446-ac4c4d6cefe0"><td id="Mg[I" class="">limitPriceMin</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">0.01</td><td id="}Oq@" class="">市价-买-最小下单量</td></tr><tr id="6550acca-8fb1-4924-8331-1b7fe037a4e6"><td id="Mg[I" class="">limitVolumeMin</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">0.01</td><td id="}Oq@" class="">市价-卖-最小下单量</td></tr><tr id="6c6f9e55-a14f-4b82-8798-f12906654fe1"><td id="Mg[I" class="">marketBuyMin</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">0.01</td><td id="}Oq@" class="">限价-最小下单量</td></tr><tr id="b706dd57-a3c0-45e0-bd60-427297ecd3ce"><td id="Mg[I" class="">marketSellMin</td><td id="||rf" class="">string</td><td id="&lt;:KY" class="">0.01</td><td id="}Oq@" class="">限价-最小价格</td></tr></tbody></table><p id="f134259b-ffd1-48df-aa83-76d2c2863d53" class="">返回参数样例：</p><pre id="9d99031e-c447-4c3c-a252-f363ef7b99d0" class="code code-wrap"><code>// 返回参数
+{
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;symbol&quot;:&quot;gtestusdt&quot;,
+                &quot;baseAsset&quot;:&quot;GTEST&quot;,
+                &quot;quoteAsset&quot;:&quot;USDT&quot;,
+                &quot;pricePrecision&quot;:&quot;4&quot;,
+                &quot;quantityPrecision&quot;:&quot;3&quot;,
+                &quot;limitPriceMin&quot;:&quot;0.0010&quot;,
+                &quot;limitVolumeMin&quot;:&quot;0.001&quot;,
+                &quot;marketBuyMin&quot;:&quot;1.000&quot;,
+                &quot;marketSellMin&quot;:&quot;1.0000&quot;
+            },
+            {
+                &quot;symbol&quot;:&quot;t1usdta&quot;,
+                &quot;baseAsset&quot;:&quot;T1&quot;,
+                &quot;quoteAsset&quot;:&quot;USDT&quot;,
+                &quot;pricePrecision&quot;:&quot;6&quot;,
+                &quot;quantityPrecision&quot;:&quot;7&quot;,
+                &quot;limitPriceMin&quot;:&quot;1.000000&quot;,
+                &quot;limitVolumeMin&quot;:&quot;2.0000000&quot;,
+                &quot;marketBuyMin&quot;:&quot;3.0000000&quot;,
+                &quot;marketSellMin&quot;:&quot;4.000000&quot;
+            }
+        ]
+    }
+}
+</code></pre><h3 id="b60be691-a89e-47bf-aa18-7c6a544dbbb8" class="">二、行情接口</h3><h3 id="da93e6a4-11a4-4b02-9600-f378761546ac" class=""><strong>1、获取深度</strong></h3><p id="2d475abe-4290-40da-a887-855809c39f0c" class="">请求地址：/sapi/v1/depth</p><p id="d667d691-786b-4830-a499-2d8cf48293c9" class="">请求方式：GET</p><p id="9881d786-f37e-4139-a873-04e192a4d6fd" class="">请求参数：</p><table id="dc37f66c-88ab-43fb-83a1-db52768b54ce" class="simple-table"><tbody><tr id="05d45830-18f4-4d30-9f0c-f129e88c0a61"><td id="Pgw=" class=""><strong>Query</strong></td><td id="?[@s" class=""><strong>类型</strong></td><td id="=cll" class=""><strong>描述</strong></td></tr><tr id="20b3a7cc-6afe-45b6-990d-7fd3751f483e"><td id="Pgw=" class="">limit</td><td id="?[@s" class="">string</td><td id="=cll" class="">默认100; 最大100</td></tr><tr id="cbe49eb7-76dc-4829-857f-147e498c7609"><td id="Pgw=" class="">symbol</td><td id="?[@s" class="">string</td><td id="=cll" class="">币对名称 E.g. btcusdt币对名称 E.g. btcusdt</td></tr></tbody></table><p id="12692ffd-615e-4c61-96d0-8efbb06e031b" class="">返回参数：</p><table id="42df10dd-5f05-418c-805c-60d53521701a" class="simple-table"><tbody><tr id="1491aa92-6a02-4937-96da-5c6a93ea1530"><td id="VG;H" class=""><strong>名称</strong></td><td id="wF\X" class=""><strong>类型</strong></td><td id="bxWI" class=""><strong>例子</strong></td><td id="RVRQ" class=""><strong>描述</strong></td></tr><tr id="b61a2a53-6d67-4302-8e68-f22194aef952"><td id="VG;H" class="">bids</td><td id="wF\X" class="">list</td><td id="bxWI" class="">如下</td><td id="RVRQ" class="">订单薄买盘信息</td></tr><tr id="e5931e87-b3f7-450f-a734-fef30c8f75a1"><td id="VG;H" class="">asks</td><td id="wF\X" class="">list</td><td id="bxWI" class="">如下</td><td id="RVRQ" class="">订单薄卖盘信息</td></tr><tr id="37d05c68-04e4-4bda-b0b8-02588fa7e59d"><td id="VG;H" class="">time</td><td id="wF\X" class="">long</td><td id="bxWI" class="">1595563624731</td><td id="RVRQ" class="">当前时间(Unix Timestamp, 毫秒ms)</td></tr></tbody></table><p id="f43ba38f-1710-4643-bbbe-cf3041b917cf" class="">bids和asks所对应的信息代表了订单薄的所有价格以及价格对应的数量的信息, 由最优价格从上倒下排列</p><table id="b3b12038-a578-4633-9ec4-a2c1f92fded1" class="simple-table"><tbody><tr id="9a915e11-dc5a-4a5e-a294-800724577fda"><td id="D]^Q" class=""><strong>名称</strong></td><td id="ttn^" class=""><strong>类型</strong></td><td id="=qGq" class=""><strong>例子</strong></td><td id="R]||" class=""><strong>描述</strong></td></tr><tr id="637cb698-c5d7-42bc-bb86-e551b5d1f20f"><td id="D]^Q" class="">&#x27; &#x27;</td><td id="ttn^" class="">string</td><td id="=qGq" class="">131.1</td><td id="R]||" class="">价格</td></tr><tr id="c86dc042-cd2e-44f9-9870-25f364e9f8a1"><td id="D]^Q" class="">&#x27; &#x27;</td><td id="ttn^" class="">string</td><td id="=qGq" class="">2.3</td><td id="R]||" class="">当前价格对应的数量</td></tr></tbody></table><p id="09301f5f-0e89-425b-a81b-b8020511d76d" class="">样例：</p><pre id="9bcd7599-22bb-46f9-982c-925ef9b69fc3" class="code code-wrap"><code>// 请求参数
+symbol=btcusdt
+
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;asks&quot;:[
+            [
+                &quot;10000&quot;,
+                &quot;0.001&quot;
+            ],
+            [
+                &quot;100001&quot;,
+                &quot;0.2&quot;
+            ]
+        ],
+        &quot;bids&quot;:[
+            [
+                &quot;9999&quot;,
+                &quot;0.09&quot;
+            ],
+            [
+                &quot;9800&quot;,
+                &quot;0.002&quot;
+            ]
+        ],
+        &quot;time&quot;:1681901854000
+    }
+}
+</code></pre><h3 id="97587513-7949-4dae-b9b5-ec08f67e0100" class="">2、行情</h3><p id="c238a8b9-11d0-4498-99f8-3b39640e50cb" class="">请求地址：/sapi/v1/ticker</p><p id="7ab4a0e7-5371-4b79-b54f-3cf2fd355444" class="">请求方式：GET</p><p id="9077f640-a4b2-404b-9dda-442bc930d09b" class="">请求参数：</p><table id="df4f49ad-7354-44d9-8550-0f2255027fc8" class="simple-table"><tbody><tr id="b85d596a-f64d-4900-9949-73b5bc5affad"><td id="cJxM" class=""><strong>Query</strong></td><td id="Q&gt;?W" class=""><strong>是否必填</strong></td><td id="&lt;n&lt;@" class=""><strong>类型</strong></td><td id="niY=" class=""><strong>描述</strong></td></tr><tr id="0f2b687c-87e7-4c5a-a315-deff73eecde6"><td id="cJxM" class="">symbol</td><td id="Q&gt;?W" class="">是</td><td id="&lt;n&lt;@" class="">string</td><td id="niY=" class="">币对名称 E.g. btcusdt币对名称 E.g. btcusdt</td></tr></tbody></table><p id="a3a22eb4-8b4f-44e4-af15-7a7916e9ab73" class="">返回参数：</p><table id="24bd184d-2ce2-442c-bba6-45298fb84d84" class="simple-table"><tbody><tr id="b1a03867-587d-4ebb-953c-690662afdbd0"><td id="KBYP" class=""><strong>名称</strong></td><td id="TmEx" class=""><strong>类型</strong></td><td id="hndk" class=""><strong>例子</strong></td><td id="m=ky" class=""><strong>描述</strong></td></tr><tr id="de0f3ef1-e806-4295-b277-6ab0c65e842b"><td id="KBYP" class="">time</td><td id="TmEx" class="">long</td><td id="hndk" class="">1595563624731</td><td id="m=ky" class="">时间戳</td></tr><tr id="0af01ce8-08c1-44d2-a527-dd86dec7d5e0"><td id="KBYP" class="">high</td><td id="TmEx" class="">string</td><td id="hndk" class="">9900</td><td id="m=ky" class="">最高价</td></tr><tr id="2e5c2187-5577-47be-b7bf-57b88194c713"><td id="KBYP" class="">low</td><td id="TmEx" class="">string</td><td id="hndk" class="">8800.34</td><td id="m=ky" class="">最低价</td></tr><tr id="bdc5ff35-bda1-4dfe-b2b8-18306b21c391"><td id="KBYP" class="">last</td><td id="TmEx" class="">string</td><td id="hndk" class="">8900</td><td id="m=ky" class="">最新价</td></tr><tr id="2af21d80-d675-4a13-b7ae-e79f0db69759"><td id="KBYP" class="">vol</td><td id="TmEx" class="">string</td><td id="hndk" class="">4999</td><td id="m=ky" class="">交易量</td></tr><tr id="19f930b6-24e3-421f-a1fd-6832fa54d80e"><td id="KBYP" class="">open</td><td id="TmEx" class="">string</td><td id="hndk" class="">5000</td><td id="m=ky" class="">开盘价</td></tr><tr id="cf0c9d9e-624c-4c07-b634-f3c48cc5e1e3"><td id="KBYP" class="">close</td><td id="TmEx" class="">string</td><td id="hndk" class="">5000</td><td id="m=ky" class="">收盘价</td></tr></tbody></table><p id="291abbc2-597a-413b-bf17-da52d38705b0" class="">样例：</p><pre id="86ce652b-3234-4cf6-84c3-372c7b99ece1" class="code code-wrap"><code>//请求参数
+symbol=btcusdt
+
+//返回参数：
+{
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;,
+    &quot;data&quot;:{
+        &quot;time&quot;:1682600880000,
+        &quot;high&quot;:&quot;29890.02&quot;,
+        &quot;low&quot;:&quot;15000&quot;,
+        &quot;vol&quot;:&quot;134.758797&quot;,
+        &quot;last&quot;:&quot;28993.9500000000000000&quot;,
+        &quot;open&quot;:&quot;28857.92&quot;,
+        &quot;close&quot;:&quot;28993.95&quot;
+    }
+}
+
+</code></pre><h3 id="4ed5704e-d70a-493f-819f-759b8a86e718" class="">3、最近成交</h3><p id="7f16db23-cdde-4192-aa11-1ee941a2c3fa" class="">请求地址：/sapi/v1/trades</p><p id="9a9c3ba9-dbfe-43d0-af8a-dc6ce3955c7e" class="">请求方式：GET</p><p id="14228620-a836-4541-950b-4a7b3bb872a1" class="">请求参数：</p><table id="ef414484-334b-4c28-bcfc-412eac823d6f" class="simple-table"><tbody><tr id="ac306a91-701e-47ad-a9bb-3475aa183a4f"><td id="]\gV" class=""><strong>Query</strong></td><td id=";r@F" class=""><strong>是否必填</strong></td><td id="xppW" class=""><strong>类型</strong></td><td id="&gt;UBd" class=""><strong>描述</strong></td></tr><tr id="8887d04a-efd5-441c-b6fe-536d58c20f2f"><td id="]\gV" class="">symbol</td><td id=";r@F" class="">是</td><td id="xppW" class="">string</td><td id="&gt;UBd" class="">币对名称 E.g. btcusdt币对名称 E.g. btcusdt</td></tr><tr id="ffe74aaf-b4df-4d0c-b980-59bc902da731"><td id="]\gV" class="">limit</td><td id=";r@F" class="">否</td><td id="xppW" class="">string</td><td id="&gt;UBd" class="">默认50; 最大100</td></tr><tr id="85d69de1-5f6c-45b8-9e9a-88c296d1f1df"><td id="]\gV" class="">cursor</td><td id=";r@F" class="">否</td><td id="xppW" class="">string</td><td id="&gt;UBd" class="">默认1；最大100</td></tr></tbody></table><p id="408b5f33-0d13-4159-ae63-96b55caac8bc" class="">返回参数：</p><table id="4aa32c8a-0318-4350-a07f-4dfc9c7db393" class="simple-table"><tbody><tr id="9e3aa76c-a506-4577-bfe4-332842ffeef7"><td id="t{m{" class=""><strong>名称</strong></td><td id="Jlaq" class=""><strong>是否必填</strong></td><td id="dk&gt;g" class=""><strong>类型</strong></td><td id="WOgC" class=""><strong>描述</strong></td></tr><tr id="88d04f64-481a-40f1-9781-4a02485dc7c9"><td id="t{m{" class="">list</td><td id="Jlaq" class="">是</td><td id="dk&gt;g" class="">list</td><td id="WOgC" class=""></td></tr><tr id="c15322d7-5c50-45cc-8179-f0155d0073b9"><td id="t{m{" class="">nextPageCursor</td><td id="Jlaq" class="">string</td><td id="dk&gt;g" class="">2</td><td id="WOgC" class="">下一页游标</td></tr></tbody></table><p id="4e6eabfe-7ee5-43b0-8307-f14beaee0429" class="">list Object:</p><table id="695a6a4b-d340-4af3-abb7-9f2eadf6d112" class="simple-table"><tbody><tr id="a427ced4-504b-409a-b710-42e9af558c2c"><td id="KK\{" class=""><strong>名称</strong></td><td id="@Kis" class=""><strong>类型</strong></td><td id="XCuE" class=""><strong>例子</strong></td><td id="yNdd" class=""><strong>描述</strong></td></tr><tr id="57b40289-f105-478c-bfd0-36596aa36a1a"><td id="KK\{" class="">price</td><td id="@Kis" class="">string</td><td id="XCuE" class="">0.055</td><td id="yNdd" class="">交易价格</td></tr><tr id="86505bb1-25cc-40f1-804f-2489a2959fec"><td id="KK\{" class="">qty</td><td id="@Kis" class="">string</td><td id="XCuE" class="">5</td><td id="yNdd" class="">数量（张数）</td></tr><tr id="ca250ad9-7228-47c2-9258-612dbf6c1833"><td id="KK\{" class="">side</td><td id="@Kis" class="">string</td><td id="XCuE" class="">BUY/SELL</td><td id="yNdd" class="">主动单方向</td></tr><tr id="e1baad4b-d2cb-45eb-ab6b-640e90ef933c"><td id="KK\{" class="">time</td><td id="@Kis" class="">long</td><td id="XCuE" class="">1537797044116</td><td id="yNdd" class="">当前Unix时间戳，毫秒(ms)</td></tr></tbody></table><p id="66bb5169-a5a9-43d2-9332-bab86349cadf" class="">样例：</p><pre id="3e4caae1-bbfb-432f-b615-8261c15267f1" class="code code-wrap"><code>//请求参数
+symbol=btcusdt
+
+//返回参数
+{
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;price&quot;:&quot;28993.95&quot;,
+                &quot;qty&quot;:&quot;0.004000&quot;,
+                &quot;side&quot;:&quot;buy&quot;,
+                &quot;time&quot;:1682629679000
+            },
+            {
+                &quot;price&quot;:&quot;28981.68&quot;,
+                &quot;qty&quot;:&quot;0.100000&quot;,
+                &quot;side&quot;:&quot;buy&quot;,
+                &quot;time&quot;:1682622206000
+            }
+        ],
+        &quot;nextPageCursor&quot;:&quot;2&quot;
+    }
+}
+</code></pre><h3 id="a6edd5ed-02dd-43b4-a13a-ef22d71b8592" class="">4、K线/蜡烛图数据</h3><p id="9d7308fc-06a3-4c9b-943f-0d4739ece332" class="">请求地址：/sapi/v1/klines</p><p id="fbbc444d-9fe3-4de9-a4e0-f8e6ca639465" class="">请求方式：GET</p><p id="73648af2-bdc6-4ba4-8576-14fa3ac43351" class="">请求参数：</p><table id="7a0adbd7-718b-4dc6-bf8b-36732f92283e" class="simple-table"><tbody><tr id="794be1f3-a111-46ec-9121-ff18ff6f31a6"><td id="K~`:" class=""><strong>Query</strong></td><td id="TPDa" class=""><strong>是否必填</strong></td><td id="d:XA" class=""><strong>类型</strong></td><td id="KCFG" class=""><strong>描述</strong></td></tr><tr id="87339fdd-894a-48df-adaa-a31bf126030c"><td id="K~`:" class="">symbol</td><td id="TPDa" class="">是</td><td id="d:XA" class="">string</td><td id="KCFG" class="">币对名称 E.g. btcusdt币对名称 E.g. btcusdt</td></tr><tr id="f6bcf658-1b87-4ed2-9bfe-86a2c2727de4"><td id="K~`:" class="">interval</td><td id="TPDa" class="">是</td><td id="d:XA" class="">string</td><td id="KCFG" class="">k线图区间, 可识别发送的值为： 1min,5min,15min,30min,60min,1day,1week,1month（min=分钟，h=小时,day=天，week=星期，month=月）</td></tr><tr id="4728da32-871f-40b8-a07d-27aa519cf042"><td id="K~`:" class="">limit</td><td id="TPDa" class="">否</td><td id="d:XA" class="">string</td><td id="KCFG" class="">默认100; 最大300</td></tr></tbody></table><p id="9197830b-6197-47ac-996d-7f082880335f" class="">返回参数：</p><table id="1d40cab4-5c40-49da-9986-6dd475b46e45" class="simple-table"><tbody><tr id="8b29d99d-a479-4b02-96a0-a142a834e4de"><td id="iS~s" class=""><strong>名称</strong></td><td id="WJOY" class=""><strong>类型</strong></td><td id="RIS|" class=""><strong>例子</strong></td><td id="[}|j" class=""><strong>描述</strong></td></tr><tr id="d56b2958-012f-41c8-8fef-f5e6be804a06"><td id="iS~s" class="">idx</td><td id="WJOY" class="">long</td><td id="RIS|" class="">1538728740000</td><td id="[}|j" class="">开始时间戳，毫秒（ms）</td></tr><tr id="434ec3b3-8206-4166-8bfb-64d8b20f7693"><td id="iS~s" class="">open</td><td id="WJOY" class="">string</td><td id="RIS|" class="">36</td><td id="[}|j" class="">开盘价</td></tr><tr id="8f793e30-3b30-4559-a0b6-6c97bd4f5897"><td id="iS~s" class="">close</td><td id="WJOY" class="">string</td><td id="RIS|" class="">33</td><td id="[}|j" class="">收盘价</td></tr><tr id="ec18517a-e4c3-413e-a624-60582b3610a4"><td id="iS~s" class="">high</td><td id="WJOY" class="">string</td><td id="RIS|" class="">36</td><td id="[}|j" class="">最高价</td></tr><tr id="7498e651-828e-47e7-92fc-40a8937d8c8e"><td id="iS~s" class="">low</td><td id="WJOY" class="">string</td><td id="RIS|" class="">30</td><td id="[}|j" class="">最低价</td></tr><tr id="6a47bc82-a93e-427e-9d0f-662e4f3a5adb"><td id="iS~s" class="">vol</td><td id="WJOY" class="">string</td><td id="RIS|" class="">2456.111</td><td id="[}|j" class="">成交量</td></tr></tbody></table><p id="f55718b4-0343-498f-843d-8490733a15dc" class="">样例：</p><pre id="06ea33f6-207a-4c9e-b149-90acd33533b4" class="code code-wrap"><code>// 请求参数
+symbol=btcusdt
+
+// 响应参数
+{
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;idx&quot;:1682688300000,
+                &quot;open&quot;:&quot;28993.95&quot;,
+                &quot;close&quot;:&quot;28993.95&quot;,
+                &quot;high&quot;:&quot;28993.95&quot;,
+                &quot;low&quot;:&quot;28993.95&quot;,
+                &quot;vol&quot;:&quot;1&quot;
+            },
+            {
+                &quot;idx&quot;:1682688240000,
+                &quot;open&quot;:&quot;28993.95&quot;,
+                &quot;close&quot;:&quot;28993.95&quot;,
+                &quot;high&quot;:&quot;28993.95&quot;,
+                &quot;low&quot;:&quot;28993.95&quot;,
+                &quot;vol&quot;:&quot;1&quot;
+            }
+        ]
+    }
+}
+</code></pre><h3 id="9dca8e58-b93d-4531-9b00-a0530ae2eca9" class="">三、账户接口（USER_DATA）</h3><p id="59446ca9-be1a-4d5b-981d-fd667cfca58a" class="">以下接口需要进行签名验证</p><h3 id="1713b8d6-e0a3-47a7-90b1-e3fecac3c391" class="">1、账号</h3><p id="9c567591-8987-462c-a59c-38ef6da413d0" class="">Demo链接：https://github.com/exchange2021/openApi-java-demo/blob/master/src/main/java/com/spot/AccountInformation.java</p><p id="ec498364-8d3c-4b70-9a06-e776a0cab2c3" class="">请求地址：/sapi/v1/account</p><p id="eec2e12e-3da5-4548-938e-838ffa3b2d16" class="">请求方式：GET</p><p id="9e240cbd-3776-411c-a75c-5793fc5cf2f5" class="">请求参数：空</p><p id="ea23c021-1bc4-423b-a134-885f9f2a3699" class="">返回参数：</p><table id="bf8c7b64-6a8f-41c0-bf9f-15b49a565a2c" class="simple-table"><tbody><tr id="30225659-5c50-4eb9-9e64-5930c19ede5b"><td id="ytuH" class=""><strong>名称</strong></td><td id="Ue&gt;h" class=""><strong>类型</strong></td><td id="l@y\" class=""><strong>描述</strong></td></tr><tr id="957f7cd7-d17d-4f2e-90e5-d893a15415ea"><td id="ytuH" class="">list</td><td id="Ue&gt;h" class="">[]</td><td id="l@y\" class="">余额集合</td></tr></tbody></table><p id="5ab7ed22-7738-4d05-8356-d822eb993854" class=""><code>list</code> field:</p><table id="d6e95c07-e72d-4296-8a9b-aaf9923120e7" class="simple-table"><tbody><tr id="0aafb0d8-c7b3-477b-a8a1-a1e71e6f0193"><td id="tuSu" class=""><strong>名称</strong></td><td id="]\\x" class=""><strong>类型</strong></td><td id="KWag" class=""><strong>例子</strong></td><td id="h@tQ" class=""><strong>描述</strong></td></tr><tr id="4c246ded-f62b-4530-9174-d96dc615ce23"><td id="tuSu" class="">asset</td><td id="]\\x" class="">string</td><td id="KWag" class="">USDT</td><td id="h@tQ" class="">币种名称</td></tr><tr id="e4a300d3-612b-4b6b-b3e7-36a4c73189b3"><td id="tuSu" class="">total</td><td id="]\\x" class="">string</td><td id="KWag" class="">1400.3</td><td id="h@tQ" class="">总额</td></tr><tr id="78538f04-8e59-4363-b86c-9db57e1d7551"><td id="tuSu" class="">free</td><td id="]\\x" class="">string</td><td id="KWag" class="">1000.3</td><td id="h@tQ" class="">可用</td></tr><tr id="946a4e12-9a3b-4b1d-9226-f049289b3c74"><td id="tuSu" class="">locked</td><td id="]\\x" class="">string</td><td id="KWag" class="">400</td><td id="h@tQ" class="">冻结</td></tr></tbody></table><p id="61367e11-58c4-482e-8f00-8670565f66e0" class="">样例：</p><pre id="3b7a78c1-b9a8-4aed-bbad-875b64ae24ce" class="code code-wrap"><code>// 返回参数
+{
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;asset&quot;:&quot;LUNC&quot;,
+                &quot;total&quot;:&quot;0.0000000000&quot;,
+                &quot;free&quot;:&quot;0.0000000000&quot;,
+                &quot;locked&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;asset&quot;:&quot;USDT&quot;,
+                &quot;total&quot;:&quot;112188.2412060000000000&quot;,
+                &quot;free&quot;:&quot;112188.2412060000000000&quot;,
+                &quot;locked&quot;:&quot;0.0000000000&quot;
+            }
+        ]
+    }
+}
+</code></pre><h3 id="41f5f7ba-8f5b-492c-ad31-d0df23a0b967" class="">四、交易接口（TRADE ）</h3><p id="69185503-15d9-4fb7-b48e-ca6f886ceb11" class="">以下接口需要进行签名验证</p><h3 id="24e0d99a-9835-4a9a-9525-e8e785d6ff72" class="">1、下单</h3><p id="65ee95a2-2991-465a-9740-4c6a97b92794" class="">请求地址：/sapi/v1/order</p><p id="b9bad3f4-95fe-47ae-be49-79a0107c0347" class="">请求方式：POST</p><p id="68e8db0f-9ff1-4493-990e-290618994a9e" class="">请求参数</p><table id="73461a04-9766-4848-bde5-f0448ca2c358" class="simple-table"><tbody><tr id="af369217-d638-4c67-adf5-adef85d8227b"><td id="PL:c" class=""><strong>名称</strong></td><td id="mLom" class=""><strong>是否必填</strong></td><td id="[=`|" class=""><strong>类型</strong></td><td id="\KFY" class=""><strong>描述</strong></td></tr><tr id="aa885e31-4f6a-4b1e-8876-b90112250c86"><td id="PL:c" class="">symbol</td><td id="mLom" class="">是</td><td id="[=`|" class="">string</td><td id="\KFY" class="">币对名称 E.g. btcusdt</td></tr><tr id="53ed82ec-035d-451a-9d4f-91782daccee3"><td id="PL:c" class="">orderQty</td><td id="mLom" class="">是</td><td id="[=`|" class="">string</td><td id="\KFY" class="">订单数量</td></tr><tr id="04982665-1efd-4a57-8f8b-9a9a1c284ddc"><td id="PL:c" class="">side</td><td id="mLom" class="">是</td><td id="[=`|" class="">string</td><td id="\KFY" class="">订单方向, BUY/SELL</td></tr><tr id="b609c4c7-a1e5-4303-b14d-21d3989dad96"><td id="PL:c" class="">type</td><td id="mLom" class="">是</td><td id="[=`|" class="">string</td><td id="\KFY" class="">订单类型, LIMIT/MARKET</td></tr><tr id="b298f077-c303-4f1e-8c3a-fcd6c4a3167c"><td id="PL:c" class="">orderPrice</td><td id="mLom" class="">否</td><td id="[=`|" class="">string</td><td id="\KFY" class="">订单价格, 对于LIMIT订单必须发送</td></tr><tr id="2df41f76-bc60-418e-851a-5cc8d5a68bfb"><td id="PL:c" class="">orderLinkId</td><td id="mLom" class="">否</td><td id="[=`|" class="">sring</td><td id="\KFY" class="">客户端订单标识，用户自己定义，限制100个字符</td></tr></tbody></table><p id="47a589b0-28e2-45bb-a902-c2dc1ea5121a" class="">返回参数</p><table id="3953e526-9d0b-4c03-8c99-3020a7a10aa2" class="simple-table"><tbody><tr id="ab865ba3-3429-43fa-a807-61b09bdc0ac5"><td id="UhWH" class=""><strong>名称</strong></td><td id="@LLb" class=""><strong>类型</strong></td><td id="=FCY" class=""><strong>例子</strong></td><td id="bm|L" class=""><strong>描述</strong></td></tr><tr id="c1e06ef0-c148-4e6a-8ae0-3bcb4a90e823"><td id="UhWH" class="">orderId</td><td id="@LLb" class="">string</td><td id="=FCY" class="">150695552109032492</td><td id="bm|L" class="">订单ID（系统生成）</td></tr><tr id="72d09e10-5412-458e-a062-0b89adaa619b"><td id="UhWH" class="">orderLinkId</td><td id="@LLb" class="">string</td><td id="=FCY" class="">linkId-213443</td><td id="bm|L" class="">客户端订单标识，用户自己定义，限制100个字符</td></tr><tr id="d5784484-9e00-4e7c-8e90-ac1b3d19f06f"><td id="UhWH" class="">symbol</td><td id="@LLb" class="">string</td><td id="=FCY" class="">BTCUSDT</td><td id="bm|L" class="">币对名称</td></tr><tr id="2ad8edd2-cb15-4188-8055-d1d05e7f0fdf"><td id="UhWH" class="">createTime</td><td id="@LLb" class="">string</td><td id="=FCY" class="">1273774892913</td><td id="bm|L" class="">订单创建时间</td></tr><tr id="67e4d823-e17f-49da-81e1-6a019c424f3a"><td id="UhWH" class="">orderPrice</td><td id="@LLb" class="">string</td><td id="=FCY" class="">4765.29</td><td id="bm|L" class="">订单价格</td></tr><tr id="1d926d83-1697-4e5f-b8f9-d2da19d80e40"><td id="UhWH" class="">orderQty</td><td id="@LLb" class="">string</td><td id="=FCY" class="">1.01</td><td id="bm|L" class="">订单数量</td></tr><tr id="a0011c86-4fae-4c98-a7fe-a28bad1b1aef"><td id="UhWH" class="">execQty</td><td id="@LLb" class="">string</td><td id="=FCY" class="">1.01</td><td id="bm|L" class="">已经成交订单数量</td></tr><tr id="93a9fbbb-e605-4448-b556-c26cf3a7e4e0"><td id="UhWH" class="">type</td><td id="@LLb" class="">string</td><td id="=FCY" class="">LIMIT</td><td id="bm|L" class="">订单类型LIMIT(限价)MARKET（市价）</td></tr><tr id="e76b038c-4a71-4385-b5e4-c7bbb48617ce"><td id="UhWH" class="">side</td><td id="@LLb" class="">string</td><td id="=FCY" class="">BUY</td><td id="bm|L" class="">订单方向。可能出现的值只能为：BUY（买入做多） 和 SELL（卖出做空）</td></tr><tr id="24a990f3-8ab8-4d0e-b388-633aba362393"><td id="UhWH" class="">status</td><td id="@LLb" class="">string</td><td id="=FCY" class="">NEW</td><td id="bm|L" class="">订单状态。可能出现的值为：NEW(新订单，无成交)、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）和REJECTED（订单被拒绝）.</td></tr></tbody></table><p id="030255c9-a4f9-47b8-8ed1-c2e92ce7c8e5" class="">样例</p><pre id="693eaacb-a66e-4634-95d3-68c644d25231" class="code code-wrap"><code>// 请求参数
+{&quot;orderPrice&quot;:&quot;10010&quot;,&quot;side&quot;:&quot;BUY&quot;,&quot;symbol&quot;:&quot;btcusdt&quot;,&quot;type&quot;:&quot;LIMIT&quot;,&quot;volume&quot;:&quot;1&quot;}
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;symbol&quot;:&quot;btcusdt&quot;,
+        &quot;execQty&quot;:&quot;0&quot;,
+        &quot;orderId&quot;:&quot;10&quot;,
+        &quot;orderPrice&quot;:&quot;10010&quot;,
+        &quot;orderQty&quot;:&quot;1&quot;,
+        &quot;orderLinkId&quot;:null,
+        &quot;createTime&quot;:1682009862298,
+        &quot;type&quot;:&quot;LIMIT&quot;,
+        &quot;side&quot;:&quot;BUY&quot;,
+        &quot;status&quot;:&quot;NEW&quot;
+    }
+}
+</code></pre><h3 id="6cc03c09-326b-4cee-ab06-920387a875b7" class="">2、查询订单详情</h3><p id="8a0f353e-1d13-4b5d-bfe3-a2c4afa8ed92" class="">请求地址：/sapi/v1/getOrder</p><p id="972526ce-fcd2-45c4-95cc-b49b28ec1e92" class="">请求方式：GET</p><p id="73b4657d-231c-4143-83f1-20b8a08e86ef" class="">请求参数</p><table id="4412dd6e-d7f4-4176-981e-997a7011276b" class="simple-table"><tbody><tr id="77dd7ab7-b90e-42e1-9d03-e7fa0c3f6312"><td id="XVSP" class=""><strong>名称</strong></td><td id="QVq&lt;" class=""><strong>是否必填</strong></td><td id="hTTS" class=""><strong>类型</strong></td><td id="v]uF" class=""><strong>描述</strong></td></tr><tr id="17c9fa1d-b809-4264-af82-68ebfa126893"><td id="XVSP" class="">symbol</td><td id="QVq&lt;" class="">是</td><td id="hTTS" class="">string</td><td id="v]uF" class="">币对名称 E.g. BTCUSDT</td></tr><tr id="97b14b0c-088a-481b-b771-f20186abe3c0"><td id="XVSP" class="">orderId</td><td id="QVq&lt;" class="">两者必须填一个</td><td id="hTTS" class="">string</td><td id="v]uF" class="">订单id</td></tr><tr id="1196bc54-1745-43d4-8c39-a385d359b7be"><td id="XVSP" class="">orderLinkId</td><td id="QVq&lt;" class=""></td><td id="hTTS" class="">客户端订单标识，用户自己定义，限制100个字符</td><td id="v]uF" class=""></td></tr></tbody></table><p id="0e8feca2-c093-4f11-878a-18283dacf93c" class=""><strong>返回参数</strong></p><table id="fe0cd5c6-f9cb-45fa-ad6b-fdc54a46a5b5" class="simple-table"><tbody><tr id="8fc3411c-5d7b-400c-864c-d237aa79a16d"><td id="[`Fc" class=""><strong>参数</strong></td><td id="LpT_" class=""><strong>类型</strong></td><td id="Umf{" class=""><strong>说明</strong></td></tr><tr id="261078ec-6212-4fc1-9c01-7e0690bbb190"><td id="[`Fc" class="">symbol</td><td id="LpT_" class="">string</td><td id="Umf{" class="">交易对</td></tr><tr id="75207cb0-49ca-4369-9773-8785e649caaf"><td id="[`Fc" class="">orderId</td><td id="LpT_" class="">string</td><td id="Umf{" class="">订单ID</td></tr><tr id="3447d3ab-6d7b-42e5-a20f-5baf73b53736"><td id="[`Fc" class="">orderLinkId</td><td id="LpT_" class="">string</td><td id="Umf{" class="">客户端订单标识，用户自己定义，限制100个字符</td></tr><tr id="4d9b3ca3-ec08-4591-9e5b-6daaad48f036"><td id="[`Fc" class="">orderPrice</td><td id="LpT_" class="">string</td><td id="Umf{" class="">订单价格</td></tr><tr id="e5e05f70-386e-4517-a6d7-e3170fdbc5f5"><td id="[`Fc" class="">orderQty</td><td id="LpT_" class="">string</td><td id="Umf{" class="">交易数量</td></tr><tr id="5878a341-93fb-4cc1-b669-aa471324334f"><td id="[`Fc" class="">execQty</td><td id="LpT_" class="">string</td><td id="Umf{" class="">成交数量</td></tr><tr id="f72e438c-f138-4f21-9de0-751a7aa8e8c9"><td id="[`Fc" class="">avgPrice</td><td id="LpT_" class="">string</td><td id="Umf{" class="">平均成交价</td></tr><tr id="2ffe9b7e-6bc4-4505-b06f-e7bcec5977e7"><td id="[`Fc" class="">status</td><td id="LpT_" class="">string</td><td id="Umf{" class="">订单状态。可能出现的值为NEW（新订单，无成交）、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）、REJECTED（被拒绝）</td></tr><tr id="749588d3-3014-49e0-9ae5-fd2659bf7713"><td id="[`Fc" class="">type</td><td id="LpT_" class="">string</td><td id="Umf{" class="">订单类型</td></tr><tr id="aefa35bf-2536-4656-a134-1988211e104f"><td id="[`Fc" class="">side</td><td id="LpT_" class="">string</td><td id="Umf{" class="">方向（BUY/SELL）</td></tr><tr id="982c811d-12f5-490e-8804-d6a5c050e87f"><td id="[`Fc" class="">createTime</td><td id="LpT_" class="">string</td><td id="Umf{" class="">撮合引擎中的创建时间</td></tr><tr id="4eeabe20-b379-4276-82e8-a1bac3989b1b"><td id="[`Fc" class="">updateTime</td><td id="LpT_" class="">string</td><td id="Umf{" class="">更新时间</td></tr></tbody></table><pre id="01af6892-158f-45be-8fa2-0b9d221de40e" class="code code-wrap"><code>// 请求参数
+orderId=8&amp;symbol=btcusdt
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;symbol&quot;:&quot;btcusdt&quot;,
+        &quot;side&quot;:&quot;BUY&quot;,
+        &quot;execQty&quot;:&quot;0.001&quot;,
+        &quot;orderId&quot;:&quot;8&quot;,
+        &quot;orderLinkId&quot;: &quot;spotA0010&quot;,
+        &quot;orderPrice&quot;:&quot;10010&quot;,
+        &quot;orderQty&quot;:&quot;1&quot;,
+        &quot;avgPrice&quot;:&quot;10000&quot;,
+        &quot;type&quot;:&quot;LIMIT&quot;,
+        &quot;status&quot;:&quot;PART_FILLED&quot;,
+        &quot;createTime&quot;:&quot;1681998659868&quot;,
+        &quot;updateTime&quot;:&quot;1681998659868&quot;
+   }
+}
+</code></pre><h3 id="eb819f83-d67e-4a4d-a124-ec9500aeca51" class="">3、交易记录</h3><p id="e8f78a9f-4ec9-41f8-be3e-e2017bbe2fe0" class="">请求地址：/sapi/v1/myTrades</p><p id="993275e8-11ec-416b-b4d2-9b6ac687c494" class="">请求方式：GET</p><p id="c9aa25a4-c308-4c19-92e8-830b0be6ba7d" class="">请求参数</p><table id="6dcfdb8a-3e6a-4ae7-acbb-ca754a5631e2" class="simple-table"><tbody><tr id="71c7cf61-f669-418c-a481-be6b2aa16bb2"><td id="WpE~" class=""><strong>名称</strong></td><td id="C[Ng" class=""><strong>是否必填</strong></td><td id="yh@X" class=""><strong>类型</strong></td><td id="w;Lv" class=""><strong>描述</strong></td></tr><tr id="c2d1bbee-b6e8-479f-b613-8e6a9a88c131"><td id="WpE~" class="">symbol</td><td id="C[Ng" class="">是</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">币对名称 E.g. btcusdt</td></tr><tr id="0e13f9fa-424b-4c72-886e-9dc86ccaa46d"><td id="WpE~" class="">orderId</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">订单ID</td></tr><tr id="8df34f73-eb4d-4c06-ac63-294cc78aa04e"><td id="WpE~" class="">startTime</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">开始时间戳（ms）</td></tr><tr id="a402dafa-182a-460e-ad75-425174de79b0"><td id="WpE~" class="">endTime</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">结束时间戳（ms）</td></tr><tr id="f969b884-c024-4764-aef7-bab137510d68"><td id="WpE~" class="">fromTradeId</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">从这个tradeId开始检索从这个tradeId开始检索</td></tr><tr id="5aff7bb0-8e02-440b-aed4-ae20aab8158e"><td id="WpE~" class="">toTradeId</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">查询tradeId小于该值的记录</td></tr><tr id="de02e1c2-287f-48d7-971a-ae7095c8d013"><td id="WpE~" class="">limit</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">默认100; 最大1000默认100; 最大1000</td></tr><tr id="0ec51034-19fe-4c7a-894f-6be1e5b377d6"><td id="WpE~" class="">cursor</td><td id="C[Ng" class="">否</td><td id="yh@X" class="">string</td><td id="w;Lv" class="">默认1；最大1000</td></tr></tbody></table><p id="e6827029-0666-44db-be29-3f50f7642972" class="">返回参数</p><table id="27e39cd4-6140-4039-a90e-bbb6e8399b6c" class="simple-table"><tbody><tr id="55aaf5a4-df90-4dc2-81a7-26df0f30735d"><td id="IwBL" class=""><strong>名称</strong></td><td id="stya" class=""><strong>类型</strong></td><td id="&gt;PAB" class=""><strong>例子</strong></td><td id="wFox" class=""><strong>描述</strong></td></tr><tr id="0b413c1d-4341-4156-b322-acf04325d23e"><td id="IwBL" class="">symbol</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">ETHBTC</td><td id="wFox" class="">币种名称(交易对)</td></tr><tr id="e4fda522-9cc7-495a-946e-867858b985e6"><td id="IwBL" class="">orderId</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">-</td><td id="wFox" class="">订单ID</td></tr><tr id="5290fa18-9d53-4a72-ae2d-f874655ceefb"><td id="IwBL" class="">orderLinkId</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">-</td><td id="wFox" class="">客户端订单标识，用户自己定义，限制100个字符</td></tr><tr id="7cf2fdc1-3488-4755-971b-aa6ec48be4af"><td id="IwBL" class="">tradeId</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">28457</td><td id="wFox" class="">交易ID</td></tr><tr id="cead0f51-1a54-422f-93ec-7751e204f393"><td id="IwBL" class="">tradePrice</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">4.01</td><td id="wFox" class="">交易价格</td></tr><tr id="f20f68c7-c3bf-49c5-a71a-46375dbf3c27"><td id="IwBL" class="">execQty</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">12</td><td id="wFox" class="">交易数量</td></tr><tr id="020ab7fc-2fdb-4bcb-a0c3-3d457ca918c3"><td id="IwBL" class="">time</td><td id="stya" class="">long</td><td id="&gt;PAB" class="">1499865549590</td><td id="wFox" class="">交易时间戳</td></tr><tr id="cfa856f8-7e89-4bdd-822a-e435c3dac8d0"><td id="IwBL" class="">isBuyer</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">TRUE</td><td id="wFox" class="">true= Buyer false= Seller</td></tr><tr id="9ae46409-ed0c-4fbd-9ac0-fbb68a186039"><td id="IwBL" class="">isMaker</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">FALSE</td><td id="wFox" class="">true=Maker false=Taker</td></tr><tr id="9dac2fe9-36b4-4649-bf13-3c8631345a33"><td id="IwBL" class="">feeCoin</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">ETH</td><td id="wFox" class="">交易手续费币种</td></tr><tr id="5e9025f1-2042-4381-87c3-cb96adc05f39"><td id="IwBL" class="">fee</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">0.001</td><td id="wFox" class="">交易手续费</td></tr><tr id="2a18cc4a-2ecb-4ddb-ab41-9c72e269bd61"><td id="IwBL" class="">nextPageCursor</td><td id="stya" class="">string</td><td id="&gt;PAB" class="">2</td><td id="wFox" class="">下一页游标</td></tr></tbody></table><p id="19535eb9-28bf-438b-887f-2f361577f5a4" class="">样例</p><pre id="17f13f28-b245-4342-a5be-137ef96c3f87" class="code code-wrap"><code>// 请求参数
+symbol=btcusdt
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+                &quot;orderId&quot;:&quot;8&quot;,
+                &quot;orderLinkId&quot;: &quot;spotA0010&quot;,
+                &quot;tradeId&quot;:&quot;3&quot;,
+                &quot;tradePrice&quot;:&quot;10000&quot;,
+                &quot;execQty&quot;:&quot;0.001&quot;,
+                 &quot;isMaker&quot;:&quot;false&quot;,
+                &quot;isBuyer&quot;:&quot;true&quot;,
+                &quot;feeCoin&quot;:&quot;BTC&quot;,
+                &quot;fee&quot;:&quot;0&quot;,
+                &quot;time&quot;:1681998660000
+            }
+        ],
+        &quot;nextPageCursor&quot;:&quot;2&quot;
+    }
+}
+</code></pre><h3 id="633f7d6b-ec0c-4f99-b50c-48bf579479f3" class="">4、撤销订单</h3><p id="8bca1fd4-7081-4437-98e1-97b1c7d3c87f" class="">请求地址：/sapi/v1/cancel</p><p id="d179224a-ae77-4470-a467-98ebbcefbe5d" class="">请求方式：POST</p><p id="00d11a74-813f-4740-9fb7-3a59065e977b" class="">请求参数</p><table id="43bd2ddc-42dc-4a20-93e4-e89d5495c0a1" class="simple-table"><tbody><tr id="929a2632-4d02-4e03-a6fe-ff398fc435b0"><td id="^;_=" class=""><strong>名称</strong></td><td id="nmSX" class=""><strong>是否必填</strong></td><td id="sipo" class=""><strong>类型</strong></td><td id="`EAt" class=""><strong>描述</strong></td></tr><tr id="36a7798c-477b-45e3-89b6-84668f566d0e"><td id="^;_=" class="">orderId</td><td id="nmSX" class=""></td><td id="sipo" class="">string</td><td id="`EAt" class="">订单id</td></tr><tr id="148b2c55-6bec-4799-849f-86d0a8971530"><td id="^;_=" class="">orderLinkId</td><td id="nmSX" class="">string</td><td id="sipo" class="">客户端订单标识. 当orderId为空时, 则必传</td><td id="`EAt" class=""></td></tr><tr id="9d7989a5-fcdb-4d98-9dd5-365438689276"><td id="^;_=" class="">symbol</td><td id="nmSX" class="">是</td><td id="sipo" class="">string</td><td id="`EAt" class="">币对名称 E.g. btcusdt</td></tr></tbody></table><p id="81fbac95-e819-4197-8184-12db78edc88c" class="">返回参数</p><table id="572a405e-ce0d-41ba-ab84-db30883f946f" class="simple-table"><tbody><tr id="d26a9cb9-0fa9-4ff3-8b74-4b6f55903f83"><td id="luVw" class=""><strong>名称</strong></td><td id="qIKG" class=""><strong>类型</strong></td><td id="nOV`" class=""><strong>例子</strong></td><td id="nEUZ" class=""><strong>描述</strong></td></tr><tr id="99e0624f-3f4a-4f83-9b3f-98dab3d74ee4"><td id="luVw" class="">orderId</td><td id="qIKG" class="">string</td><td id="nOV`" class="">150695552109032492</td><td id="nEUZ" class="">订单ID</td></tr><tr id="96bf95a5-88ec-44f1-a0e5-9ff7bd7ededa"><td id="luVw" class="">orderLinkId</td><td id="qIKG" class="">string</td><td id="nOV`" class="">213443</td><td id="nEUZ" class="">客户端订单标识，用户自己定义，限制100个字符</td></tr><tr id="15b21b62-2a1a-4879-837f-32a1facbbe4e"><td id="luVw" class="">symbol</td><td id="qIKG" class="">string</td><td id="nOV`" class="">BHTUSDT</td><td id="nEUZ" class="">币对名称</td></tr><tr id="e2223b61-eb6e-4ad1-a8b9-71f82cd1b811"><td id="luVw" class="">status</td><td id="qIKG" class="">string</td><td id="nOV`" class="">NEW</td><td id="nEUZ" class="">订单状态。可能出现的值为：NEW(新订单，无成交)、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）和REJECTED（订单被拒绝）</td></tr></tbody></table><p id="90787810-5786-49d2-8b85-5bfb38f9934b" class="">样例</p><pre id="e6595887-0c31-4366-b572-e3855cc565e2" class="code code-wrap"><code>// 请求参数
+{&quot;orderId&quot;:&quot;8&quot;,&quot;symbol&quot;:&quot;btcusdt&quot;}
+
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;symbol&quot;:&quot;btcusdt&quot;,
+        &quot;orderId&quot;:&quot;8&quot;,
+        &quot;orderLinkId&quot;:&quot;213443&quot;,
+        &quot;status&quot;:&quot;PENDING_CANCEL&quot;
+    }
+}
+</code></pre><h3 id="f1e37479-270d-481b-b19a-1c82b8b46272" class="">5、当前订单</h3><p id="0f3df076-44d6-408a-be12-d577208eed20" class="">请求地址：/sapi/v1/openOrders</p><p id="71fc5b94-a21a-4e2f-9694-e3e693178e77" class="">请求方式：GET</p><p id="29000f10-73a3-49cf-992b-4821626380c3" class="">请求参数：空</p><table id="6043aa3f-8e7f-47fd-84f0-0188c6483d0f" class="simple-table"><tbody><tr id="f3407ec4-6568-4929-baaf-cb0a7f9d81b6"><td id="t?`s" class="">参数</td><td id="U?g=" class="">是否必须</td><td id="l?B&gt;" class="">类型</td><td id=":sq\" class="">说明</td></tr><tr id="5bb38866-579f-4b77-a699-1642101bf504"><td id="t?`s" class="">symbol</td><td id="U?g=" class="">TRUE</td><td id="l?B&gt;" class="">string</td><td id=":sq\" class="">币对</td></tr><tr id="63d93fb5-1301-4600-b53d-23a4cc2a1ca5"><td id="t?`s" class="">limit</td><td id="U?g=" class="">FALSE</td><td id="l?B&gt;" class="">integer</td><td id=":sq\" class="">默认100; 最大1000</td></tr><tr id="145d54b9-b5c4-4be0-a1f7-224714fa70e7"><td id="t?`s" class="">cursor</td><td id="U?g=" class="">FALSE</td><td id="l?B&gt;" class="">integer</td><td id=":sq\" class="">默认1；最大1000</td></tr></tbody></table><p id="33e53d3c-432e-485e-a7c0-c28a5445cf81" class="">返回参数：</p><table id="b76a3c19-7288-446f-973c-aaa344083317" class="simple-table"><tbody><tr id="157522da-e579-46c6-bfea-87b3b986cb39"><td id="q\rw" class=""><strong>名称</strong></td><td id="tg&gt;h" class=""><strong>类型</strong></td><td id="XT[l" class=""><strong>例子</strong></td><td id="ha~[" class=""><strong>描述</strong></td></tr><tr id="b5f5a3bc-dcc2-4b85-ad8b-ac8f69b92be2"><td id="q\rw" class="">orderId</td><td id="tg&gt;h" class="">long</td><td id="XT[l" class="">150695552109032492</td><td id="ha~[" class="">订单ID（系统生成）</td></tr><tr id="d71ffb5a-20af-4adc-be56-ea51db08940b"><td id="q\rw" class="">orderLinkId</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">213443</td><td id="ha~[" class="">客户端订单标识</td></tr><tr id="3c82d4ef-8fef-456a-96ef-39d643e98da9"><td id="q\rw" class="">symbol</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">btcusdt</td><td id="ha~[" class="">币对名称</td></tr><tr id="1cf2952e-d728-40e8-b560-8e3480ddf793"><td id="q\rw" class="">orderPrice</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">4765.29</td><td id="ha~[" class="">订单价格</td></tr><tr id="ea54a0fa-24cf-4a0e-90ab-211f4880f773"><td id="q\rw" class="">orderQty</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">1.01</td><td id="ha~[" class="">订单数量</td></tr><tr id="6036e1e3-46d2-4934-a2b9-80b53558eca7"><td id="q\rw" class="">execQty</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">1.01</td><td id="ha~[" class="">已经成交订单数量</td></tr><tr id="e19bc15d-ce1d-4508-ba45-39fb194f724c"><td id="q\rw" class="">avgPrice</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">4754.24</td><td id="ha~[" class="">订单已经成交的平均价格</td></tr><tr id="76485d36-ff4f-4f81-ae41-7fa03aec6cc9"><td id="q\rw" class="">type</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">LIMIT</td><td id="ha~[" class="">订单类型。LIMIT(限价)和MARKET（市价）</td></tr><tr id="2e007758-e89c-4458-a797-42c72109d3a1"><td id="q\rw" class="">side</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">BUY</td><td id="ha~[" class="">订单方向。可能出现的值只能为：BUY（买入做多） 和 SELL（卖出做空）</td></tr><tr id="35658b90-0069-477c-ad1c-a9af627bf36f"><td id="q\rw" class="">status</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">NEW</td><td id="ha~[" class="">订单状态。可能出现的值为：NEW(新订单，无成交)、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）和REJECTED（订单被拒绝）</td></tr><tr id="2f8fb25a-df78-4d4e-a20d-1b84b2331186"><td id="q\rw" class="">createTime</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">撮合引擎中的創建時間</td><td id="ha~[" class="">撮合引擎中的創建時間</td></tr><tr id="f31d500f-14d8-428f-9c30-0c3d27a99c41"><td id="q\rw" class="">updateTime</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">訂單上次更新的時間戳</td><td id="ha~[" class="">訂單上次更新的時間戳</td></tr><tr id="18c0e45e-df5b-4cb7-af6c-dad2f5865a83"><td id="q\rw" class="">nextPageCursor</td><td id="tg&gt;h" class="">string</td><td id="XT[l" class="">2</td><td id="ha~[" class="">下一页游标</td></tr></tbody></table><p id="5f429be8-db6b-46e4-9012-2e020288ba26" class="">样例</p><pre id="43cca3b4-d3da-4c97-838c-615efa1bc9ac" class="code code-wrap"><code>// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;orderId&quot;:&quot;10&quot;,
+                &quot;orderLinkId&quot;:&quot;213443&quot;,
+                &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+                &quot;orderPrice&quot;:&quot;10010&quot;,
+                &quot;orderQty&quot;:&quot;1&quot;,
+                &quot;execQty&quot;:&quot;0&quot;,
+                &quot;locked&quot;:&quot;0.1&quot;,
+                &quot;avgPrice&quot;:&quot;0&quot;,
+                &quot;type&quot;:&quot;LIMIT&quot;,
+                &quot;side&quot;:&quot;BUY&quot;,
+                &quot;status&quot;:&quot;NEW&quot;
+                &quot;createTime&quot;:&quot;1681998659868&quot;,
+                &quot;updateTime&quot;:&quot;1681998659868&quot;
+
+
+            },
+            {
+                &quot;orderId&quot;:&quot;9&quot;,
+                &quot;orderLinkId&quot;:&quot;213443&quot;,
+                &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+                &quot;orderPrice&quot;:&quot;10010&quot;,
+                &quot;orderQty&quot;:&quot;1&quot;,
+                &quot;execQty&quot;:&quot;0&quot;,
+                &quot;locked&quot;:&quot;0.1&quot;,
+                &quot;avgPrice&quot;:&quot;0&quot;,
+                &quot;type&quot;:&quot;LIMIT&quot;,
+                &quot;side&quot;:&quot;BUY&quot;,
+                &quot;status&quot;:&quot;NEW&quot;
+                &quot;createTime&quot;:&quot;1681998659868&quot;,
+                &quot;updateTime&quot;:&quot;1681998659868&quot;
+
+            }
+        ]
+      &quot;nextPageCursor&quot;:&quot;2&quot;
+    }
+}
+</code></pre><h3 id="be203ab9-3e16-48bf-96de-b536fa507a7c" class="">6、批量下单</h3><p id="18be2523-2cb5-45b5-8891-accff6f27b65" class="">请求地址：/sapi/v1/batchOrders</p><p id="0c9e506b-1f58-4cd8-b8ba-5658dcc8745a" class="">请求方式：POST</p><p id="e73d1e1e-f354-4549-8ac2-a1c646a3910a" class="">请求参数：</p><table id="50b24aa1-aa52-4b4d-9f9c-d3855e0fd92e" class="simple-table"><tbody><tr id="566c57b2-ff18-4659-8dd9-7537c68f96c0"><td id="_}|M" class=""><strong>名称</strong></td><td id="ffE]" class=""><strong>是否必填</strong></td><td id="zF&lt;a" class=""><strong>类型</strong></td><td id="YIPr" class=""><strong>描述</strong></td></tr><tr id="720766c1-4ca8-45ac-a5df-60dbc23081be"><td id="_}|M" class="">symbol</td><td id="ffE]" class="">是</td><td id="zF&lt;a" class="">string</td><td id="YIPr" class="">币对名称 E.g. btcusdt</td></tr><tr id="72fc484a-abe7-4fac-9edb-4a0ebc79405e"><td id="_}|M" class="">orders</td><td id="ffE]" class="">是</td><td id="zF&lt;a" class="">list</td><td id="YIPr" class="">批量订单信息 最多10条</td></tr></tbody></table><p id="4b4ba30e-0af3-43ac-92ec-0af3eab25082" class=""><code>orders</code> Object:</p><table id="959baf15-0daa-4f3c-a67f-ba36b393ef5e" class="simple-table"><tbody><tr id="c1770348-909d-4748-9ba1-59b7a6296a94"><td id="sJGA" class=""><strong>名称</strong></td><td id="E;[x" class=""><strong>是否必填</strong></td><td id="kpT:" class=""><strong>类型</strong></td><td id="xjQn" class=""><strong>例子</strong></td><td id="ZdYe" class=""><strong>描述</strong></td></tr><tr id="ac5ac318-5bf1-49aa-8918-681f83f44399"><td id="sJGA" class="">orderQty</td><td id="E;[x" class="">是</td><td id="kpT:" class="">string</td><td id="xjQn" class="">20.1</td><td id="ZdYe" class="">数量</td></tr><tr id="ec7700fc-88f3-4986-8c89-07436fbfcf91"><td id="sJGA" class="">side</td><td id="E;[x" class="">是</td><td id="kpT:" class="">string</td><td id="xjQn" class="">BUY/SELL</td><td id="ZdYe" class="">方向</td></tr><tr id="d5dc2c07-91ce-44d3-b511-335489dd48a0"><td id="sJGA" class="">type</td><td id="E;[x" class="">是</td><td id="kpT:" class="">string</td><td id="xjQn" class="">LIMIT/MARKET</td><td id="ZdYe" class="">订单类型, LIMIT/MARKET</td></tr><tr id="d625f43d-219c-4618-ab9d-e82ae3ab56f0"><td id="sJGA" class="">orderPrice</td><td id="E;[x" class="">否</td><td id="kpT:" class="">string</td><td id="xjQn" class="">1000</td><td id="ZdYe" class="">订单价格, 对于LIMIT订单必须发送</td></tr><tr id="bd2b4ab5-9f3e-4a8c-ae3c-dbb7329d7cc2"><td id="sJGA" class="">orderLinkId</td><td id="E;[x" class="">否</td><td id="kpT:" class="">string</td><td id="xjQn" class="">apple-M9a45ec7c3</td><td id="ZdYe" class="">客户端订单ID</td></tr></tbody></table><p id="d99a8e94-c3db-468b-b980-eec60fe548ce" class="">返回参数：</p><table id="c8569d6b-afc1-49c0-9ef9-a652d9b2cf61" class="simple-table"><tbody><tr id="522f03e2-766e-41f5-86a7-3b7f789e3fd5"><td id="J=F;" class=""><strong>名称</strong></td><td id="NQDG" class=""><strong>类型</strong></td><td id="&gt;NRX" class=""><strong>描述</strong></td></tr><tr id="c8bc374b-0ddc-45d6-b145-08bf5b5c961f"><td id="J=F;" class="">list</td><td id="NQDG" class="">[]</td><td id="&gt;NRX" class="">订单列表</td></tr></tbody></table><p id="2da888a7-a1cf-48a3-b54b-258641aadd45" class="">list Object:</p><table id="7ff46f91-c6d0-48a8-ae56-0509742ccfb5" class="simple-table"><tbody><tr id="bf406ca3-4688-42cf-afde-226897580c9e"><td id="_&lt;gg" class=""><strong>名称</strong></td><td id="hrwm" class=""><strong>类型</strong></td><td id="cs}P" class=""><strong>例子</strong></td><td id="ZJlT" class=""><strong>描述</strong></td></tr><tr id="ba7c4be9-ce02-44f7-b632-116de81d0930"><td id="_&lt;gg" class="">symbol</td><td id="hrwm" class="">string</td><td id="cs}P" class="">BTCUSDT</td><td id="ZJlT" class="">币对名称</td></tr><tr id="913cb238-4154-4934-bd0c-66daf247f714"><td id="_&lt;gg" class="">side</td><td id="hrwm" class="">string</td><td id="cs}P" class="">BUY</td><td id="ZJlT" class="">订单方向。BUY（买入做多） 和 SELL（卖出做空）</td></tr><tr id="71a0bc96-7927-482a-a3a4-ddb015cfaf7a"><td id="_&lt;gg" class="">execQty</td><td id="hrwm" class="">string</td><td id="cs}P" class="">1.01</td><td id="ZJlT" class="">已经成交订单数量</td></tr><tr id="4e367160-2bd1-47e0-af19-4587342d274e"><td id="_&lt;gg" class="">orderId</td><td id="hrwm" class="">long</td><td id="cs}P" class="">150695552109032492</td><td id="ZJlT" class="">订单ID（系统生成）</td></tr><tr id="b5488e16-134a-4c90-a137-eba58eac1e63"><td id="_&lt;gg" class="">orderLinkId</td><td id="hrwm" class="">string</td><td id="cs}P" class="">213443</td><td id="ZJlT" class="">订单ID（自己发送的）</td></tr><tr id="a7dbc8a0-8950-4f0b-a90b-583dccf658c2"><td id="_&lt;gg" class="">orderPrice</td><td id="hrwm" class="">string</td><td id="cs}P" class="">4765.29</td><td id="ZJlT" class="">订单价格</td></tr><tr id="a79c70e7-23a7-46c6-82d2-088b744b9cdb"><td id="_&lt;gg" class="">orderQty</td><td id="hrwm" class="">string</td><td id="cs}P" class="">1.01</td><td id="ZJlT" class="">订单数量</td></tr><tr id="b77c01ca-389b-485c-a4ae-fa9751e7aa43"><td id="_&lt;gg" class="">createTime</td><td id="hrwm" class="">string</td><td id="cs}P" class="">撮合引擎中的創建時間</td><td id="ZJlT" class="">撮合引擎中的創建時間</td></tr><tr id="47592aa4-2c49-4b33-b71c-7673f94f55a7"><td id="_&lt;gg" class="">type</td><td id="hrwm" class="">string</td><td id="cs}P" class="">LIMIT</td><td id="ZJlT" class="">订单类型, LIMIT/MARKET</td></tr><tr id="c614a322-a67d-4aa6-a51b-8b713a95ba75"><td id="_&lt;gg" class="">status</td><td id="hrwm" class="">string</td><td id="cs}P" class="">NEW</td><td id="ZJlT" class="">订单状态。可能出现的值为：NEW(新订单，无成交)、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）和REJECTED（订单被拒绝）</td></tr></tbody></table><p id="50097484-506f-44a4-955b-9c6a745b59c3" class="">样例</p><pre id="498a47dd-3d14-4137-9079-85f9a6314620" class="code code-wrap"><code>
+// 请求参数
+{
+    &quot;orders&quot;:[
+        {
+            &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;orderQty&quot;:&quot;0.001&quot;,
+            &quot;orderPrice&quot;:&quot;25000.00&quot;,
+            &quot;orderLinkId&quot;:&quot;66ebed92-3d91-4da6-adc8-6ad7fa792c30&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;orderQty&quot;:&quot;0.001&quot;,
+            &quot;orderPrice&quot;:&quot;25000.00&quot;,
+            &quot;orderLinkId&quot;:&quot;406b2b68-8507-4a43-8a2c-ea46f599f695&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;orderQty&quot;:&quot;0.001&quot;,
+            &quot;orderPrice&quot;:&quot;25000.00&quot;,
+            &quot;orderLinkId&quot;:&quot;8ea420cb-4454-4422-b2b4-6b7ebf8faa53&quot;
+        }
+    ]
+}
+
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;symbol&quot;:&quot;btcusdt&quot;,
+                &quot;side&quot;:&quot;BUY&quot;,
+                &quot;execQty&quot;:0,
+                &quot;orderId&quot;:10,
+                &quot;orderPrice&quot;:10010,
+                &quot;orderQty&quot;:1,
+                &quot;orderLinkId&quot;:null,
+                &quot;createTime&quot;:1682009862298,
+                &quot;type&quot;:&quot;LIMIT&quot;,
+                &quot;status&quot;:&quot;NEW&quot;
+            }
+        ]
+    }
+}
+</code></pre><h3 id="a3b9b38d-8b05-4fe9-b27c-8762d51e8ce4" class="">7、批量撤销订单</h3><p id="1923b3be-67c0-43bd-8756-5be32c805945" class="">请求地址：/sapi/v1/<strong>batchCancel</strong></p><p id="f2655650-4681-4c74-8a17-f391f447b49c" class="">请求方式：POST</p><p id="7f20bc5a-36e7-4359-9693-c98b37ea13e9" class="">请求参数</p><table id="591d3384-fe6a-4595-afae-8f0bb766c1a6" class="simple-table"><tbody><tr id="26f9f03a-bcf9-4aa6-bb77-e31f8029c4c7"><td id="WOT]" class=""><strong>名称</strong></td><td id="vV]E" class=""><strong>是否必填</strong></td><td id=":N[n" class=""><strong>类型</strong></td><td id="cUIp" class=""><strong>描述</strong></td></tr><tr id="d7c389a0-73e3-4383-a5e3-96fb87b48387"><td id="WOT]" class="">orders</td><td id="vV]E" class="">是</td><td id=":N[n" class="">list</td><td id="cUIp" class="">批量订单信息 最多10条</td></tr></tbody></table><p id="825bf049-a195-4b0e-8e02-2320db95c167" class="">orders Object:</p><table id="06007c2f-ab0f-4134-9c76-50b5fba0f61b" class="simple-table"><tbody><tr id="1ea6d14b-f0e3-4301-8f2c-61f1f7673368"><td id="IELP" class=""><strong>名称</strong></td><td id="kygY" class=""><strong>是否必填</strong></td><td id="=OY`" class=""><strong>类型</strong></td><td id="Ms{t" class=""><strong>例子</strong></td><td id="bl~G" class=""><strong>描述</strong></td></tr><tr id="2f9f1aac-0702-456b-8dcb-4e1f1c254ba4"><td id="IELP" class="">orderId</td><td id="kygY" class="">两者必须填一个</td><td id="=OY`" class="">string</td><td id="Ms{t" class="">LIMIT/MARKET</td><td id="bl~G" class="">类型</td></tr><tr id="c76bb96c-4d52-4134-bc59-2db92b2bfd15"><td id="IELP" class="">orderLinkId</td><td id="kygY" class="">string</td><td id="=OY`" class=""></td><td id="Ms{t" class="">客户端订单ID</td><td id="bl~G" class=""></td></tr><tr id="c88852f2-de37-42e4-b5f0-a7f068028d31"><td id="IELP" class="">symbol</td><td id="kygY" class="">是</td><td id="=OY`" class="">string</td><td id="Ms{t" class=""></td><td id="bl~G" class="">币对名称 E.g. btcusdt</td></tr></tbody></table><p id="5b5ac149-e39d-4f7c-ba87-709e3b3eae4e" class="">返回参数：</p><table id="c695ef41-d7d9-47ec-bf97-f99e11e8d07a" class="simple-table"><tbody><tr id="bb8732e7-80a0-45c7-963f-52f5a387ab43"><td id="O?z@" class=""></td><td id="Xo|Q" class=""><strong>类型</strong></td><td id="~hv[" class=""><strong>例子</strong></td><td id="e}fo" class=""><strong>描述</strong></td></tr><tr id="4c163bc3-d5ef-4281-9822-bf4fb15dcf88"><td id="O?z@" class="">symbol</td><td id="Xo|Q" class="">string</td><td id="~hv[" class="">btcusdt</td><td id="e}fo" class="">币对名称</td></tr><tr id="07d1737f-bd9f-4dd4-8c60-05ee1e65143f"><td id="O?z@" class="">orderId</td><td id="Xo|Q" class="">string</td><td id="~hv[" class=""></td><td id="e}fo" class="">订单ID</td></tr><tr id="c74efddc-e4b9-4318-b8cf-b6986dbc8a25"><td id="O?z@" class="">orderLinkId</td><td id="Xo|Q" class="">string</td><td id="~hv[" class=""></td><td id="e}fo" class="">客户端订单ID</td></tr><tr id="dba138f2-f744-40c4-a7f9-3493e59c20c5"><td id="O?z@" class="">result</td><td id="Xo|Q" class="">string</td><td id="~hv[" class="">0</td><td id="e}fo" class="">是否成功. success；failed</td></tr></tbody></table><p id="d9496cb9-be39-42fc-b23c-1ce3127e88fc" class=""><code>Object</code> Object:</p><p id="b7333a64-825b-4b07-987a-7a72eb6085af" class="">样例</p><pre id="663a5e45-1d79-4424-aa92-6cf4217c0996" class="code code-wrap"><code>// 请求参数
+{
+    &quot;orders&quot;:[
+        {
+            &quot;symbol&quot;:&quot;btcusdt&quot;,
+            &quot;orderId&quot;:&quot;1&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;btcusdt&quot;,
+            &quot;orderId&quot;:&quot;3&quot;，
+
+        }
+    ]
+}
+
+// 返回参数
+{
+    &quot;retCode&quot;:0,
+    &quot;retMsg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:{
+        &quot;list&quot;:[
+            {
+                &quot;orderId&quot;:&quot;1&quot;,
+                &quot;result&quot;:&quot;success&quot;
+            },
+            {
+                &quot;orderId&quot;:&quot;2&quot;,
+                &quot;result&quot;:&quot;success&quot;
+            },
+            {
+                &quot;orderId&quot;:&quot;3&quot;,
+                &quot;result&quot;:&quot;failed&quot;
+            }
+        ]
+    }
+}
+</code></pre><h3 id="3e33f1f1-d13d-4d71-b356-0127b94e7148" class="">错误码</h3><table id="de2ec946-1b03-46d0-960c-86c1444e86d4" class="simple-table"><tbody><tr id="11791221-4d79-40c4-a14b-0ef94f6157e2"><td id="W&gt;v&lt;" class="">错误码</td><td id="DtWL" class="">描述</td><td id="wMCc" class="">备注</td></tr><tr id="c979c6ae-97c3-48b1-9a5e-c4a74d19a303"><td id="W&gt;v&lt;" class="">-1000</td><td id="DtWL" class="">处理请求时发生未知错误，请联系管理员</td><td id="wMCc" class=""></td></tr><tr id="53020a42-de1a-4409-bf6e-2ca3524093b3"><td id="W&gt;v&lt;" class=""></td><td id="DtWL" class=""></td><td id="wMCc" class=""></td></tr><tr id="f8598580-5fbe-4c92-b5bb-0caca271119d"><td id="W&gt;v&lt;" class="">-1002</td><td id="DtWL" class="">您无权执行此请求。请求需要发送API Key，我们建议在所有的请求头附加X-CH-APIKEYUNAUTHORIZED</td><td id="wMCc" class=""></td></tr><tr id="e6ca9481-995d-4599-8790-b0272697fb55"><td id="W&gt;v&lt;" class="">-1021</td><td id="DtWL" class="">无效的时间戳，时间偏移过大</td><td id="wMCc" class=""></td></tr><tr id="4cfc493a-de4e-4793-ba4e-b266c129fdf1"><td id="W&gt;v&lt;" class="">-1022</td><td id="DtWL" class="">无效的签名</td><td id="wMCc" class=""></td></tr><tr id="967e28de-018c-4992-b61f-879ce1941c85"><td id="W&gt;v&lt;" class="">-1023</td><td id="DtWL" class="">您无权执行此请求。请求需要发送timestamp，我们建议在所有的请求头附加X-CH-TS</td><td id="wMCc" class=""></td></tr><tr id="0060a9f1-8a33-415c-a56b-fa7b3b2b4731"><td id="W&gt;v&lt;" class="">-1024</td><td id="DtWL" class="">您无权执行此请求。请求需要发送sign，我们建议在所有的请求头附加X-CH-SIGN</td><td id="wMCc" class=""></td></tr><tr id="7e69d98b-cf23-4528-945f-135dc22c5275"><td id="W&gt;v&lt;" class=""></td><td id="DtWL" class=""></td><td id="wMCc" class=""></td></tr><tr id="64497c1e-87b0-468c-836b-03a98cfd50d3"><td id="W&gt;v&lt;" class="">-1015</td><td id="DtWL" class="">订单太多。请减少你的订单数量</td><td id="wMCc" class=""></td></tr><tr id="30725655-d053-480c-9e99-f713c6827137"><td id="W&gt;v&lt;" class="">-1112</td><td id="DtWL" class="">交易对没有挂单</td><td id="wMCc" class="">场景：1、撤单</td></tr><tr id="e6a2ab36-2c91-46cd-8de0-3f7f5e8364a3"><td id="W&gt;v&lt;" class="">-1138</td><td id="DtWL" class="">订单价格超出允许范围</td><td id="wMCc" class=""></td></tr><tr id="f7408611-3fd1-45ee-8483-ee2bf9e37405"><td id="W&gt;v&lt;" class="">-1139</td><td id="DtWL" class="">该币对不支持市价交易</td><td id="wMCc" class=""></td></tr><tr id="73d56287-f0bc-45bc-9dc1-5423bf17e504"><td id="W&gt;v&lt;" class="">-1140</td><td id="DtWL" class="">超出持仓最大限制</td><td id="wMCc" class=""></td></tr><tr id="c3e3ee93-c75e-46b7-9d10-5446165df51e"><td id="W&gt;v&lt;" class="">-2013</td><td id="DtWL" class="">订单不存在</td><td id="wMCc" class="">场景：1、撤单2、订单查询</td></tr><tr id="dfef3122-03ea-48c6-adc7-7d3a0a6bdb3a"><td id="W&gt;v&lt;" class="">-2016</td><td id="DtWL" class="">交易被冻结</td><td id="wMCc" class=""></td></tr><tr id="5c681763-1648-493f-ba29-dcdbf38da37e"><td id="W&gt;v&lt;" class="">-2100</td><td id="DtWL" class="">参数错误</td><td id="wMCc" class=""></td></tr><tr id="baef7087-206f-48fb-b834-11b7f132667d"><td id="W&gt;v&lt;" class="">-2200</td><td id="DtWL" class="">非法IP</td><td id="wMCc" class=""></td></tr></tbody></table></div></article></body></html>
