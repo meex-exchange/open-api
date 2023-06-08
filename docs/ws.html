@@ -1,0 +1,1067 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Open-Api-Webscoket文檔</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7bac0f23-d117-4b85-abb4-07fc6ac9d1a2" class="page sans"><header><h1 class="page-title">Open-Api-Webscoket文檔</h1><p class="page-description"></p></header><div class="page-body"><h1 id="9b186461-02ea-4c8b-8ef2-ef33a34bb96a" class="">基本資訊</h1><h3 id="51168265-770a-4a5a-9537-aaf39a561519" class="">概述</h3><p id="9f1ef8e2-5fcd-46d7-a6ba-06914ab95359" class="">WebSocket是HTML5一种新的協議（Protocol）。它實現了客戶端与服務器全雙工通信， 使得數據可以快速地雙向傳播。通過一次簡單的握手就可以建立客户端和服務器的連接， 服務器根據業務規則可以主動推送信息给客户端。其優點如下：</p><ul id="28670988-98b3-46e1-a6d3-5429b4f21404" class="bulleted-list"><li style="list-style-type:disc">客戶端和服務器进行數據傳輸時，請求頭信息比較小，大概2個字節。</li></ul><ul id="b935f709-9494-4c8d-ac96-89c04cdf43a3" class="bulleted-list"><li style="list-style-type:disc">客户端和服務器皆可以主動地發送數據給對方。</li></ul><ul id="927d22e9-2740-4dbe-87cd-4e40cf08b0a8" class="bulleted-list"><li style="list-style-type:disc">不需要多次創建TCP請求和銷毀，節約寬帶和服務器的資源。</li></ul><p id="8f288241-e9aa-4785-87ce-40756c9f4059" class=""><strong>強烈建議開發者WebSocket API獲取市場行情和買賣深度等信息。</strong></p><h3 id="48374f9f-b316-41e6-ba91-cc378ff8dab3" class="">基本信息</h3><ul id="83f6844a-0547-4d7b-9dfa-aa9cb66acafb" class="bulleted-list"><li style="list-style-type:disc">幣幣行情基礎站點:</li></ul><ul id="8164f8d3-2c72-42f5-9a1a-1e3768c8b255" class="bulleted-list"><li style="list-style-type:disc">返回數據是JSON格式</li></ul><p id="376b5b45-f441-4e46-9962-d0715c9f714e" class=""><strong>訂閱地址:</strong></p><ul id="6e8afaef-bfb0-4714-851b-51f1a4c2bb01" class="bulleted-list"><li style="list-style-type:disc">测试环境：wss://<a href="http://stream.hkmeex.com/ws">stream.hkmeex.com/ws</a></li></ul><p id="09ae48d6-0db3-4bde-bbb2-0c2a8f7d44ea" class=""><strong>公有頻道</strong>不需要鑒權. 以下內容僅適用於<strong>私有頻道和</strong>的訂閱</p><p id="d77cc544-ff7a-43f3-ab39-6fce27682d46" class="">構建連接時，創建鑒權請求。</p><h3 id="2dfae343-3147-443d-89bb-44bf446e46c0" class="">IP限頻</h3><ul id="cd4eb88e-337d-4be9-b5b5-70fc7be14577" class="bulleted-list"><li style="list-style-type:disc">不要嘗試頻繁地構建連接與斷開連接；</li></ul><ul id="e67a9500-f9f3-485d-a5ae-2eb7b1c9a936" class="bulleted-list"><li style="list-style-type:disc">不要在5分鐘內構建超過10個連接。</li></ul><h3 id="8f1662f6-87b2-4947-a61e-6b9ed6644295" class="">如何發送心跳</h3><blockquote id="cfb66088-4543-4f0a-8d3e-6579159c2c54" class="">發送ping的示例</blockquote><pre id="225ab16e-9995-4e16-aee8-00c8a791a3ca" class="code code-wrap"><code>
+{
+    &quot;reqId&quot;:&quot;customizationId100001&quot;,// reqId是可選參數
+    &quot;op&quot;:&quot;ping&quot;
+}
+
+</code></pre><blockquote id="4f4d48c1-f3ab-4560-878e-69e89faa9d0a" class="">接收到pong的響應示例</blockquote><pre id="ae3d06fa-7e10-403e-b525-e520d469f6fd" class="code code-wrap"><code>{
+    &quot;op&quot;: &quot;pong&quot;,
+    &quot;args&quot;: [
+        1661741630642
+    ],
+    &quot;reqId&quot;: &quot;customizationId100001&quot;,
+    &quot;connId&quot;: &quot;706b870c&quot;
+}
+</code></pre><p id="7919a0dd-6cba-47d9-8e61-33c16bf7ebeb" class="">警告</p><p id="3be50ab5-0690-43e7-b25c-2d3f7bce9bec" class="">為了維持連接，我們推薦您每<strong>20秒</strong>發送一次心跳。</p><h3 id="981e4017-c175-40d1-9a87-5cdf7033ad61" class="">頻率限制</h3><p id="7a58d69b-ceca-4a55-be7e-5395b89a54f1" class=""><strong>僅限私有頻道：</strong></p><ul id="1fb2ff86-fe70-4528-9b69-49608e4d814c" class="bulleted-list"><li style="list-style-type:disc">每個api_key最多可以保持10個websocket私有連接，超過10個連接後的新連接會被服務器拒絕。</li></ul><ul id="40b3a61c-4ca4-497b-b22a-ab87e7bf0dec" class="bulleted-list"><li style="list-style-type:disc">單個IP同時最多10個websocket私有topic鏈接</li></ul><h3 id="d01d3317-1715-43a6-8abf-d1312232ec8b" class=""><strong>SIGNED 请求示例 (HMAC)</strong></h3><p id="b92c571a-3c8c-45af-8aa6-59b93b1118ab" class="">這是有關如何用 HMAC secret key 簽署請求的分步指南。</p><p id="7113ae8c-9fc1-4484-b2f5-1f558ce57131" class="">示例API key 和 secret key：</p><table id="6b1d0641-b9cd-4ca7-9c82-71f7f0e9016d" class="simple-table"><tbody><tr id="9253adca-da9b-4220-a267-60f7e172d23b"><td id="?H|E" class=""><strong>Key</strong></td><td id="nghp" class=""><strong>Value</strong></td></tr><tr id="b53b79de-be7d-41bd-a132-c9fb07aa1ebc"><td id="?H|E" class="">apiKey</td><td id="nghp" class="">vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td></tr><tr id="38ae8ca7-835a-47ff-b581-295e8c10346f"><td id="?H|E" class="">secretKey</td><td id="nghp" class="">NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j</td></tr></tbody></table><p id="bf0f0a28-2092-4cd8-8f19-97f9ea1e5c9a" class=""><strong>警告：請勿與任何人共享您的私鑰。</strong></p><p id="f44fd3cf-d436-4112-b918-2c7a666bfa6c" class=""><strong>第一步：創建簽名內容</strong></p><p id="58d0edb9-5f95-4614-bfbe-15ace513f54d" class="">除了 <code>signature</code> 之外，獲取所有請求 <code>params</code>，然後按名稱按字母順序進行排序：</p><table id="de0f2f6f-4f31-4e39-86e7-1ed128d01eed" class="simple-table"><tbody><tr id="1e5ad17d-ba68-481a-b852-af9481ca8375"><td id="e`KB" class=""><strong>参数</strong></td><td id="LiuU" class=""><strong>取值</strong></td></tr><tr id="c8978475-bc04-48d2-82de-93ea4d478d4b"><td id="e`KB" class="">apiKey</td><td id="LiuU" class="">vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td></tr><tr id="248b198a-0654-4f0e-95cc-ba21aaf76f07"><td id="e`KB" class="">timestamp</td><td id="LiuU" class="">1645423376532</td></tr></tbody></table><p id="72966860-e52d-4c2c-acbd-2ff61e566971" class="">將參數格式化為 <code>参数=取值</code> 對，並用 <code>&amp;</code> 分隔每个参数。</p><p id="e7581a9e-06ef-48f5-9b54-70b8adafd4d7" class=""><strong>第二步：計算簽名</strong></p><ol type="1" id="b5b93197-2514-4bac-9ccb-4147daa59326" class="numbered-list" start="1"><li>將 <code>secretKey</code> 解釋為 ASCII 数据，將其用作 HMAC-SHA-256 的 key。</li></ol><ol type="1" id="58945e81-ec68-4d95-8b99-8fa6b4e01391" class="numbered-list" start="2"><li>將 签名有效负载簽名为 ASCII 數據。</li></ol><ol type="1" id="87ea0cd8-ed4d-49b5-b299-8510724c6957" class="numbered-list" start="3"><li>將 HMAC-SHA-256 輸出編碼为 hex string。</li></ol><p id="96f8bd22-67fd-4839-b14a-20f3dd4dd699" class="">請注意，<code>apiKey</code>，<code>secretKey</code> 和有效负载是<strong>大小写敏感的</strong>。 生成的簽名值是不區分大小寫的。</p><p id="54ea0315-3c5a-480e-9aba-7359afc2dd23" class="">可以使用 OpenSSL 交叉檢查您的算法實現：</p><p id="b967c778-6fda-4769-b773-c3a781fcede4" class="">例如secretKey=secretKey123455</p><pre id="d0b5351d-3204-495d-ad6b-9407af0b7707" class="code code-wrap"><code>$ echo -n &quot;1645423376532GET/ws| openssl dgst -sha256 -hmac &quot;secretKey123455&quot;
+</code></pre><p id="3bd9bf05-0d35-4ac6-bfeb-6a3bdbdfcdad" class=""><strong>第三步</strong><strong>：</strong><strong>完整請求：</strong></p><pre id="2626aff1-b846-4d43-8e51-2b17cc357980" class="code code-wrap"><code>// 请求
+{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // 可選
+    &quot;op&quot;: &quot;auth&quot;,
+    &quot;args&quot;: [
+        &quot;vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A&quot;,
+        1662350400000, //過期時間應當大於當前時間戳
+        &quot;singature&quot;
+    ]
+}
+
+// 響應
+{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;args&quot;:[
+            &quot;cdbada06eecbd54fa0127702afb7819e&quot;,
+            &quot;1684904306427&quot;,
+            &quot;dd82084ab69d076557d3eb8dd6af31b40f993f77990b9cfb64ad78682219747a&quot;
+        ],
+        &quot;op&quot;:&quot;auth&quot;,
+        &quot;reqId&quot;:&quot;customizationId100001&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}
+
+</code></pre><p id="60800656-92c2-462d-b669-34a43564bb70" class="">python代碼樣例</p><pre id="54e279c9-5578-4dac-9fea-3c910c250cf8" class="code code-wrap"><code>def auth(self):
+    current = str(round(time.time() * 1000))
+    auth_request = {
+        &quot;reqId&quot;: &quot;customizationId100001&quot;,
+        &quot;op&quot;: &quot;auth&quot;,
+        &quot;args&quot;: [
+            apikey,
+            current,
+            self.toSign(current,&quot;GET&quot;,&quot;/ws&quot;,&quot;&quot;,&quot;&quot;,secret)
+        ]
+    }
+    auth_request_json = json.dumps(auth_request)
+    self.ws.send(auth_request_json)
+
+# generate signature
+def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
+    return hmac.new(secretKey.encode(&#x27;UTF-8&#x27;),
+                    self.preHash(timestamp, method, requestPath, queryString, body).encode(&#x27;UTF-8&#x27;),
+                    &quot;SHA256&quot;).hexdigest()
+</code></pre><h3 id="df4f090f-0d9c-4b40-bdda-6066469f72d5" class="">如何訂閱topic</h3><h3 id="4b288c83-e5c7-4924-acdb-4ff0ba9b6031" class="">Websocket裡的args</h3><p id="3420129f-142f-4b6f-86aa-9d36a12a36bc" class="">通過傳入args來訂閱指定topic</p><pre id="c9920fd2-895c-4b3a-9688-dfcd97ebab7e" class="code code-wrap"><code>// 訂閱topic
+{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // 可選
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;
+    ]
+}
+</code></pre><p id="6f354258-994e-4889-9749-a4b28e3986b2" class="">通過逗號隔開，可以同時訂閱多個topic或者多個symbol</p><pre id="345e5ab6-321d-4a5d-9cce-aabe50ce1ade" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // 可選
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;,
+        &quot;ticker.btcusdt&quot;
+    ]
+}
+</code></pre><h3 id="6ce14fab-8a32-444a-a151-4cdd2d073896" class="">如何取消訂閱</h3><p id="a1bd119d-ca2b-4346-aba7-487c9144637e" class="">您可以通過發送請求來動態地停止訂閱:</p><pre id="e5fe6919-ae71-43ac-9413-2e90f6dc0f62" class="code code-wrap"><code>// 请求
+{
+    &quot;op&quot;: &quot;unsubscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;
+    ],
+    &quot;reqId&quot;: &quot;customizationId100001&quot;
+}
+// 響應
+{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;op&quot;:&quot;unsubscribe&quot;,
+        &quot;reqId&quot;:&quot;reqid0001&quot;,
+        &quot;topic&quot;:&quot;depth.btcusdt.100&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}
+</code></pre><h3 id="c2ea2385-45ff-4900-8537-6d47e70b53ca" class="">訂閱的響應</h3><blockquote id="f0dac47a-765b-4f4d-83a7-dbfb3bc47bfe" class="">訂閱成功後的響應示例</blockquote><pre id="74531a6e-139f-4a37-8f68-9fcb2ed3d6c7" class="code code-wrap"><code>{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;op&quot;:&quot;subscribe&quot;,
+        &quot;reqId&quot;:&quot;customizationId100001&quot;,
+        &quot;topic&quot;:&quot;depth.btcusdt.100&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}
+</code></pre><h1 id="bc9d9c4a-9efc-4a59-a9a7-1d0d96fb1eab" class=""><strong>公有頻道</strong></h1><h3 id="167c3a10-4225-4adb-ae93-4450a06f062d" class="">1、深度接口</h3><p id="cd472d40-8080-482a-98e1-65c6634e7e9c" class="">Topic:depth.{symbol}.{level}</p><p id="99f2c1b6-18f7-46bf-b3e9-adf3cb1926d0" class="">推送頻率：2s</p><p id="1d144d41-ccd7-449b-8331-d05a059d771b" class="">档位：1、5、100</p><p id="dbf8d987-fd9e-471b-983e-eb0639a8db48" class="">請求樣例</p><pre id="83772cae-ffef-4bb8-8875-e0cda79f46d2" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.1&quot;
+    ]
+}
+</code></pre><table id="d04945db-193a-473b-a39c-565c188c2990" class="simple-table"><tbody><tr id="5bae63c2-c3c7-464d-8bd4-a04e41763c8d"><td id="FtR_" class="">參數</td><td id="aDwz" class="">類型</td><td id="}QAJ" class="">說明</td></tr><tr id="0b7fcdfb-f33d-4da5-b027-f3fe360958b1"><td id="FtR_" class="">topic</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">Topic名</td></tr><tr id="8ae19167-0973-4fba-961c-03fe1e3970f0"><td id="FtR_" class="">ts</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">消息被推送出來的時間戳 (毫秒)</td></tr><tr id="ec94c2e8-dada-416d-a5f7-56d55045d3a7"><td id="FtR_" class="">data</td><td id="aDwz" class="">Object</td><td id="}QAJ" class="">Object</td></tr><tr id="7b16aeae-9e4f-48ba-a97a-3a1e10ebc60a"><td id="FtR_" class="">&gt; s</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">交易對</td></tr><tr id="a0b770d9-f168-4216-8387-5d741079f335"><td id="FtR_" class="">&gt; t</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">时间戳</td></tr><tr id="d9caf14a-2aa5-4f9d-99c1-61871648b869"><td id="FtR_" class="">&gt;b</td><td id="aDwz" class="">array</td><td id="}QAJ" class="">Bid, 買方. 按照價格從大到小</td></tr><tr id="612e98ee-3822-4df8-ab83-bb4c25bf9168"><td id="FtR_" class="">&gt;&gt; b[0]</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">買方報價</td></tr><tr id="90f9cf91-8466-42c2-9727-80f49e6413e6"><td id="FtR_" class="">&gt;&gt; b[1]</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">買方數量</td></tr><tr id="d769d62a-72d9-4058-8aaa-2c744c110a08"><td id="FtR_" class="">&gt; a</td><td id="aDwz" class="">array</td><td id="}QAJ" class="">Ask, 賣方. 按照價格從小到大</td></tr><tr id="47dda11e-8bc1-41a9-aed4-42443d2e6841"><td id="FtR_" class="">&gt;&gt; a[0]</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">賣方報價</td></tr><tr id="2e0314a9-693c-49be-a551-0b801fe62515"><td id="FtR_" class="">&gt;&gt; a[1]</td><td id="aDwz" class="">string</td><td id="}QAJ" class="">賣方數量</td></tr></tbody></table><p id="670dee0d-47cb-490d-af9a-6ea4e146e3a9" class="">返回樣例</p><pre id="b50202ae-a79d-4203-ac30-462435aa3e47" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;depth.btcusdt.1&quot;,
+    &quot;ts&quot;:&quot;1685593765010&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;t&quot;:1685593755000,
+        &quot;a&quot;:[
+            [
+                27590.21,
+                0.15717024
+            ]
+        ],
+        &quot;b&quot;:[
+            [
+                27000,
+                0.95
+            ]
+        ]
+    }
+}
+</code></pre><h3 id="c0a8aed0-dccb-49c9-a62d-4b095b7d6495" class="">2、K線</h3><p id="1e059d99-8ab3-45a4-856c-50a6683833e8" class="">Topic:kilne.{symbol}.{interval}</p><p id="6d3fc80a-fd7e-4b9c-8e73-9eb50a401b55" class="">interval:1min,5min,15min,30min,60min,1day,1week,1month</p><p id="ed095ab2-c7ab-4a00-a952-9375b8ae462c" class="">推送頻率：1s</p><p id="d27008ab-882f-4dcf-8fef-9fb2839f4ec3" class="">請求樣例</p><pre id="d158d6c6-14e8-4daa-8687-1b06d8f19979" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;kline00001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;kline.btcusdt.30min&quot;
+    ]
+}
+</code></pre><table id="f5cd1b43-14ce-49e2-be68-365728f127ba" class="simple-table"><tbody><tr id="e1a867a5-3247-4dfa-9719-bc06e7f95883"><td id="P?ag" class="">參數</td><td id="VJVB" class="">類型</td><td id="&lt;v;b" class="">說明</td></tr><tr id="0751b4cd-fbe4-4f3d-adac-d6b58195b927"><td id="P?ag" class="">topic</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">Topic名</td></tr><tr id="d2979399-7e50-41db-9c03-7410c623fe0a"><td id="P?ag" class="">ts</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">消息被推送出來的時間戳 (毫秒)</td></tr><tr id="5997024f-bccf-44d9-b87e-254aa7bdbe27"><td id="P?ag" class="">data</td><td id="VJVB" class="">Object</td><td id="&lt;v;b" class="">Object</td></tr><tr id="b138eba8-3491-4fd8-b4b1-bb384b467e94"><td id="P?ag" class="">&gt;s</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">交易對（均小写）</td></tr><tr id="cebd53a8-a4c0-4f0c-9e5e-0608872b6959"><td id="P?ag" class="">&gt; i</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">K线粒度</td></tr><tr id="2be5dbe3-f967-4575-8bc2-6fafa3706d2d"><td id="P?ag" class="">&gt; st</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">開始時間戳 (毫秒)</td></tr><tr id="2bc37b62-f110-4619-b104-42064efd0e04"><td id="P?ag" class="">&gt; ed</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">結束時間戳 (毫秒). 若時間還未到時間跨度的最後時間，則表示當前時間</td></tr><tr id="fcf9bd2e-66ba-481e-9184-4cd2f21f0e6d"><td id="P?ag" class="">&gt; o</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">開盤價格</td></tr><tr id="41820724-a895-403e-91ac-270749d2065a"><td id="P?ag" class="">&gt; c</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">收盤價</td></tr><tr id="4daaad2e-0c96-4496-b0d2-a7ba850a53a3"><td id="P?ag" class="">&gt; h</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">最高價格</td></tr><tr id="96004699-90ae-4c78-9752-74d52a2bf805"><td id="P?ag" class="">&gt; l</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">最低價格</td></tr><tr id="1d7f00b8-a651-40b5-aaa6-8b4a87adb0bc"><td id="P?ag" class="">&gt; v</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">交易量</td></tr><tr id="2897c790-108c-4273-8f86-2db835fab62d"><td id="P?ag" class="">&gt; a</td><td id="VJVB" class="">string</td><td id="&lt;v;b" class="">交易額</td></tr></tbody></table><p id="6b02c348-aaee-438a-9940-2f27bb2d762b" class="">返回樣例</p><pre id="3a9b05ec-5c38-49fa-a9ee-32c52abb677c" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;kline.btcusdt.1min&quot;,
+    &quot;ts&quot;:&quot;1685593630009&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;i&quot;:&quot;1min&quot;,
+        &quot;st&quot;:&quot;1685593560000&quot;,
+        &quot;ed&quot;:&quot;1685593620000&quot;,
+        &quot;o&quot;:&quot;27000&quot;,
+        &quot;c&quot;:&quot;27000&quot;,
+        &quot;h&quot;:&quot;27000&quot;,
+        &quot;l&quot;:&quot;27000&quot;,
+        &quot;v&quot;:&quot;0&quot;,
+        &quot;a&quot;:&quot;0&quot;
+    }
+}
+</code></pre><h3 id="63b9ba64-b025-44e6-9f25-011bae36890a" class="">3、行情</h3><p id="53572a2b-859d-4ae2-b4f0-225714d24427" class="">Topic:ticker.{symbol}</p><p id="0029db36-cca8-4c25-bf9d-a0f73fb57c22" class="">推送頻率：1s</p><p id="900d43c1-2d89-417d-ab0e-b272c0228410" class="">請求樣例</p><pre id="10afa75b-c62b-46e2-9658-5ab98067aa8a" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;ticker00001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;ticker.btcusdt&quot;
+    ]
+}
+</code></pre><table id="d0c40fc4-5627-48d6-afb9-4db7c17442a4" class="simple-table"><tbody><tr id="a33d2f3d-4468-49df-838b-1b1e8216d809"><td id="&gt;SA|" class="">參數</td><td id="c:b?" class="">類型</td><td id="HOZU" class="">說明</td></tr><tr id="de7fbd80-9066-4970-bb0f-25d4a429761a"><td id="&gt;SA|" class="">topic</td><td id="c:b?" class="">string</td><td id="HOZU" class="">Topic名</td></tr><tr id="8c499d89-e5bc-4ba5-a350-e38e95a76b4a"><td id="&gt;SA|" class="">ts</td><td id="c:b?" class="">string</td><td id="HOZU" class="">消息被推送出來的時間戳 (毫秒)</td></tr><tr id="f3583eba-7a84-4777-b29a-598033e2a330"><td id="&gt;SA|" class="">data</td><td id="c:b?" class="">Object</td><td id="HOZU" class=""></td></tr><tr id="495b386a-b940-4e56-b225-03c27631e7ca"><td id="&gt;SA|" class="">&gt; s</td><td id="c:b?" class="">string</td><td id="HOZU" class="">交易對（均小写）</td></tr><tr id="9ecdc252-a325-4c85-b287-8c02e3f6be71"><td id="&gt;SA|" class="">&gt; h</td><td id="c:b?" class="">string</td><td id="HOZU" class="">最高價格</td></tr><tr id="97de92ee-ab3d-4114-bada-8f86d147be7b"><td id="&gt;SA|" class="">&gt; l</td><td id="c:b?" class="">string</td><td id="HOZU" class="">最低價格</td></tr><tr id="8ce04b36-1870-402b-985b-4e9f88e3e248"><td id="&gt;SA|" class="">&gt; v</td><td id="c:b?" class="">string</td><td id="HOZU" class="">成交量</td></tr><tr id="b4b0afc6-807c-42b0-8922-26a858a34649"><td id="&gt;SA|" class="">&gt; a</td><td id="c:b?" class="">string</td><td id="HOZU" class="">成交金額</td></tr><tr id="8c5a8f39-0ae7-413b-a72e-0ef7bef57cbc"><td id="&gt;SA|" class="">&gt;bp</td><td id="c:b?" class="">string</td><td id="HOZU" class="">買一價</td></tr><tr id="07eff725-2e28-4892-a59b-7f54b77150cb"><td id="&gt;SA|" class="">&gt;bq</td><td id="c:b?" class="">string</td><td id="HOZU" class="">買一價數量</td></tr><tr id="0216e574-a9f9-484d-a759-ab6bfe17e39d"><td id="&gt;SA|" class="">&gt;ap</td><td id="c:b?" class="">string</td><td id="HOZU" class="">賣一價</td></tr><tr id="dcb856d6-ed2c-436d-8d40-ef1b6724c75d"><td id="&gt;SA|" class="">&gt;aq</td><td id="c:b?" class="">string</td><td id="HOZU" class="">賣一價數量</td></tr><tr id="794af6a0-af7d-42ac-9897-c5ed57c37701"><td id="&gt;SA|" class="">&gt; m</td><td id="c:b?" class="">string</td><td id="HOZU" class="">漲幅</td></tr></tbody></table><p id="75452d43-6f78-413d-b218-ef649ce0a7c8" class="">返回樣例</p><pre id="23e20b4c-d762-4450-b467-49f0a86d536c" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;ticker.btcusdt&quot;,
+    &quot;ts&quot;:&quot;1685593691006&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;h&quot;:&quot;27590.21&quot;,
+        &quot;l&quot;:&quot;27000&quot;,
+        &quot;v&quot;:&quot;0.16061&quot;,
+        &quot;a&quot;:&quot;27000.0000000000000000&quot;,
+        &quot;bp&quot;:&quot;27000&quot;,
+        &quot;bq&quot;:&quot;0.95&quot;,
+        &quot;ap&quot;:&quot;27590.21&quot;,
+        &quot;aq&quot;:&quot;0.15717024&quot;,
+        &quot;m&quot;:&quot;-0.0213849143&quot;
+    }
+}
+</code></pre><h3 id="738f1bc6-7524-4f69-822d-aa2398629d70" class="">4、平台成交</h3><p id="2ee4c6b7-f6a2-427f-8426-d238e10a20ab" class="">Topic:trades.{symbol}</p><p id="fe02872a-e0d8-438a-9eb1-43c2441bc864" class="">推送頻率：1s</p><p id="2e23c86c-d060-4a78-b2c8-a444e348d783" class="">請求樣例</p><pre id="9bcc259d-de11-46bd-976d-6816b1ca40ea" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;trades001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;trades.ethusdt&quot;
+    ]
+}
+</code></pre><table id="4eb79ebf-00f0-4242-8c14-1a8f33141be2" class="simple-table"><tbody><tr id="724ae919-6b67-4c7a-975f-db420414bbd2"><td id="_X`W" class="">參數</td><td id="FF``" class="">類型</td><td id="=RGg" class="">說明</td></tr><tr id="327fc23e-db76-46ba-a280-a3dccba9c6ed"><td id="_X`W" class="">topic</td><td id="FF``" class="">string</td><td id="=RGg" class="">Topic名</td></tr><tr id="b92c3de0-6c55-40ed-a582-a74fda196db0"><td id="_X`W" class="">ts</td><td id="FF``" class="">string</td><td id="=RGg" class="">消息被推送出來的時間戳 (毫秒)</td></tr><tr id="df3bb36b-280f-4c26-98ef-c95299b57c2f"><td id="_X`W" class="">data</td><td id="FF``" class="">array</td><td id="=RGg" class="">Object</td></tr><tr id="35491261-00e2-43f6-8714-0b2546bafbee"><td id="_X`W" class="">&gt;s</td><td id="FF``" class="">string</td><td id="=RGg" class="">交易對（均小写）</td></tr><tr id="106a2118-20bc-493e-bb7d-ba89d2fc234b"><td id="_X`W" class="">&gt;t</td><td id="FF``" class="">string</td><td id="=RGg" class="">成交時間戳 (毫秒)</td></tr><tr id="eac81765-de38-42b1-bc89-68157330d239"><td id="_X`W" class="">&gt; p</td><td id="FF``" class="">string</td><td id="=RGg" class="">成交價格</td></tr><tr id="8cc02e84-57aa-43f2-ba59-8b1873953d2a"><td id="_X`W" class="">&gt;q</td><td id="FF``" class="">string</td><td id="=RGg" class="">成交數量</td></tr><tr id="b8bdab78-21bd-4793-96e0-b09372091f6e"><td id="_X`W" class="">&gt;sd</td><td id="FF``" class="">String</td><td id="=RGg" class="">成交方向，buy/sell</td></tr></tbody></table><p id="9c1771bf-bf5c-49a4-8ddf-c75d0fed647e" class="">返回樣例</p><pre id="ec0e099f-75f1-4c53-bfb5-d242c989dc97" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;trades.ethusdt&quot;,
+    &quot;ts&quot;:&quot;1685593944010&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1685551228000&quot;,
+            &quot;p&quot;:&quot;1860.77&quot;,
+            &quot;q&quot;:&quot;0.0100&quot;,
+            &quot;sd&quot;:&quot;buy&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844326000&quot;,
+            &quot;p&quot;:&quot;1854.20&quot;,
+            &quot;q&quot;:&quot;0.0050&quot;,
+            &quot;sd&quot;:&quot;buy&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844325000&quot;,
+            &quot;p&quot;:&quot;1854.19&quot;,
+            &quot;q&quot;:&quot;0.0050&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844325000&quot;,
+            &quot;p&quot;:&quot;1854.19&quot;,
+            &quot;q&quot;:&quot;0.0070&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844321000&quot;,
+            &quot;p&quot;:&quot;1854.20&quot;,
+            &quot;q&quot;:&quot;0.0300&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        }
+    ]
+}
+</code></pre><h1 id="e972290f-bca3-43c5-84ff-ee400fb9bbcd" class=""><strong>私有頻道</strong></h1><h3 id="d125ab58-fd67-4bf8-bc41-9a6f15d74820" class="">1、訂單</h3><p id="cbf68962-b91f-46bb-9034-f48eb184b00d" class="">Topic:order</p><p id="8761b3ac-259b-4cc3-a6ca-7166fe3e55ea" class="">推送頻率：實時</p><p id="4bb91b93-f670-4d4a-a8ee-10386e7a42ab" class="">請求樣例</p><pre id="97759ca6-3306-4142-94d8-cdbf31b76932" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;order001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;order&quot;
+    ]
+}
+</code></pre><table id="57e24889-6971-4cc4-83db-8918f091a082" class="simple-table"><tbody><tr id="ca0e9abd-4638-471b-9c4c-bb0cf0ce13ba"><td id="SLL|" class="">參數</td><td id="iKzu" class="">類型</td><td id="lGlY" class="">說明</td><td id="OTOn" class="">备注</td></tr><tr id="c06bdd98-4795-410f-8d0c-f6e987774846"><td id="SLL|" class="">topic</td><td id="iKzu" class="">string</td><td id="lGlY" class="">Topic名</td><td id="OTOn" class=""></td></tr><tr id="4f8fdef2-d410-4cc7-876e-0eb395df38c3"><td id="SLL|" class="">ts</td><td id="iKzu" class="">string</td><td id="lGlY" class="">消息被推送出來的時間戳 (毫秒)</td><td id="OTOn" class=""></td></tr><tr id="ef8a239d-69a7-47ad-be45-cbfd2f393506"><td id="SLL|" class="">data</td><td id="iKzu" class="">Object</td><td id="lGlY" class="">Object</td><td id="OTOn" class=""></td></tr><tr id="a62f5dee-fc51-4412-b705-fb98153a71b2"><td id="SLL|" class="">&gt; s</td><td id="iKzu" class="">string</td><td id="lGlY" class="">交易對</td><td id="OTOn" class=""></td></tr><tr id="c63f28a1-d37b-4008-816b-6140b31534e5"><td id="SLL|" class="">&gt; t</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單創建時間 (毫秒)</td><td id="OTOn" class=""></td></tr><tr id="e81f69cd-4da6-481f-a9af-8065bb2a0b33"><td id="SLL|" class="">&gt; o</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單ID</td><td id="OTOn" class=""></td></tr><tr id="cb12db88-72e8-44b1-8632-cbb0862ab830"><td id="SLL|" class="">&gt; ol</td><td id="iKzu" class="">string</td><td id="lGlY" class="">U用戶自定義訂單ID</td><td id="OTOn" class=""></td></tr><tr id="5c90ca23-6fcf-45b2-ae5a-33d9382abc4b"><td id="SLL|" class="">&gt; sd</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單方向. BUY, SELL</td><td id="OTOn" class=""></td></tr><tr id="52d76ead-63cf-4327-aea2-06d522375b3a"><td id="SLL|" class="">&gt; ty</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單類型. LIMIT, MARKET</td><td id="OTOn" class=""></td></tr><tr id="56fa90dc-1091-40e8-b2f5-4484f874ad18"><td id="SLL|" class="">&gt; q</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單數量</td><td id="OTOn" class=""></td></tr><tr id="de08a240-2e90-40ba-aa84-694393ed955f"><td id="SLL|" class="">&gt; p</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單價格</td><td id="OTOn" class=""></td></tr><tr id="ad45bc6b-e0fc-45f4-87dc-d89a9599321a"><td id="SLL|" class="">&gt; x</td><td id="iKzu" class="">string</td><td id="lGlY" class="">訂單狀態</td><td id="OTOn" class="">NEW（新订单，无成交）、PART_FILLED（部分成交）、FILLED（全部成交）、CANCELED（已取消）</td></tr><tr id="7ca682aa-fd9d-4373-8590-9118ea736e1b"><td id="SLL|" class="">&gt; lq</td><td id="iKzu" class="">string</td><td id="lGlY" class="">最近成交數量</td><td id="OTOn" class=""></td></tr><tr id="213f278d-70df-4cc8-8442-984a6dffa811"><td id="SLL|" class="">&gt; tq</td><td id="iKzu" class="">string</td><td id="lGlY" class="">累計成交數量</td><td id="OTOn" class=""></td></tr><tr id="1fc2ad95-2304-4c8f-b6d5-3e35e2dad155"><td id="SLL|" class="">&gt; lp</td><td id="iKzu" class="">string</td><td id="lGlY" class="">最近成交價格</td><td id="OTOn" class=""></td></tr><tr id="a5cbf217-b6d7-4181-ab53-c1d04c2ff6e9"><td id="SLL|" class="">&gt; tp</td><td id="iKzu" class="">string</td><td id="lGlY" class="">累計成交數額</td><td id="OTOn" class=""></td></tr><tr id="fad305b5-2e08-4fd8-83c9-b7dc9315fb06"><td id="SLL|" class="">&gt; f</td><td id="iKzu" class="">string</td><td id="lGlY" class="">手續費(單筆成交)</td><td id="OTOn" class=""></td></tr><tr id="1e71e40b-683e-49bf-80db-462c9bfd1d63"><td id="SLL|" class="">&gt; fs</td><td id="iKzu" class="">string</td><td id="lGlY" class="">手續費幣種</td><td id="OTOn" class=""></td></tr><tr id="6cd0f49f-ffe8-4639-bcaa-7be3e100bb25"><td id="SLL|" class="">&gt; ic</td><td id="iKzu" class="">boolean</td><td id="lGlY" class="">是否關閉</td><td id="OTOn" class=""></td></tr><tr id="f5580929-60e5-4927-ae4c-8c3a3f9e2712"><td id="SLL|" class="">&gt; tid</td><td id="iKzu" class="">string</td><td id="lGlY" class="">成交ID</td><td id="OTOn" class=""></td></tr></tbody></table><p id="6526f02f-16d0-44c1-89e9-827dbc7108d0" class="">返回樣例</p><pre id="ade0779a-abd2-4a1f-a0fd-efa2e699f364" class="code code-wrap"><code>// 成交的返回
+{
+    &quot;topic&quot;: &quot;order&quot;,
+    &quot;ts&quot;: &quot;1681698833381&quot;,
+    &quot;data&quot;:
+        {
+            &quot;s&quot;: &quot;btcusdt&quot;,
+            &quot;t&quot;: &quot;1681698833313&quot;
+            &quot;o&quot;: &quot;140058&quot;,
+            &quot;ol&quot;: &quot;test-error-liangwuuu-02&quot;,
+            &quot;sd&quot;: &quot;BUY&quot;,
+            &quot;ty&quot;: &quot;MARKET&quot;,
+            &quot;q&quot;: &quot;15&quot;,
+            &quot;p&quot;: &quot;234.2&quot;,
+            &quot;x&quot;: &quot;FILLED&quot;,
+            &quot;lq&quot;: &quot;0.1&quot;,
+            &quot;tq&quot;: &quot;0.9&quot;,
+            &quot;lp&quot;: &quot;2356.1&quot;,
+            &quot;tp&quot;: &quot;2356.1&quot;,
+            &quot;f&quot;: &quot;0.01&quot;,
+            &quot;fs&quot;: &quot;USDT&quot;,
+            &quot;ic&quot;: &quot;true&quot;,
+            &quot;tid&quot;: &quot;123&quot;
+        }
+}
+// 取消的返回
+{
+    &quot;data&quot;:{
+        &quot;ic&quot;:&quot;true&quot;,
+        &quot;o&quot;:&quot;1959474&quot;,
+        &quot;ol&quot;:&quot;bytetest43344441685442676408&quot;,
+        &quot;p&quot;:&quot;1860.0000000000000000&quot;,
+        &quot;q&quot;:&quot;0.0010000000000000&quot;,
+        &quot;s&quot;:&quot;ethusdt&quot;,
+        &quot;sd&quot;:&quot;BUY&quot;,
+        &quot;t&quot;:&quot;1685442677984&quot;,
+        &quot;tp&quot;:&quot;0.0000000000000000&quot;,
+        &quot;tq&quot;:&quot;0.0000000000000000&quot;,
+        &quot;ty&quot;:&quot;LIMIT&quot;,
+        &quot;x&quot;:&quot;CANCELED&quot;
+    },
+    &quot;topic&quot;:&quot;order&quot;,
+    &quot;ts&quot;:&quot;1685594128218&quot;
+}
+// 下單的返回
+{
+    &quot;data&quot;:{
+        &quot;ic&quot;:&quot;false&quot;,
+        &quot;o&quot;:&quot;1959482&quot;,
+        &quot;ol&quot;:&quot;&quot;,
+        &quot;p&quot;:&quot;1852.0000000000000000&quot;,
+        &quot;q&quot;:&quot;0.0100000000000000&quot;,
+        &quot;s&quot;:&quot;ethusdt&quot;,
+        &quot;sd&quot;:&quot;BUY&quot;,
+        &quot;t&quot;:&quot;1685594250192&quot;,
+        &quot;tp&quot;:&quot;0.0000000000000000&quot;,
+        &quot;tq&quot;:&quot;0.0000000000000000&quot;,
+        &quot;ty&quot;:&quot;LIMIT&quot;,
+        &quot;x&quot;:&quot;NEW&quot;
+    },
+    &quot;topic&quot;:&quot;order&quot;,
+    &quot;ts&quot;:&quot;1685594250244&quot;
+}
+</code></pre><h3 id="0207b46e-c08b-4e71-b2bc-96f17f7617e8" class="">2、個人成交</h3><p id="449abf5d-e741-4a55-a572-b3d753cc1960" class="">Topic:mytrades</p><p id="a3686ce0-7674-49b1-9128-d328a1bf569e" class="">推送頻率：實時</p><p id="5521f661-8004-46f7-9974-811b866427fe" class="">請求樣例</p><pre id="fcff7321-1705-49e8-995a-cf0975e4f51b" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;mytrades001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;mytrades&quot;
+    ]
+}
+</code></pre><table id="ab635572-eb5e-4aa1-b303-47c8ca1a4e26" class="simple-table"><tbody><tr id="b9e7b39c-2df1-408d-b72e-af267dc1ca28"><td id="XkjE" class="">參數</td><td id="ttqJ" class="">類型</td><td id="X=VQ" class="">說明</td></tr><tr id="0ed4c7af-0d0e-4c0a-9dd3-9a2ff02f7758"><td id="XkjE" class="">topic</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">Topic名</td></tr><tr id="36ab972d-0fed-444f-8732-fdcb09c74f35"><td id="XkjE" class="">ts</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">消息被推送出來的時間戳 (毫秒)</td></tr><tr id="1b08f485-de8d-4f7d-900d-0fa0cb152328"><td id="XkjE" class="">data</td><td id="ttqJ" class="">Object</td><td id="X=VQ" class="">Object</td></tr><tr id="ad8bed2d-e78c-4762-89e6-239f614462f1"><td id="XkjE" class="">&gt; s</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">交易對</td></tr><tr id="1fd496ff-9e3e-41d0-8f6a-22d276224308"><td id="XkjE" class="">&gt; t</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">成交時間戳 (毫秒)</td></tr><tr id="29ed8565-47c4-4824-bf0b-9145ee0776e8"><td id="XkjE" class="">&gt; p</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">成交價格</td></tr><tr id="3182d99a-0862-4390-806c-5dcf557fdfe2"><td id="XkjE" class="">&gt; q</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">成交數量</td></tr><tr id="121905af-492d-4c23-8ef1-1279d604feb8"><td id="XkjE" class="">&gt; f</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">手續費(單筆成交)</td></tr><tr id="66b12784-59e1-4b52-bb15-9d1e9d2b8274"><td id="XkjE" class="">&gt; fc</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">手續費幣種</td></tr><tr id="de9fdd68-a24a-436d-81b3-f4fa85a12f46"><td id="XkjE" class="">&gt; tid</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">成交ID</td></tr><tr id="de1eb0ee-dc82-4087-b3a6-ad64f2bff482"><td id="XkjE" class="">&gt; o</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">訂單ID</td></tr><tr id="10ffd824-6087-4902-ad65-044ed5614f89"><td id="XkjE" class="">&gt; ol</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">用戶自定義訂單ID</td></tr><tr id="5a863ced-19e3-44fa-bd06-c4d6367aabfe"><td id="XkjE" class="">&gt; m</td><td id="ttqJ" class="">boolean</td><td id="X=VQ" class="">是否為Maker。返回true，是 maker；返回 false: 則是taker</td></tr><tr id="ed852c0e-f759-4c89-87c8-40798bfc395c"><td id="XkjE" class="">&gt; sd</td><td id="ttqJ" class="">string</td><td id="X=VQ" class="">订单方向. BUY, SELL</td></tr></tbody></table><p id="298f294d-26ad-483b-a52a-0fafbdee61a5" class="">返回樣例</p><pre id="ae2f85ad-49eb-4ee4-9f1e-d2aa6a8353fa" class="code code-wrap"><code>{
+    &quot;topic&quot;: &quot;mytrades&quot;,
+    &quot;ts&quot;: &quot;1662348310388&quot;,
+    &quot;data&quot;:
+        {
+            &quot;s&quot;: &quot;btcusdt&quot;,
+            &quot;t&quot;: &quot;1662348310373&quot;,
+            &quot;p&quot;: &quot;19842.02&quot;,
+            &quot;q&quot;: &quot;0.001007&quot;,
+            &quot;f&quot;: &quot;0.0001&quot;,
+            &quot;fc&quot;: &quot;USDT&quot;,
+            &quot;tid&quot;: &quot;123&quot;,
+            &quot;o&quot;: &quot;1238261807653647872&quot;,
+            &quot;ol&quot;: &quot;spotx008&quot;,
+            &quot;m&quot;: &quot;true&quot;,
+            &quot;sd&quot;: &quot;BUY&quot;
+        }
+}
+</code></pre><h3 id="6c29728e-1000-4302-8d8b-f2e138a2f8ef" class="">3、錢包</h3><p id="cdba07b8-f658-4e2d-bb26-d735fb08fd52" class="">Topic:tradewallet</p><p id="d469ad4a-aef6-4b4d-9df4-10efb45b73d6" class="">推送頻率：實時</p><p id="f158ac6a-54bb-470d-8c1f-d92e14922197" class="">請求樣例</p><pre id="18e1a2d9-4917-41c7-85ec-56b24bf6f107" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;tradewallet001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;tradewallet&quot;
+    ]
+}
+</code></pre><table id="e8339417-86d5-437e-bbd4-89c0ec1359bc" class="simple-table"><tbody><tr id="a8f23479-19cf-4267-98e2-4f67cd112397"><td id="n]DJ" class="">參數</td><td id="nudG" class="">類型</td><td id="QNYH" class="">說明</td><td id="TBoS" class="">备注</td></tr><tr id="4ffcb6bc-d251-4642-b2da-c30db42bf40e"><td id="n]DJ" class="">topic</td><td id="nudG" class="">string</td><td id="QNYH" class="">Topic名</td><td id="TBoS" class=""></td></tr><tr id="7c820883-3813-422a-a34f-551e6d65439d"><td id="n]DJ" class="">ts</td><td id="nudG" class="">string</td><td id="QNYH" class="">消息被推送出來的時間戳 (毫秒)</td><td id="TBoS" class=""></td></tr><tr id="17f2b209-9288-4065-94c9-3d7d35a73867"><td id="n]DJ" class="">data</td><td id="nudG" class="">Object</td><td id="QNYH" class="">Object</td><td id="TBoS" class=""></td></tr><tr id="d53c7cb8-7968-484a-b8c1-65d9da399fe1"><td id="n]DJ" class="">&gt; t</td><td id="nudG" class="">boolean</td><td id="QNYH" class="">允許交易</td><td id="TBoS" class=""></td></tr><tr id="bfcea9df-37d0-4bd2-8866-10f0964e4e2a"><td id="n]DJ" class="">&gt; w</td><td id="nudG" class="">boolean</td><td id="QNYH" class="">允許提現</td><td id="TBoS" class=""></td></tr><tr id="4f06afe6-a09b-4c3a-b517-eaeed5d0d0ab"><td id="n]DJ" class="">&gt; b</td><td id="nudG" class="">array</td><td id="QNYH" class="">錢包資產變化數組</td><td id="TBoS" class=""></td></tr><tr id="4bdb7c70-a2e8-42bd-9a80-836fa518d884"><td id="n]DJ" class="">&gt;&gt; c</td><td id="nudG" class="">string</td><td id="QNYH" class="">幣種</td><td id="TBoS" class=""></td></tr><tr id="782aa19c-58ca-467a-8e3d-559f3f224ee7"><td id="n]DJ" class="">&gt;&gt; tb</td><td id="nudG" class="">string</td><td id="QNYH" class="">总余额</td><td id="TBoS" class=""></td></tr><tr id="1c51c02c-1e8e-4f22-b218-b6b8a4ac7ab7"><td id="n]DJ" class="">&gt;&gt; ab</td><td id="nudG" class="">string</td><td id="QNYH" class="">可用餘額</td><td id="TBoS" class=""></td></tr><tr id="10bae2a4-7e89-4b04-a321-cde1a14e0e2d"><td id="n]DJ" class="">&gt;&gt; lb</td><td id="nudG" class="">string</td><td id="QNYH" class="">委託單預佔用金額</td><td id="TBoS" class=""></td></tr></tbody></table><p id="26c322e2-15af-491b-a8a2-bb69adcb0d4a" class="">返回樣例</p><pre id="a315249d-71d5-41d2-a80c-41294818a8ee" class="code code-wrap"><code>{
+    &quot;data&quot;:{
+        &quot;b&quot;:[
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;NEAR&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;OKB&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;DAI&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;BAT&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;99.7359208600&quot;,
+                &quot;c&quot;:&quot;ETH&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;99.7359208600&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;2120088.8785766903840000&quot;,
+                &quot;c&quot;:&quot;USDT&quot;,
+                &quot;lb&quot;:&quot;7635.0313100000000000&quot;,
+                &quot;tb&quot;:&quot;2127723.9098866903840000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;10.0000000000&quot;,
+                &quot;c&quot;:&quot;BTC&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;10.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;XRP&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;0.0000000000&quot;,
+                &quot;c&quot;:&quot;AAVE&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;0.0000000000&quot;
+            }
+        ],
+        &quot;t&quot;:&quot;true&quot;,
+        &quot;w&quot;:&quot;true&quot;
+    },
+    &quot;topic&quot;:&quot;tradewallet&quot;,
+    &quot;ts&quot;:&quot;1685594474146&quot;
+}
+</code></pre><h3 id="573072e1-06a7-4ff9-99ff-d8273c4ac5e9" class="">錯誤碼</h3><table id="2a02ea7a-c4b0-4f95-a2ae-ce4043be0b7d" class="simple-table"><tbody><tr id="8aeee4c9-2f55-4e67-be18-99586b8eaef6"><td id="_|pI" class="">錯誤碼</td><td id="ttLC" class="">描述</td><td id="Ppid" class="">備註</td></tr><tr id="50f01963-00a4-4c39-b79a-a5f9d7a0968c"><td id="_|pI" class="">0</td><td id="ttLC" class="">SUCCESS</td><td id="Ppid" class=""></td></tr><tr id="0cf420ee-e158-4ddb-be7d-f6e0ab411760"><td id="_|pI" class="">-1022</td><td id="ttLC" class="">無效的簽名</td><td id="Ppid" class=""></td></tr><tr id="9f02a284-e379-4f5c-9ce1-440fa8a1fbe6"><td id="_|pI" class="">-2100</td><td id="ttLC" class="">參數錯誤</td><td id="Ppid" class=""></td></tr><tr id="14a71800-9015-42be-b200-cfbabadfe9d1"><td id="_|pI" class="">-2201</td><td id="ttLC" class="">無訪問權限</td><td id="Ppid" class=""></td></tr></tbody></table></div></article></body></html>
