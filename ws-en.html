@@ -1,0 +1,1181 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Open-Api-Webscoket Document</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4b8bdd4a-48ed-4941-816d-698598690f0a" class="page sans"><header><h1 class="page-title">Open-Api-Webscoket Document</h1><p class="page-description"></p></header><div class="page-body"><h1 id="577f514f-7435-4586-8074-8b8209e180e2" class="">Basic Information</h1><h3 id="aaeafbdf-9d2d-4118-8c29-665244601a52" class="">Overview</h3><p id="08038835-2ae4-42d0-875a-defb5af8e41c" class="">WebSocket is a new protocol in HTML5. It enables full-duplex communication between the client and the server, allowing data to be quickly transmitted in both directions. A client-server connection can be established through a simple handshake, and the server can proactively push information to the client based on business rules. Its advantages are as follows:</p><ul id="5e27e3b1-c507-4c26-99cc-44ee1741ce1d" class="bulleted-list"><li style="list-style-type:disc">When transmitting data between the client and the server, the header information is relatively small, about 2 bytes.</li></ul><ul id="11d7948a-f793-49d3-9125-c7cfdc4191ee" class="bulleted-list"><li style="list-style-type:disc">Both the client and the server can actively send data to each other.</li></ul><ul id="3e347f56-5aa8-44ca-a303-8bd1e125c030" class="bulleted-list"><li style="list-style-type:disc">There is no need to create and destroy TCP requests multiple times, saving bandwidth and server resources.</li></ul><p id="f8fc6912-7761-4b10-bdf3-f7a9a5adbac7" class=""><strong>It is highly recommended for developers to use the WebSocket API to access market quotes, trading depth, and other information.</strong></p><h3 id="d786ea9d-f402-47c3-bf86-b228858f324a" class="">Basic Information</h3><ul id="2dcc6129-7b53-4879-84cc-4395acf08f12" class="bulleted-list"><li style="list-style-type:disc">Base site for spot market quotes.</li></ul><ul id="1432b2e0-3688-4926-8848-0696f28a2c0e" class="bulleted-list"><li style="list-style-type:disc">The returned data is in JSON format.</li></ul><p id="9604e6f8-6539-4026-a155-d6b37c1cf1ee" class=""><strong>Subscription Addresses:</strong></p><ul id="3bc4e23f-af2f-4758-9d9a-3480e9f39eab" class="bulleted-list"><li style="list-style-type:disc">Production Environment：wss://<a href="http://stream.hkmeex.com/ws">stream.meex.com/ws</a></li></ul><ul id="39bca010-5b99-4ace-9d8b-290e78605a4f" class="bulleted-list"><li style="list-style-type:disc">Test Environment:：wss://<a href="http://stream.hkmeex.com/ws">stream.hkmeex.com/ws</a></li></ul><p id="1242ff84-a846-4cf0-9466-20e066ea86fa" class="">Public channels do not require authentication. The following content is only applicable to private channels and subscriptions. When establishing a connection, create an authentication request.</p><h3 id="6bf74f1b-b656-4103-bb9b-86ebd1c98665" class="">IP Throttling</h3><ul id="2a6e5996-7ce6-4d56-8c4f-bf0ee738867b" class="bulleted-list"><li style="list-style-type:disc">Do not attempt to establish and disconnect connections frequently.</li></ul><ul id="aebb4724-1795-4426-ac69-86f5a98d1d19" class="bulleted-list"><li style="list-style-type:disc">Do not establish more than 10 connections within 5 minutes.</li></ul><h3 id="764e7b82-7bab-4a7b-bc85-6ce729691508" class="">How to Send Heartbeat:</h3><blockquote id="3880329a-18ab-4d71-9c34-6afbe8df5ad8" class="">Example of sending a ping.</blockquote><pre id="be735f81-c4f4-40a7-a446-40a9f3bd7534" class="code code-wrap"><code>
+{
+    &quot;reqId&quot;:&quot;customizationId100001&quot;,// reqId is an optional parameter.
+    &quot;op&quot;:&quot;ping&quot;
+}
+</code></pre><blockquote id="668fec09-4b07-4263-bb74-ce859a95601c" class="">Received pong response</blockquote><pre id="43116dc0-15e6-40e5-82b7-6ba4f307610f" class="code code-wrap"><code>{
+    &quot;op&quot;: &quot;pong&quot;,
+    &quot;args&quot;: [
+        1661741630642
+    ],
+    &quot;reqId&quot;: &quot;customizationId100001&quot;,
+    &quot;connId&quot;: &quot;706b870c&quot;
+}
+</code></pre><p id="11d2f181-8096-495e-b22c-8b7b992d89be" class="">Warning:</p><p id="15225126-33e7-4c21-9805-a22a5ccb10cf" class="">To maintain the connection, we recommend sending a heartbeat every 20 seconds.</p><h3 id="88e3a0ba-6293-41ef-a255-bd2aad6bb3b0" class="">Rate Limit</h3><p id="8c4d5764-7109-4002-a186-67604aaf9813" class=""><strong>Only for private channels:</strong></p><ul id="1c9a1463-eb87-43f7-92fb-c733ee9bbe9d" class="bulleted-list"><li style="list-style-type:disc">Each api_key can maintain a maximum of 10 websocket private connections. New connections will be rejected by the server once it exceeds 10 connections.</li></ul><ul id="92738653-ea11-4986-b523-3f78d41364dc" class="bulleted-list"><li style="list-style-type:disc">A maximum of 10 websocket private topic connections per IP simultaneously.</li></ul><h3 id="fa6c931d-fe05-4efa-b17f-7049f552e62f" class=""><strong>SIGNED Request Example (HMAC)</strong></h3><p id="02b6430e-ecde-4606-9da7-baa7250efc81" class="">Here is a step-by-step guide on how to sign a request using the HMAC secret key. Example API key and secret key:</p><table id="2d1a5a19-a4e2-4924-b2ba-29c0e2761320" class="simple-table"><tbody><tr id="c92f8b2e-db49-4d8b-8860-f6fd405e2062"><td id="H[\K" class=""><strong>Key</strong></td><td id="&lt;lAS" class=""><strong>Value</strong></td></tr><tr id="4fe7317d-5716-4a37-813b-f0bcdb264941"><td id="H[\K" class="">apiKey</td><td id="&lt;lAS" class="">vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td></tr><tr id="520819ce-d3b6-4f07-9afa-2d7a9dbb2edf"><td id="H[\K" class="">secretKey</td><td id="&lt;lAS" class="">NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j</td></tr></tbody></table><p id="89b935f0-fccb-4482-9459-9c07f01fd07e" class=""><strong>Warning: Do not share your private key with anyone.</strong></p><p id="da94555a-ecf6-45b2-a506-2ab2e8c007c0" class=""><strong>Step 1: Create the signature content</strong></p><p id="4d8811d5-e508-4a58-bfec-df201d0a3016" class="">Get all request params except for the signature, then sort them in alphabetical order by name:</p><table id="a4c3e932-b2d8-4294-afaf-7825ae862a93" class="simple-table"><tbody><tr id="47ad1116-1190-4edf-9bd1-6ba90c60f702"><td id="sFKv" class=""><strong>Parameters</strong></td><td id="~yf]" class=""><strong>Example</strong></td></tr><tr id="a39ceabf-b770-4bb8-999f-481084673257"><td id="sFKv" class="">apiKey</td><td id="~yf]" class="">vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8E</td></tr><tr id="312cab55-ad20-4330-8ddf-d210f057b59e"><td id="sFKv" class="">timestamp</td><td id="~yf]" class="">1645423376532</td></tr></tbody></table><p id="0ed73d67-35d0-4e81-9eb7-00afeb5b74fd" class="">Format the parameters as parameter=value pairs, and separate each parameter with an &amp;.</p><p id="81eaffa5-1701-431b-8a42-9c9372b695af" class=""><strong>Step 2: Calculate the signature</strong></p><ol type="1" id="107b682a-f6dd-4e11-b86c-2b42ad3cf33e" class="numbered-list" start="1"><li>Interpret the secretKey as ASCII data and use it as the key for HMAC-SHA-256.</li></ol><ol type="1" id="0858ead6-8cf8-4637-9880-11b1065a6cd8" class="numbered-list" start="2"><li>Sign the signature payload as ASCII data.</li></ol><ol type="1" id="9bfe6fad-59ce-4c5d-8e86-0b9dde725322" class="numbered-list" start="3"><li>Encode the HMAC-SHA-256 output as a hex string.</li></ol><p id="7c03e9a8-7be6-443f-840d-4fce2daaeb31" class="">Note that apiKey, secretKey, and payload are case-sensitive. The generated signature value is case-insensitive. You can use OpenSSL to cross-check your algorithm implementation: For example, secretKey=secretKey123455</p><pre id="da839d6d-e261-44d8-977a-4ebc6fc3ae51" class="code code-wrap"><code>$ echo -n &quot;1645423376532GET/ws| openssl dgst -sha256 -hmac &quot;secretKey123455&quot;
+</code></pre><p id="07044c23-b3a9-413b-8d0d-2df87b6ac0d9" class=""><strong>Step 3: Complete request:</strong></p><pre id="179735e6-005f-4283-bddd-437bb8664545" class="code code-wrap"><code>// request
+{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // optional parameter
+    &quot;op&quot;: &quot;auth&quot;,
+    &quot;args&quot;: [
+        &quot;vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A&quot;,
+        1662350400000,
+        &quot;singature&quot;
+    ]
+}
+
+// response
+{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;args&quot;:[
+            &quot;cdbada06eecbd54fa0127702afb7819e&quot;,
+            &quot;1684904306427&quot;,
+            &quot;dd82084ab69d076557d3eb8dd6af31b40f993f77990b9cfb64ad78682219747a&quot;
+        ],
+        &quot;op&quot;:&quot;auth&quot;,
+        &quot;reqId&quot;:&quot;customizationId100001&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}
+</code></pre><p id="8de8ba4a-1e99-456c-a7c9-aa13b5f055da" class="">Python Example</p><pre id="49202373-24d1-4261-8f26-69bc2859446f" class="code code-wrap"><code>def auth(self):
+    current = str(round(time.time() * 1000))
+    auth_request = {
+        &quot;reqId&quot;: &quot;customizationId100001&quot;,
+        &quot;op&quot;: &quot;auth&quot;,
+        &quot;args&quot;: [
+            apikey,
+            current,
+            self.toSign(current,&quot;GET&quot;,&quot;/ws&quot;,&quot;&quot;,&quot;&quot;,secret)
+        ]
+    }
+    auth_request_json = json.dumps(auth_request)
+    self.ws.send(auth_request_json)
+
+# generate signature
+def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
+    return hmac.new(secretKey.encode(&#x27;UTF-8&#x27;),
+                    self.preHash(timestamp, method, requestPath, queryString, body).encode(&#x27;UTF-8&#x27;),
+                    &quot;SHA256&quot;).hexdigest()
+</code></pre><h3 id="b2e9a6a0-734f-47d5-8d2d-f02bd68d8274" class="">How to subscribe to a topic</h3><h3 id="4b801f47-4f5a-420b-90cf-abc2ee34f4c9" class="">The args in the WebSocket</h3><p id="ac6c5795-56bd-4d07-9f86-8595ca5a56c5" class="">Subscribe to specific topics by passing in args.</p><pre id="51519291-5ac7-4605-81a4-09c1c8165b2c" class="code code-wrap"><code>// subscribe topic
+{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // optional parameter
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;
+    ]
+}
+</code></pre><p id="dea7fb98-c148-4edf-aef1-7bd492de233d" class="">Multiple topics or symbols can be subscribed to by separating them with commas.</p><pre id="1ed7ff7e-d8d1-4af9-965d-5436779fd815" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, // optional parameter
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;,
+        &quot;ticker.btcusdt&quot;
+    ]
+}
+</code></pre><h3 id="aeb55ece-ddbb-4cad-b27c-efe615e8447b" class="">How to unsubscribe</h3><p id="b9d346ee-a410-4537-8dc1-4f3cc97be011" class="">You can dynamically stop subscribing by sending a request:</p><pre id="265656f1-6d7b-4a84-9dd0-1223a825f195" class="code code-wrap"><code>// Request
+{
+    &quot;op&quot;: &quot;unsubscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.100&quot;
+    ],
+    &quot;reqId&quot;: &quot;customizationId100001&quot;
+}
+// Response
+{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;op&quot;:&quot;unsubscribe&quot;,
+        &quot;reqId&quot;:&quot;reqid0001&quot;,
+        &quot;topic&quot;:&quot;depth.btcusdt.100&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}x
+</code></pre><h3 id="225864a2-c55d-44ae-b9b3-c4785981b540" class="">Response after successful subscription</h3><blockquote id="216dc4f0-923b-4df7-8033-3c2895934cad" class="">Example response after a message is pushed</blockquote><pre id="0a3edc53-4fe4-4938-98a2-7527baa89c44" class="code code-wrap"><code>{
+    &quot;connId&quot;:&quot;db94ec37-2b6a-4cb9-97e9-d19cec6e16a6&quot;,
+    &quot;req&quot;:{
+        &quot;op&quot;:&quot;subscribe&quot;,
+        &quot;reqId&quot;:&quot;customizationId100001&quot;,
+        &quot;topic&quot;:&quot;depth.btcusdt.100&quot;
+    },
+    &quot;retCode&quot;:&quot;0&quot;,
+    &quot;retMsg&quot;:&quot;Success&quot;
+}
+</code></pre><h1 id="3fa980fb-09aa-40ef-9a5d-c31021e53724" class=""><strong>Public Channels</strong></h1><h3 id="bc1f47b0-be08-4d38-9ff5-273c35066d07" class="">1、<strong>Get Depth List</strong></h3><p id="f2a82720-ee22-4c67-9a5b-edeed29a23be" class="">Topic:depth.{symbol}.{level}</p><p id="f720c587-022f-44cb-8418-3448268738b8" class="">Push frequency：2s</p><p id="f462369b-54fb-4326-8329-db8661619523" class="">Levels: 1, 5, 100</p><p id="a71fa8f1-539f-46a1-b503-cb125a4e9243" class="">Request example</p><pre id="73e89571-354c-49c4-954f-2ef65284f46c" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;customizationId100001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;depth.btcusdt.1&quot;
+    ]
+}
+</code></pre><p id="e8a8b40e-57b0-4fa0-8898-05e4e552911b" class="">Response Parameters：</p><table id="e0c7d665-c1af-4b97-a2ef-bc9509e1011f" class="simple-table"><tbody><tr id="5573923e-1f68-4238-9196-a5b04f4d9867"><td id="chJI" class=""><strong>Params</strong></td><td id="ZH^O" class=""><strong>Type</strong></td><td id="D|;G" class=""><strong>Description</strong></td></tr><tr id="887a6e76-ae78-457a-803d-594d9facd3bf"><td id="chJI" class="">topic</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Topic Name</td></tr><tr id="fc89bf66-82a5-4f77-9566-a2138fd70151"><td id="chJI" class="">ts</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Timestamp (in milliseconds) when the message was pushed</td></tr><tr id="86149f85-c38a-4f97-996b-b7009e7eeaec"><td id="chJI" class="">data</td><td id="ZH^O" class="">Object</td><td id="D|;G" class="">Object</td></tr><tr id="acc86fe2-3b14-41a1-9e26-0228a4bacf04"><td id="chJI" class="">&gt; s</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Currency pair name</td></tr><tr id="591b012b-dd58-49be-ab88-595a74427d9d"><td id="chJI" class="">&gt; t</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">timestamp</td></tr><tr id="c4fee3b3-1299-458f-8822-23e3b0f1f289"><td id="chJI" class="">&gt;b</td><td id="ZH^O" class="">array</td><td id="D|;G" class="">Bid, buyer. Sorted by price from highest to lowest</td></tr><tr id="5aa413d1-e786-4cce-9a7e-b74025ebd4f0"><td id="chJI" class="">&gt;&gt; b[0]</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Buyer quote</td></tr><tr id="3ed72b97-1df4-49e4-a7a7-6b53f6644a40"><td id="chJI" class="">&gt;&gt; b[1]</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Buyer quantity</td></tr><tr id="ab3cc9e3-7b14-4ff5-9aa3-5e25b3eeb5ed"><td id="chJI" class="">&gt; a</td><td id="ZH^O" class="">array</td><td id="D|;G" class="">Ask, seller. Sorted by price from lowest to highest</td></tr><tr id="12b57d32-17e4-4019-b4c9-cf40967e9c60"><td id="chJI" class="">&gt;&gt; a[0]</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Seller quote</td></tr><tr id="1c8c3ee4-8c9f-4591-9fb8-b0b017430f40"><td id="chJI" class="">&gt;&gt; a[1]</td><td id="ZH^O" class="">string</td><td id="D|;G" class="">Seller quantity</td></tr></tbody></table><p id="ac46ec4f-3ccc-4549-9ccf-bd6135e3d8b0" class="">Response example</p><pre id="14155122-cfd9-4ecf-a342-10416b56f864" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;depth.btcusdt.1&quot;,
+    &quot;ts&quot;:&quot;1685593765010&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;t&quot;:1685593755000,
+        &quot;a&quot;:[
+            [
+                27590.21,
+                0.15717024
+            ]
+        ],
+        &quot;b&quot;:[
+            [
+                27000,
+                0.95
+            ]
+        ]
+    }
+}
+</code></pre><h3 id="266d6be4-f3f4-49f4-9995-a4137bb8e06e" class="">2、K-line</h3><p id="74f9cb03-70f5-43da-9dda-1d0c4e8c037e" class="">Topic:kilne.{symbol}.{interval}</p><p id="e04b1790-afee-40ea-a00c-ac3605f2c473" class="">interval:1min,5min,15min,30min,60min,1day,1week,1month</p><p id="6464552f-825e-4a69-9b40-9e43232387d0" class="">Push frequency：1s</p><p id="407bc716-babe-48a4-a371-0606d79fa1da" class="">Request example</p><pre id="390a2162-9178-4735-b1a7-7ee5b63f6d4c" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;kline00001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;kline.btcusdt.30min&quot;
+    ]
+}
+</code></pre><p id="e0707e24-c57f-47b1-a519-b733749c4809" class="">Response Parameters：</p><table id="55612290-3bd6-4f3a-83ad-1023f391226c" class="simple-table"><tbody><tr id="b5db3eb0-bac6-47a5-a6c5-d07fc400967f"><td id="U}&gt;=" class=""><strong>Parameters</strong></td><td id="BSFy" class=""><strong>Type</strong></td><td id="AG|h" class=""><strong>Description</strong></td></tr><tr id="ad81885e-e318-47a8-b7a8-52c44ec89887"><td id="U}&gt;=" class="">topic</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Topic Name</td></tr><tr id="056a6cfd-bc1a-431e-95e7-f5d23f5d1d9a"><td id="U}&gt;=" class="">ts</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Timestamp (in milliseconds) when the message was pushed</td></tr><tr id="f9d9c9d8-f804-4cfb-a0ef-3e686e7de5c5"><td id="U}&gt;=" class="">data</td><td id="BSFy" class="">Object</td><td id="AG|h" class="">Object</td></tr><tr id="c0eea6fc-6355-4845-b491-1a00c6f4b239"><td id="U}&gt;=" class="">&gt;s</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Currency pair name</td></tr><tr id="c6e12d9f-0af6-4fba-96ac-1c82b6141778"><td id="U}&gt;=" class="">&gt; i</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Kline interval</td></tr><tr id="1c719965-738b-4cf6-8553-1bb6587cb245"><td id="U}&gt;=" class="">&gt; st</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Start timestamp (milliseconds)</td></tr><tr id="1c024e07-2e8c-4ef2-b659-95f428dd79be"><td id="U}&gt;=" class="">&gt; ed</td><td id="BSFy" class="">string</td><td id="AG|h" class="">End timestamp (milliseconds)</td></tr><tr id="dbf863d7-1fe9-4e33-9620-8cf8b71078db"><td id="U}&gt;=" class="">&gt; o</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Opening price</td></tr><tr id="25cd149a-7120-458c-b156-187d9c6f0cb9"><td id="U}&gt;=" class="">&gt; c</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Closing price</td></tr><tr id="17aa54ca-32ef-4c40-a904-aa31ab0974c2"><td id="U}&gt;=" class="">&gt; h</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Highest price</td></tr><tr id="a1399c24-a4ca-4150-906f-2ca6becfe999"><td id="U}&gt;=" class="">&gt; l</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Lowest price</td></tr><tr id="821bf23e-7f2b-484f-8ed3-4adf7d1e9c1b"><td id="U}&gt;=" class="">&gt; v</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Trading volume</td></tr><tr id="6d07ec87-36fb-48fe-b1b1-960d8c3398b9"><td id="U}&gt;=" class="">&gt; a</td><td id="BSFy" class="">string</td><td id="AG|h" class="">Transaction amount</td></tr></tbody></table><p id="4d809e54-d5a9-4222-8df5-93ac7a9e7e3a" class="">Response example</p><pre id="c88a19d0-0b83-4ac6-afcd-e87f111ab83b" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;kline.btcusdt.1min&quot;,
+    &quot;ts&quot;:&quot;1685593630009&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;i&quot;:&quot;1min&quot;,
+        &quot;st&quot;:&quot;1685593560000&quot;,
+        &quot;ed&quot;:&quot;1685593620000&quot;,
+        &quot;o&quot;:&quot;27000&quot;,
+        &quot;c&quot;:&quot;27000&quot;,
+        &quot;h&quot;:&quot;27000&quot;,
+        &quot;l&quot;:&quot;27000&quot;,
+        &quot;v&quot;:&quot;0&quot;,
+        &quot;a&quot;:&quot;0&quot;
+    }
+}
+</code></pre><h3 id="d3036143-148d-4f92-8376-885f47b759c7" class="">3、The Market Price</h3><p id="8bb70224-bf6e-4cca-a45b-da459b6cc852" class="">Topic:ticker.{symbol}</p><p id="1649c040-0896-49aa-9705-db28c887464d" class="">Push frequency：1s</p><p id="bd28ceda-78a3-4080-8d59-5867fb207ca9" class="">Request example</p><pre id="611fe7dc-fc38-4d68-a6f8-779b1268de51" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;ticker00001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;ticker.btcusdt&quot;
+    ]
+}
+</code></pre><p id="8f20ef04-c3dd-4ed5-a373-5c702e9df4e1" class="">Response Parameters：</p><table id="8fc5796d-7864-4e15-9738-9c0b5aac4468" class="simple-table"><tbody><tr id="090e8599-30a0-4ad1-ae5f-9939ca2ddff6"><td id="C;|i" class=""><strong>Parameters</strong></td><td id="pJ?f" class=""><strong>Type</strong></td><td id="V|QP" class=""><strong>Description</strong></td></tr><tr id="fd6f9ebf-2c6d-48eb-9bed-1ebbf3ec96ef"><td id="C;|i" class="">topic</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Topic Name</td></tr><tr id="75be92a4-58ca-4cf9-9766-6449ba24ff80"><td id="C;|i" class="">ts</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Timestamp (in milliseconds) when the message was pushed</td></tr><tr id="f48c4b23-0437-4e2d-94a0-b5312ce67ed5"><td id="C;|i" class="">data</td><td id="pJ?f" class="">Object</td><td id="V|QP" class=""></td></tr><tr id="a8e0fc8a-837e-434f-96e1-cba5916089cc"><td id="C;|i" class="">&gt; s</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Currency pair name</td></tr><tr id="1b462bc2-cfb3-4c88-8a3f-76d333111866"><td id="C;|i" class="">&gt; h</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">maximum price</td></tr><tr id="b2773454-e348-41cd-ab84-f55949822bcd"><td id="C;|i" class="">&gt; l</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">bottom price</td></tr><tr id="0476297e-bedc-4255-96c1-20859b92b7c8"><td id="C;|i" class="">&gt; v</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Trading volume</td></tr><tr id="67d67087-c32f-4c5a-bd14-e1886f9573d4"><td id="C;|i" class="">&gt; a</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Trading</td></tr><tr id="fa077357-e451-42a9-80ba-8686a11f73e9"><td id="C;|i" class="">&gt;bp</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Buy one price</td></tr><tr id="184cae94-fe9a-4fda-a8e6-592494a68165"><td id="C;|i" class="">&gt;bq</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Buy one price quantity</td></tr><tr id="d0393534-43e6-473b-9df5-85b8232958a2"><td id="C;|i" class="">&gt;ap</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Sell one price</td></tr><tr id="2a3f8e92-2116-487b-bfe3-63a1315e7b56"><td id="C;|i" class="">&gt;aq</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Sell one price quantity</td></tr><tr id="55327c90-5a64-4c4e-87a8-ee694437d289"><td id="C;|i" class="">&gt; m</td><td id="pJ?f" class="">string</td><td id="V|QP" class="">Price change</td></tr></tbody></table><p id="bde9b77a-bd72-4047-83b1-704f262689c6" class="">Response example</p><pre id="fac93d65-2c49-4622-849a-63994d9cbd25" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;ticker.btcusdt&quot;,
+    &quot;ts&quot;:&quot;1685593691006&quot;,
+    &quot;data&quot;:{
+        &quot;s&quot;:&quot;btcusdt&quot;,
+        &quot;h&quot;:&quot;27590.21&quot;,
+        &quot;l&quot;:&quot;27000&quot;,
+        &quot;v&quot;:&quot;0.16061&quot;,
+        &quot;a&quot;:&quot;27000.0000000000000000&quot;,
+        &quot;bp&quot;:&quot;27000&quot;,
+        &quot;bq&quot;:&quot;0.95&quot;,
+        &quot;ap&quot;:&quot;27590.21&quot;,
+        &quot;aq&quot;:&quot;0.15717024&quot;,
+        &quot;m&quot;:&quot;-0.0213849143&quot;
+    }
+}
+</code></pre><h3 id="8d5cb3ad-ebbc-4eac-a9cc-41d452a0dcb3" class="">4、Recently Transacted</h3><p id="437baa10-2af7-4291-b826-d94ca692b541" class="">Topic:trades.{symbol}</p><p id="9ba06cb6-f9a1-4918-8ba1-bfedeff4420e" class="">Push frequency：1s</p><p id="69782307-84f4-4e2c-af84-d90823eb00ec" class="">Request Parameters：</p><p id="47072c6e-f0ad-4361-b3e7-72f35fffba96" class="">Request example</p><pre id="56466023-df05-4020-b276-803148d5c1e0" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;trades001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;trades.ethusdt&quot;
+    ]
+}
+</code></pre><p id="39cc1c1b-c72e-4a5a-bab8-dbb3002b6fcf" class="">Response example</p><pre id="80a423f1-c9b4-460e-9515-2a6400bef3b3" class="code code-wrap"><code>{
+    &quot;topic&quot;:&quot;trades.ethusdt&quot;,
+    &quot;ts&quot;:&quot;1685593944010&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1685551228000&quot;,
+            &quot;p&quot;:&quot;1860.77&quot;,
+            &quot;q&quot;:&quot;0.0100&quot;,
+            &quot;sd&quot;:&quot;buy&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844326000&quot;,
+            &quot;p&quot;:&quot;1854.20&quot;,
+            &quot;q&quot;:&quot;0.0050&quot;,
+            &quot;sd&quot;:&quot;buy&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844325000&quot;,
+            &quot;p&quot;:&quot;1854.19&quot;,
+            &quot;q&quot;:&quot;0.0050&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844325000&quot;,
+            &quot;p&quot;:&quot;1854.19&quot;,
+            &quot;q&quot;:&quot;0.0070&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        },
+        {
+            &quot;s&quot;:&quot;ethusdt&quot;,
+            &quot;t&quot;:&quot;1684844321000&quot;,
+            &quot;p&quot;:&quot;1854.20&quot;,
+            &quot;q&quot;:&quot;0.0300&quot;,
+            &quot;sd&quot;:&quot;sell&quot;
+        }
+    ]
+}
+</code></pre><h1 id="2bacb10e-f8e4-4c95-a6c8-a30527d10952" class=""><strong>Private Channels</strong></h1><h3 id="4aae3f08-2244-4d20-ba30-8913361c6820" class="">1、Order</h3><p id="9d116f77-ccc8-40a0-aa03-6f457cae8e1a" class="">Topic:order</p><p id="9f094053-6533-485e-a952-2944808ef265" class="">Push frequency：Real-time</p><p id="1e5fdc83-230d-48f5-9b28-3169ff5ce7e0" class="">Request example</p><pre id="49d45a18-507c-4c4f-b84e-d4c242cef242" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;order001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;order&quot;
+    ]
+}
+</code></pre><p id="03e62f16-fd3d-43cf-abbb-cc54172ff903" class="">Response Parameters：</p><table id="958f8715-2483-4c3f-b307-eb81cb0a4456" class="simple-table"><tbody><tr id="51136f8a-56aa-4c37-84af-786e7f902263"><td id="K|Dp" class=""><strong>Params</strong></td><td id="ZWl&lt;" class=""><strong>Type</strong></td><td id="XDu|" class=""><strong>Description</strong></td></tr><tr id="e6c105a4-9713-4165-a80b-a576ed415c5d"><td id="K|Dp" class="">topic</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Topic名</td></tr><tr id="06f07d99-75d3-4b87-b061-0c843bd01c6e"><td id="K|Dp" class="">ts</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Timestamp when the message was pushed (milliseconds)</td></tr><tr id="f1e27867-3429-428d-abaf-7cfb51ce93f4"><td id="K|Dp" class="">data</td><td id="ZWl&lt;" class="">Object</td><td id="XDu|" class="">Object</td></tr><tr id="f503ee26-8571-42d9-a3d7-b205c8938d79"><td id="K|Dp" class="">&gt; s</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">symbol</td></tr><tr id="937a7e47-776d-4350-8201-54e392630095"><td id="K|Dp" class="">&gt; t</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order creation time (milliseconds)</td></tr><tr id="fca75cd1-a3b8-4ba5-813f-8fb35e3a7992"><td id="K|Dp" class="">&gt; o</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order ID</td></tr><tr id="8a1f2b7e-ad84-480e-9757-633c11c05ebe"><td id="K|Dp" class="">&gt; ol</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order ID set by the user</td></tr><tr id="8fc32a38-ed68-4a33-a922-a6561dff6a86"><td id="K|Dp" class="">&gt; sd</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order Side. BUY, SELL</td></tr><tr id="8a2e1bd8-33bd-4ede-88da-1b21dbe4f50b"><td id="K|Dp" class="">&gt; ty</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order Type. LIMIT, MARKET</td></tr><tr id="5d704a5c-cba0-4dc1-b5d0-2484f8dbfa9f"><td id="K|Dp" class="">&gt; q</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order quantity</td></tr><tr id="039b718d-a458-4752-b10a-79c62f337cdb"><td id="K|Dp" class="">&gt; p</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order price</td></tr><tr id="1da601d8-7a76-43bd-93d6-41dd370772ba"><td id="K|Dp" class="">&gt; x</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Order Status NEW (new order, no execution), PART_FILLED (partially filled), FILLED (fully filled), CANCELED (canceled)</td></tr><tr id="f9d8cdd6-85e5-46f7-a282-a12b718c9665"><td id="K|Dp" class="">&gt; lq</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Recent trading quantity</td></tr><tr id="a2c6a04d-5406-4ad8-8a43-625dd838ccfd"><td id="K|Dp" class="">&gt; tq</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Accumulated trading quantity</td></tr><tr id="0800d991-beb7-473e-a401-39fe430903fa"><td id="K|Dp" class="">&gt; lp</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Recent trading price</td></tr><tr id="7cc57d2b-a90b-4977-b01f-69f74662bd1c"><td id="K|Dp" class="">&gt; tp</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Accumulated trading amount</td></tr><tr id="e9ada909-0111-4a50-be2e-83e6c07b34a5"><td id="K|Dp" class="">&gt; f</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Transaction fee (per transaction)</td></tr><tr id="d58f7023-ee6f-40c5-85d8-fcabaef39c2d"><td id="K|Dp" class="">&gt; fs</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Transaction fee currency</td></tr><tr id="fe84ab47-1c55-46d6-9f19-b8a399ee8415"><td id="K|Dp" class="">&gt; ic</td><td id="ZWl&lt;" class="">boolean</td><td id="XDu|" class="">Whether closed</td></tr><tr id="bef365f1-611c-4abf-91f8-1c0441436f98"><td id="K|Dp" class="">&gt; tid</td><td id="ZWl&lt;" class="">string</td><td id="XDu|" class="">Transaction ID</td></tr></tbody></table><p id="eea65b9f-38b1-4007-8119-aff363aadb77" class="">Response example</p><pre id="6467743c-b2c2-4a1a-b3b5-51342aeab323" class="code code-wrap"><code>// Trading Response
+{
+    &quot;topic&quot;: &quot;order&quot;,
+    &quot;ts&quot;: &quot;1681698833381&quot;,
+    &quot;data&quot;:
+        {
+            &quot;s&quot;: &quot;btcusdt&quot;,
+            &quot;t&quot;: &quot;1681698833313&quot;
+            &quot;o&quot;: &quot;140058&quot;,
+            &quot;ol&quot;: &quot;test-error-liangwuuu-02&quot;,
+            &quot;sd&quot;: &quot;BUY&quot;,
+            &quot;ty&quot;: &quot;MARKET&quot;,
+            &quot;q&quot;: &quot;15&quot;,
+            &quot;p&quot;: &quot;234.2&quot;,
+            &quot;x&quot;: &quot;FILLED&quot;,
+            &quot;lq&quot;: &quot;0.1&quot;,
+            &quot;tq&quot;: &quot;0.9&quot;,
+            &quot;lp&quot;: &quot;2356.1&quot;,
+            &quot;tp&quot;: &quot;2356.1&quot;,
+            &quot;f&quot;: &quot;0.01&quot;,
+            &quot;fs&quot;: &quot;USDT&quot;,
+            &quot;ic&quot;: &quot;true&quot;,
+            &quot;tid&quot;: &quot;123&quot;
+        }
+}
+// Cancel Order Response
+{
+    &quot;data&quot;:{
+        &quot;ic&quot;:&quot;true&quot;,
+        &quot;o&quot;:&quot;1959474&quot;,
+        &quot;ol&quot;:&quot;bytetest43344441685442676408&quot;,
+        &quot;p&quot;:&quot;1860.0000000000000000&quot;,
+        &quot;q&quot;:&quot;0.0010000000000000&quot;,
+        &quot;s&quot;:&quot;ethusdt&quot;,
+        &quot;sd&quot;:&quot;BUY&quot;,
+        &quot;t&quot;:&quot;1685442677984&quot;,
+        &quot;tp&quot;:&quot;0.0000000000000000&quot;,
+        &quot;tq&quot;:&quot;0.0000000000000000&quot;,
+        &quot;ty&quot;:&quot;LIMIT&quot;,
+        &quot;x&quot;:&quot;CANCELED&quot;
+    },
+    &quot;topic&quot;:&quot;order&quot;,
+    &quot;ts&quot;:&quot;1685594128218&quot;
+}
+// Order Response
+{
+    &quot;data&quot;:{
+        &quot;ic&quot;:&quot;false&quot;,
+        &quot;o&quot;:&quot;1959482&quot;,
+        &quot;ol&quot;:&quot;&quot;,
+        &quot;p&quot;:&quot;1852.0000000000000000&quot;,
+        &quot;q&quot;:&quot;0.0100000000000000&quot;,
+        &quot;s&quot;:&quot;ethusdt&quot;,
+        &quot;sd&quot;:&quot;BUY&quot;,
+        &quot;t&quot;:&quot;1685594250192&quot;,
+        &quot;tp&quot;:&quot;0.0000000000000000&quot;,
+        &quot;tq&quot;:&quot;0.0000000000000000&quot;,
+        &quot;ty&quot;:&quot;LIMIT&quot;,
+        &quot;x&quot;:&quot;NEW&quot;
+    },
+    &quot;topic&quot;:&quot;order&quot;,
+    &quot;ts&quot;:&quot;1685594250244&quot;
+}
+</code></pre><h3 id="9be161fc-5c71-483e-9e1f-e790d720840f" class="">2、Transaction records</h3><p id="1e616138-09cc-45dd-82f9-e8c3aa0f5f01" class="">Topic:mytrades</p><p id="72948dc6-e284-48ac-84f5-2856df66b975" class="">Push frequency：Real-time</p><p id="90cfeea6-f8c8-4b86-91dc-f36d55b68866" class="">Request example</p><pre id="57ce2b6f-bbed-4b3b-b731-77cdf72b9ca9" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;mytrades001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;mytrades&quot;
+    ]
+}
+</code></pre><p id="f3eec130-20de-4509-a2a9-de9b978e59f6" class="">
+</p><p id="eaf65911-3ae9-459f-ae0b-18931b523772" class="">Response example</p><pre id="57e88200-97f3-41e9-b5ff-6d7b9fabe57c" class="code code-wrap"><code>{
+    &quot;topic&quot;: &quot;mytrades&quot;,
+    &quot;ts&quot;: &quot;1662348310388&quot;,
+    &quot;data&quot;:
+        {
+            &quot;s&quot;: &quot;btcusdt&quot;,
+            &quot;t&quot;: &quot;1662348310373&quot;,
+            &quot;p&quot;: &quot;19842.02&quot;,
+            &quot;q&quot;: &quot;0.001007&quot;,
+            &quot;f&quot;: &quot;0.0001&quot;,
+            &quot;fc&quot;: &quot;USDT&quot;,
+            &quot;tid&quot;: &quot;123&quot;,
+            &quot;o&quot;: &quot;1238261807653647872&quot;,
+            &quot;ol&quot;: &quot;spotx008&quot;,
+            &quot;m&quot;: &quot;true&quot;,
+            &quot;sd&quot;: &quot;BUY&quot;
+        }
+}
+</code></pre><h3 id="c86f8af9-055d-4e2f-9cc2-48cab15a5fc9" class="">3、Wallet</h3><p id="9700caa0-eefb-49ec-86eb-b6836ad41197" class="">Topic:tradewallet</p><p id="55f54d93-49f1-416a-8e2e-3d9e708433a6" class="">Push frequency：Real-time</p><p id="575990e2-f485-4cb5-a0cb-1eb3d1e516cb" class="">Request example:</p><pre id="48287320-9ede-472e-bd14-63db8622ecb4" class="code code-wrap"><code>{
+    &quot;reqId&quot;: &quot;tradewallet001&quot;, //optional
+    &quot;op&quot;: &quot;subscribe&quot;,
+    &quot;args&quot;: [
+        &quot;tradewallet&quot;
+    ]
+}
+</code></pre><p id="3dc557ad-4dba-4a30-8e51-2b372a9e52f0" class="">Response Parameters：</p><table id="8e773a23-5e95-4a09-8747-6cd3a56a1870" class="simple-table"><tbody><tr id="fe060e76-6a3e-44a5-b900-02a3750eb0be"><td id="KA|:" class=""><strong>Params</strong></td><td id="FyAF" class=""><strong>Type</strong></td><td id="AJPu" class=""><strong>Description</strong></td></tr><tr id="308e7898-80ee-46a4-a76b-a70c8e9a0689"><td id="KA|:" class="">topic</td><td id="FyAF" class="">string</td><td id="AJPu" class="">Topic Name</td></tr><tr id="edb90b4f-df54-4601-985f-3913906b2fab"><td id="KA|:" class="">ts</td><td id="FyAF" class="">string</td><td id="AJPu" class="">Timestamp when the message was pushed (milliseconds)</td></tr><tr id="d431d162-c9d0-417a-9dc3-9d92ae2696e6"><td id="KA|:" class="">data</td><td id="FyAF" class="">Object</td><td id="AJPu" class="">Object</td></tr><tr id="466f5390-4e2c-431e-86bd-7de8be167a58"><td id="KA|:" class="">&gt; t</td><td id="FyAF" class="">boolean</td><td id="AJPu" class="">Allow trading</td></tr><tr id="1c87845b-7a21-47cd-b6db-b9c3f58dcf67"><td id="KA|:" class="">&gt; w</td><td id="FyAF" class="">boolean</td><td id="AJPu" class="">Allow withdrawal</td></tr><tr id="17d49d73-764c-42f8-acb1-6b6fac2ba060"><td id="KA|:" class="">&gt; b</td><td id="FyAF" class="">array</td><td id="AJPu" class="">Wallet asset change array</td></tr><tr id="6bae12a7-0c3e-426d-8d0b-a1c4ce2df15e"><td id="KA|:" class="">&gt;&gt; c</td><td id="FyAF" class="">string</td><td id="AJPu" class="">symbol</td></tr><tr id="a13e74cb-4047-455b-86ca-273d337539e2"><td id="KA|:" class="">&gt;&gt; tb</td><td id="FyAF" class="">string</td><td id="AJPu" class="">Total balance</td></tr><tr id="8af81cf7-5a11-4ea1-8fc0-2cce96888d8c"><td id="KA|:" class="">&gt;&gt; ab</td><td id="FyAF" class="">string</td><td id="AJPu" class="">Available balance</td></tr><tr id="77f5e634-2aa3-4559-b509-c3498d900293"><td id="KA|:" class="">&gt;&gt; lb</td><td id="FyAF" class="">string</td><td id="AJPu" class="">Occupied amount of the order</td></tr></tbody></table><p id="89e2ba3f-3d6f-4573-91ff-c0f9feaf8d81" class="">Response example</p><pre id="e75ee4a3-b27f-4c7a-8d34-b07e72d2251d" class="code code-wrap"><code>{
+    &quot;data&quot;:{
+        &quot;b&quot;:[
+            {
+                &quot;ab&quot;:&quot;99.7359208600&quot;,
+                &quot;c&quot;:&quot;ETH&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;99.7359208600&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;2120088.8785766903840000&quot;,
+                &quot;c&quot;:&quot;USDT&quot;,
+                &quot;lb&quot;:&quot;7635.0313100000000000&quot;,
+                &quot;tb&quot;:&quot;2127723.9098866903840000&quot;
+            },
+            {
+                &quot;ab&quot;:&quot;10.0000000000&quot;,
+                &quot;c&quot;:&quot;BTC&quot;,
+                &quot;lb&quot;:&quot;0.0000000000&quot;,
+                &quot;tb&quot;:&quot;10.0000000000&quot;
+            }
+        ],
+        &quot;t&quot;:&quot;true&quot;,
+        &quot;w&quot;:&quot;true&quot;
+    },
+    &quot;topic&quot;:&quot;tradewallet&quot;,
+    &quot;ts&quot;:&quot;1685594474146&quot;
+}
+</code></pre><h3 id="1a1454d9-82e4-4af4-9664-be8e5c8e9dd6" class="">4、Place orders</h3><p id="ed727426-603c-4f0f-97ae-8398e4b2dd1d" class="">Topic：createOrder</p><p id="1d90cc2f-e717-4b89-9fbb-a1aa7a404ef5" class="">Push frequency：Real-time</p><p id="63a33f3d-47a1-4408-ab2a-8cb2c15ee8d6" class="">Request Parameters：</p><p id="529b78d1-b451-4a62-9137-36bbfe0b4080" class="">Response Parameters：</p><table id="fc981cef-224b-457c-b3b7-af97acbc3590" class="simple-table"><tbody><tr id="d6e67714-f4b6-44e2-a709-3f3501db1184"><td id="~l;Y" class=""><strong>Params</strong></td><td id="Kte^" class=""><strong>Type</strong></td><td id="OfOW" class=""><strong>Description</strong></td></tr><tr id="6cc0c894-2575-4bae-91d8-5ecaa15d45e4"><td id="~l;Y" class="">id</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Unique identifier of the message</td></tr><tr id="a157b192-8903-4fb5-8df3-31f6e7ba7cd5"><td id="~l;Y" class="">op</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Oprate Type</td></tr><tr id="1beb64a0-aeb0-4243-910f-dcacb683d6b4"><td id="~l;Y" class="">code</td><td id="Kte^" class="">String</td><td id="OfOW" class="">Return code</td></tr><tr id="798a1922-218b-4d8b-9443-2f6ac860f6cb"><td id="~l;Y" class="">msg</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Return code prompt information</td></tr><tr id="49cde516-6107-4e03-9430-4ab94475fba8"><td id="~l;Y" class="">data</td><td id="Kte^" class="">Object</td><td id="OfOW" class=""></td></tr><tr id="46dc5937-8a36-469c-aad9-548bdfe15947"><td id="~l;Y" class="">&gt;symbol</td><td id="Kte^" class="">string</td><td id="OfOW" class="">symbol</td></tr><tr id="f54a9b23-d416-4a4d-be5e-b55dd50ee6c5"><td id="~l;Y" class="">&gt;orderId</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order ID</td></tr><tr id="ef4e3ffd-0792-4648-b300-674636844262"><td id="~l;Y" class="">&gt;orderLinkId</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order ID set by the user</td></tr><tr id="ea02374d-226f-48b4-a41f-71ed8cd96927"><td id="~l;Y" class="">&gt;px</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order Price</td></tr><tr id="04d65677-d9f5-4d41-b01e-caa5b97ca7f6"><td id="~l;Y" class="">&gt;sz</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order quantity</td></tr><tr id="a12c29a1-c253-45fc-9041-ce6fc2ca0e37"><td id="~l;Y" class="">&gt;eq</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Execution quantity</td></tr><tr id="f5fdf08e-56f7-4580-aec1-4672fdd11390"><td id="~l;Y" class="">&gt;type</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order Type</td></tr><tr id="24561294-376b-46ed-a1a4-f5cac7952cd8"><td id="~l;Y" class="">&gt;side</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Buy/sell direction</td></tr><tr id="e8373682-6592-4516-b1b0-adf7d2d2c3fd"><td id="~l;Y" class="">&gt;status</td><td id="Kte^" class="">string</td><td id="OfOW" class="">Order Status</td></tr></tbody></table><p id="55132694-a437-4d7a-963c-6231865d3eaf" class="">Request example</p><pre id="c48a3632-7d7f-417f-8891-d68cbe132f7b" class="code code-wrap"><code>{
+    &quot;reqId&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;createOrder&quot;,
+    &quot;args&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinker&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;
+        }
+    ]
+}
+</code></pre><p id="446bd5bb-62a6-44e4-90a3-75767cc10b4a" class="">Response example</p><pre id="fbcb86ee-51bf-4df2-9444-a0542705606f" class="code code-wrap"><code>{
+    &quot;id&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;createOrder&quot;,
+    &quot;code&quot;:&quot;1&quot;,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderId&quot;:&quot;kaite300106&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;,
+            &quot;status&quot;:&quot;1636.21&quot;
+        }
+    ]
+}
+</code></pre><h3 id="ddf9dbcd-cab5-4ef2-afe6-c579c4ec3eb9" class="">5、Batch order</h3><p id="e1ff9be3-24e0-4cf9-9af2-a2663a3dcb44" class="">Topic：batchCreateOrder</p><p id="44796abf-ad5d-46a5-b5c1-b38a6093a17b" class="">Push frequency：Real-time</p><p id="a1222efa-8611-4d06-9758-c15c5a605ce2" class="">Request example</p><pre id="fbb8c4df-16d1-4c51-bbf7-0acdb557a906" class="code code-wrap"><code>{
+    &quot;reqId&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;createOrder&quot;,
+    &quot;args&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;
+        }
+    ]
+}
+</code></pre><p id="00935694-0356-4719-8738-3b044d23f299" class="">Response Parameters：</p><table id="4731b4da-50b4-4932-99ce-58da09e65277" class="simple-table"><tbody><tr id="202c0ffa-8b09-4192-b21f-e36d0070a9bf"><td id="lo=Y" class=""><strong>Params</strong></td><td id="|d`S" class=""><strong>Type</strong></td><td id="tumE" class=""><strong>Description</strong></td></tr><tr id="3d88c77b-1b65-4444-9731-3f3a30a9a6fc"><td id="lo=Y" class="">id</td><td id="|d`S" class="">string</td><td id="tumE" class="">Unique identifier of the message</td></tr><tr id="900ed425-4258-4941-b633-a3e79e6dda05"><td id="lo=Y" class="">op</td><td id="|d`S" class="">string</td><td id="tumE" class="">Oprate Type</td></tr><tr id="6033bb71-9611-4884-821f-e8a4fe5942be"><td id="lo=Y" class="">code</td><td id="|d`S" class="">String</td><td id="tumE" class="">Return code</td></tr><tr id="d7d09bea-d686-49b1-a0f5-4a8a1ea37530"><td id="lo=Y" class="">msg</td><td id="|d`S" class="">string</td><td id="tumE" class="">Return code prompt information</td></tr><tr id="82a4dcc0-2e40-4689-a3d4-d04b7be6218e"><td id="lo=Y" class="">data</td><td id="|d`S" class="">Object</td><td id="tumE" class=""></td></tr><tr id="8c5ac4b4-5630-4711-bb45-ded0af7ff6ba"><td id="lo=Y" class="">&gt;symbol</td><td id="|d`S" class="">string</td><td id="tumE" class="">Symbol</td></tr><tr id="73452e1b-7e28-450c-b3ba-2ce1da96a591"><td id="lo=Y" class="">&gt;orderId</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order ID</td></tr><tr id="e1b41f15-00c2-4e7c-a63a-244dfec3362d"><td id="lo=Y" class="">&gt;orderLinkId</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order ID set by the user</td></tr><tr id="4c0d7f86-ff30-416e-a1aa-7d3386db26a6"><td id="lo=Y" class="">&gt;px</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order Price</td></tr><tr id="1ffa7843-6f3e-431e-93bd-9cc2fe6b3ff9"><td id="lo=Y" class="">&gt;sz</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order quantity</td></tr><tr id="2778222f-a6f1-4905-92b3-de7b6536d8f4"><td id="lo=Y" class="">&gt;eq</td><td id="|d`S" class="">string</td><td id="tumE" class="">Execution quantity</td></tr><tr id="97d49f9d-d5c4-4279-b9cf-9a08f3f2b529"><td id="lo=Y" class="">&gt;type</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order Type</td></tr><tr id="0d499c82-6b86-47e9-b153-65c855ca1e04"><td id="lo=Y" class="">&gt;side</td><td id="|d`S" class="">string</td><td id="tumE" class="">Buy/sell direction</td></tr><tr id="a350405e-8abe-444a-bfe6-94e7c6069b93"><td id="lo=Y" class="">&gt;status</td><td id="|d`S" class="">string</td><td id="tumE" class="">Order Status</td></tr></tbody></table><p id="409bb9ef-dcad-40f1-bbfd-7fdd6671efea" class="">Response example</p><pre id="427dba55-bc5e-4e16-8dc2-70e874be0993" class="code code-wrap"><code>{
+    &quot;id&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;createOrder&quot;,
+    &quot;code&quot;:&quot;1&quot;,
+    &quot;msg&quot;:&quot;SUCCESS&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderId&quot;:&quot;kaite300106&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;,
+            &quot;status&quot;:&quot;1636.21&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderId&quot;:&quot;kaite300106&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
+            &quot;side&quot;:&quot;BUY&quot;,
+            &quot;type&quot;:&quot;LIMIT&quot;,
+            &quot;sz&quot;:&quot;0.1&quot;,
+            &quot;px&quot;:&quot;1636.21&quot;,
+            &quot;status&quot;:&quot;1636.21&quot;
+        }
+    ]
+}
+</code></pre><h3 id="aa729eef-6c76-4f0c-9aa5-e6564ca2b82d" class="">6、Cancel the order</h3><p id="76a99cb8-d57e-4929-918e-0e5b0dc2863f" class="">Topic：cancelOrder</p><p id="79a3f677-4446-4dcb-82e5-4bc4b1ce7db6" class="">Push frequency：Real-time</p><p id="4fb8e6de-fb11-4fa5-b31e-4ec9b00a7066" class="">Request example</p><pre id="bc133740-85d7-48d7-b5fc-ded7fcabb44e" class="code code-wrap"><code>{
+    &quot;reqId&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;cancelOrder&quot;,
+    &quot;args&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinkId&quot;:&quot;10001&quot;,
+            &quot;orderId&quot;:&quot;10032245&quot;
+        }
+    ]
+}
+</code></pre><p id="37170ba9-8fc8-44c3-8060-48bc3a4d5188" class="">Response Parameters：</p><table id="903afda2-ea94-4014-8524-9ffdda930b02" class="simple-table"><tbody><tr id="308d6316-e4e2-4d06-9b63-e52140806ca4"><td id="wzwm" class=""><strong>Params</strong></td><td id="WdGX" class=""><strong>Type</strong></td><td id="u_|w" class=""><strong>Description</strong></td></tr><tr id="5cd1329e-7976-470e-a9fc-2e9f67fe7457"><td id="wzwm" class="">id</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Unique identifier of the message</td></tr><tr id="24f4554f-ab7f-4b79-969d-6b5b6c1a2315"><td id="wzwm" class="">op</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Operate Type</td></tr><tr id="65013baf-01b8-416c-89fd-25189c7c91af"><td id="wzwm" class="">code</td><td id="WdGX" class="">String</td><td id="u_|w" class="">Return code</td></tr><tr id="b1842b5b-25fb-4182-a562-57c0c31da719"><td id="wzwm" class="">msg</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Return code prompt information</td></tr><tr id="f01a995f-0ee1-4a24-90b6-10b56eff958c"><td id="wzwm" class="">data</td><td id="WdGX" class="">Object</td><td id="u_|w" class=""></td></tr><tr id="1a319966-0d3c-4bb9-bcb5-d9c9da00dd3e"><td id="wzwm" class="">&gt;symbol</td><td id="WdGX" class="">string</td><td id="u_|w" class="">symbol</td></tr><tr id="80ef11ef-5023-4903-b46e-56d5e1099e1b"><td id="wzwm" class="">&gt;SCode</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Return code</td></tr><tr id="d91063fd-a670-4775-b511-17e32291bd09"><td id="wzwm" class="">&gt;SMsg</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Return code prompt information</td></tr><tr id="3e79c550-ae1f-44e9-a3be-7e7f8db4e0c1"><td id="wzwm" class="">&gt;orderId</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Order ID</td></tr><tr id="1142589f-0bba-4928-8380-501f275ceb7c"><td id="wzwm" class="">&gt;orderLinkId</td><td id="WdGX" class="">string</td><td id="u_|w" class="">Order ID set by the user</td></tr></tbody></table><p id="96d1a528-7d2b-481c-8058-cb9dc137906d" class="">Response example</p><pre id="ed35186f-3d7c-4cb6-b00d-d7b16c68ab3a" class="code code-wrap"><code> {
+    &quot;code&quot;:&quot;0&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;SCode&quot;:0,
+            &quot;SMsg&quot;:&quot;Success&quot;,
+            &quot;orderId&quot;:&quot;10032245&quot;,
+            &quot;orderLinkId&quot;:&quot;10001&quot;,
+            &quot;symbol&quot;:&quot;ethusdt&quot;
+        }
+    ],
+    &quot;id&quot;:&quot;10001&quot;,
+    &quot;msg&quot;:&quot;Success&quot;,
+    &quot;op&quot;:&quot;cancelOrder&#x27;&quot;
+}
+</code></pre><h3 id="46b138dc-4ad2-4414-bbbb-63cefb8a3742" class="">7、Batch cancel orde</h3><p id="4313226a-8c2e-40c2-a84a-1f68d8137d08" class="">Topic：batchCancelOrder</p><p id="fed37edd-56cc-4fbd-b9c4-59ebda96dc4e" class="">Push frequency：Real-time</p><p id="130173ef-05ab-421d-af25-13af5329fcec" class="">Request example</p><pre id="23bba604-55f5-4532-8c9a-ba0d3da3fd42" class="code code-wrap"><code>{
+    &quot;reqId&quot;:&quot;tradewallet001&quot;,
+    &quot;op&quot;:&quot;cancelOrder&quot;,
+    &quot;args&quot;:[
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinkId&quot;:&quot;10001&quot;,
+            &quot;orderId&quot;:&quot;10032245&quot;
+        },
+        {
+            &quot;symbol&quot;:&quot;ETHUSDT&quot;,
+            &quot;orderLinkId&quot;:&quot;10002&quot;,
+            &quot;orderId&quot;:&quot;10032245&quot;
+        }
+    ]
+}
+</code></pre><p id="5ef7b73b-c3d8-426c-a8f3-ab39827c7c68" class="">Response Parameters：</p><table id="9bf8b0fb-5139-4c74-ab0e-4b3db7cc84d2" class="simple-table"><tbody><tr id="d179d30f-7cd0-432f-8e7c-295cba292a7d"><td id="&lt;rbl" class=""><strong>Params</strong></td><td id=";EZm" class=""><strong>Type</strong></td><td id="yPB[" class=""><strong>Description</strong></td></tr><tr id="72ca0922-1983-4406-a03a-f969dabb934c"><td id="&lt;rbl" class="">id</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Unique identifier of the message</td></tr><tr id="16dcdad9-8e78-45d6-84df-03b6c13f8409"><td id="&lt;rbl" class="">op</td><td id=";EZm" class="">string</td><td id="yPB[" class=""></td></tr><tr id="0a513f83-8647-41f6-9ef4-baa8f9cd72bd"><td id="&lt;rbl" class="">code</td><td id=";EZm" class="">String</td><td id="yPB[" class="">Return code</td></tr><tr id="774e3356-62e2-4488-94df-31860a1a4492"><td id="&lt;rbl" class="">msg</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Return code prompt information</td></tr><tr id="4bc2b9d2-bfe2-4550-86c6-411154b54ebc"><td id="&lt;rbl" class="">data</td><td id=";EZm" class="">Object</td><td id="yPB[" class=""></td></tr><tr id="1a4e6772-97a3-4c33-9485-3005f020aa00"><td id="&lt;rbl" class="">&gt;symbol</td><td id=";EZm" class="">string</td><td id="yPB[" class="">symbol</td></tr><tr id="b0d5d81f-205d-420e-9e0d-4826494609f3"><td id="&lt;rbl" class="">&gt;SCode</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Return code</td></tr><tr id="7f12dab2-a1ea-4ac3-b19f-93f001ce8a1e"><td id="&lt;rbl" class="">&gt;SMsg</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Return code prompt information</td></tr><tr id="b5106112-3fb1-4fa9-b942-8f1045eff05e"><td id="&lt;rbl" class="">&gt;orderId</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Order ID</td></tr><tr id="a8e22289-1ff8-481a-88ff-008f7b4f8991"><td id="&lt;rbl" class="">&gt;orderLinkId</td><td id=";EZm" class="">string</td><td id="yPB[" class="">Order ID set by the user</td></tr></tbody></table><p id="483acfc5-69f8-4375-84f7-fcada3f83be7" class="">Response example</p><pre id="0b7d4998-2481-475f-ba51-5f0af38fbcfb" class="code code-wrap"><code> {
+    &quot;code&quot;:&quot;0&quot;,
+    &quot;data&quot;:[
+        {
+            &quot;SCode&quot;:0,
+            &quot;SMsg&quot;:&quot;Success&quot;,
+            &quot;orderId&quot;:&quot;1243964&quot;,
+            &quot;orderLinkId&quot;:&quot;10001&quot;,
+            &quot;symbol&quot;:&quot;ethusdt&quot;
+        },
+        {
+            &quot;SCode&quot;:0,
+            &quot;SMsg&quot;:&quot;Success&quot;,
+            &quot;orderId&quot;:&quot;1243964&quot;,
+            &quot;orderLinkId&quot;:&quot;10002&quot;,
+            &quot;symbol&quot;:&quot;ethusdt&quot;
+        }
+    ],
+    &quot;id&quot;:&quot;10001&quot;,
+    &quot;msg&quot;:&quot;Success&quot;,
+    &quot;op&quot;:&quot;cancelOrder&#x27;&quot;
+}
+</code></pre><h3 id="2e30779f-1ac6-4b1d-86f1-a2f35bf1edef" class="">Error Code</h3><p id="aa07dbb3-ba51-4679-9439-cd081af9254c" class="">
+</p><table id="3762b849-f64c-4a9f-9e91-dca4d36a3dc1" class="simple-table"><tbody><tr id="40e64e0c-7105-4a61-a38b-f32a4113ca91"><td id="X?dH" class="">Error Code</td><td id="@Ezw" class="">Description</td></tr><tr id="bdfc75a9-4c93-4203-8380-e2b28123ec18"><td id="X?dH" class="">0</td><td id="@Ezw" class="">SUCCESS</td></tr><tr id="b45faf07-5382-469f-96c1-75e858fdb9d3"><td id="X?dH" class="">-1022</td><td id="@Ezw" class="">Invalid signature</td></tr><tr id="bd69af6d-56e8-4b49-8ba4-cec4bd60ce2d"><td id="X?dH" class="">-2100</td><td id="@Ezw" class="">Parameter error</td></tr><tr id="c184bce9-9541-44dc-ab4a-beab8fa99c98"><td id="X?dH" class="">-2201</td><td id="@Ezw" class="">No access permission</td></tr></tbody></table><p id="668a297e-60b7-48a5-96ff-0e25a662327e" class="">
+</p></div></article></body></html>
