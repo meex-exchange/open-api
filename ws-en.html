@@ -1036,7 +1036,7 @@ def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
     &quot;args&quot;:[
         {
             &quot;symbol&quot;:&quot;ETHUSDT&quot;,
-            &quot;orderLinker&quot;:&quot;kaite300106&quot;,
+            &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
             &quot;side&quot;:&quot;BUY&quot;,
             &quot;type&quot;:&quot;LIMIT&quot;,
             &quot;sz&quot;:&quot;0.1&quot;,
@@ -1056,8 +1056,9 @@ def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
             &quot;orderLinkId&quot;:&quot;kaite300106&quot;,
             &quot;side&quot;:&quot;BUY&quot;,
             &quot;type&quot;:&quot;LIMIT&quot;,
-            &quot;sz&quot;:&quot;0.1&quot;,
-            &quot;px&quot;:&quot;1636.21&quot;,
+						&quot;px&quot;:&quot;1636.21&quot;,
+            &quot;px&quot;:&quot;1&quot;,
+			      &quot;eq&quot;:&quot;0.0&quot;,
             &quot;status&quot;:&quot;1636.21&quot;
         }
     ]
@@ -1098,6 +1099,7 @@ def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
             &quot;type&quot;:&quot;LIMIT&quot;,
             &quot;sz&quot;:&quot;0.1&quot;,
             &quot;px&quot;:&quot;1636.21&quot;,
+					  &quot;eq&quot;:&quot;0.0&quot;,
             &quot;status&quot;:&quot;1636.21&quot;
         },
         {
@@ -1108,6 +1110,7 @@ def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
             &quot;type&quot;:&quot;LIMIT&quot;,
             &quot;sz&quot;:&quot;0.1&quot;,
             &quot;px&quot;:&quot;1636.21&quot;,
+				     &quot;eq&quot;:&quot;0.0&quot;,
             &quot;status&quot;:&quot;1636.21&quot;
         }
     ]
@@ -1138,7 +1141,7 @@ def toSign(self,timestamp, method, requestPath, queryString, body, secretKey):
     &quot;msg&quot;:&quot;Success&quot;,
     &quot;op&quot;:&quot;cancelOrder&#x27;&quot;
 }
-</code></pre><h3 id="46b138dc-4ad2-4414-bbbb-63cefb8a3742" class="">7、Batch cancel orde</h3><p id="4313226a-8c2e-40c2-a84a-1f68d8137d08" class="">Topic：batchCancelOrder</p><p id="fed37edd-56cc-4fbd-b9c4-59ebda96dc4e" class="">Push frequency：Real-time</p><p id="130173ef-05ab-421d-af25-13af5329fcec" class="">Request example</p><pre id="23bba604-55f5-4532-8c9a-ba0d3da3fd42" class="code code-wrap"><code>{
+</code></pre><h3 id="46b138dc-4ad2-4414-bbbb-63cefb8a3742" class="">7、Batch cancel order</h3><p id="4313226a-8c2e-40c2-a84a-1f68d8137d08" class="">Topic：batchCancelOrder</p><p id="fed37edd-56cc-4fbd-b9c4-59ebda96dc4e" class="">Push frequency：Real-time</p><p id="130173ef-05ab-421d-af25-13af5329fcec" class="">Request example</p><pre id="23bba604-55f5-4532-8c9a-ba0d3da3fd42" class="code code-wrap"><code>{
     &quot;reqId&quot;:&quot;tradewallet001&quot;,
     &quot;op&quot;:&quot;cancelOrder&quot;,
     &quot;args&quot;:[
